@@ -1,0 +1,112 @@
+Sprite ryu
+R	G	B
+255	255	163	177
+Animation Count
+10
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			17				32				0			0
+
+
+Name
+Animation
+Frame Count
+3
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+17			1			20				31				0			0
+37			1			22				31				0			0
+59			1			20				31				0			0
+
+
+Name
+Animation
+Frame Count
+4
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+79			10			16				22				0			0
+95			16			22				16				0			0
+117			10			16				22				0			0
+133			16			22				16				0			0
+
+
+Name
+Animation
+Frame Count
+4
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+155			7			24				25				0			0
+179			8			25				24				0			0
+204			7			24				25				0			0
+228			8			25				24				0			0
+
+
+Name
+Animation
+Frame Count
+3
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+253			1			18				31				0			0
+271			3			40				29				0			0
+311			3			29				29				0			0
+
+
+Name
+Animation
+Frame Count
+3
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+340			1			18				31				0			0
+358			3			26				29				0			0
+384			3			26				29				0			0
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+410			8			17				24				0			6
+
+
+Name
+Animation
+Frame Count
+3
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+427			9			18				23				0			0
+445			9			39				23				0			0
+484			9			29				23				0			0
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+513			1			16				31				0			0
+529			3			16				29				0			0
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+79			10			16				22				0			0
+
+

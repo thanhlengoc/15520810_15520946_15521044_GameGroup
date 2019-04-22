@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\AnimationSprite">
+      <UniqueIdentifier>{fc5cdff1-b9a4-4cf0-a518-a284bed10918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{2bfc1525-ac62-4ef4-97c9-41bf9c325fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Collision">
+      <UniqueIdentifier>{f980a73a-ee24-499a-b5c1-cc46cb96437e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{9c5ebe85-2588-4c9a-96d3-e2b5f2fac64d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Time">
+      <UniqueIdentifier>{ac898940-7950-4f2b-81dd-29ec5c901618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Const">
+      <UniqueIdentifier>{064f8f5a-e874-4aeb-8f42-7cc5ab87a2b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ultils">
+      <UniqueIdentifier>{e92e8177-f996-4fe8-86df-821900ac0ac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WorldView">
+      <UniqueIdentifier>{c3ae1cc8-c162-489e-9454-aad1664e3839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameTool">
+      <UniqueIdentifier>{0650d817-50b1-4ef9-8776-e4a8e3e0cba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enemy">
+      <UniqueIdentifier>{9c434c67-f70f-49fc-9fa5-7eac87b804eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Bar">
+      <UniqueIdentifier>{21d6eeff-fcd0-45d4-ab1a-7f6779441286}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeSpace.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionType.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTypeCollide.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="DelayTime.h">
+      <Filter>Header Files\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameAnimation.h">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfiguration.h">
+      <Filter>Header Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableRect.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="KEY.h">
+      <Filter>Header Files\Ultils</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Header Files\Ultils</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsObject.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUtils.h">
+      <Filter>Header Files\Ultils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTime.h">
+      <Filter>Header Files\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\WorldView</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\GameTool</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirectX.h">
+      <Filter>Header Files\GameTool</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTexture.h">
+      <Filter>Header Files\GameTool</Filter>
+    </ClInclude>
+    <ClInclude Include="Spaces.h">
+      <Filter>Header Files\WorldView</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="SwordMan.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header Files\Ultils</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowGame.h">
+      <Filter>Header Files\GameTool</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files\WorldView</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetEnemy.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetEnemyInWorld.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreBar.h">
+      <Filter>Header Files\Bar</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Header Files\WorldView</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Header Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="DelayTime.cpp">
+      <Filter>Header Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTime.cpp">
+      <Filter>Header Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Header Files\AnimationSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Header Files\GameTool</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDirectX.cpp">
+      <Filter>Header Files\GameTool</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTexture.cpp">
+      <Filter>Header Files\GameTool</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowGame.cpp">
+      <Filter>Header Files\GameTool</Filter>
+    </ClCompile>
+    <ClCompile Include="GameConfiguration.cpp">
+      <Filter>Header Files\Const</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUtils.cpp">
+      <Filter>Header Files\Ultils</Filter>
+    </ClCompile>
+    <ClCompile Include="KEY.cpp">
+      <Filter>Header Files\Ultils</Filter>
+    </ClCompile>
+    <ClCompile Include="MovableRect.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsObject.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SwordMan.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Header Files\Ultils</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Header Files\WorldView</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreBar.cpp">
+      <Filter>Header Files\Bar</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
