@@ -91,20 +91,5 @@ void PhysicsObject::setIsOnGround(bool isOnGround)
 }
 
 void PhysicsObject::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
-{
-	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
-	{
-		//van toc khong duoc tang dan deu khi dung tren san
-		if (ny == 1)
-		{
-			setIsOnGround(true);
-		}
-
-		if (ny != 0)
-		{
-			setVy(-10);
-		}
-		preventMovementWhenCollision(collisionTime, nx, ny);
-	}
-	
+{	
 }

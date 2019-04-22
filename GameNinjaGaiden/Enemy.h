@@ -6,6 +6,7 @@ class Enemy :
 	public PhysicsObject
 {
 	int health;
+
 public:
 
 	void setHealth(int health);

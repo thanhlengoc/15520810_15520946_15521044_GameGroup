@@ -1,0 +1,26 @@
+Sprite eagle
+R	G	B
+255	255	163	177
+Animation Count
+2
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			17				25				0			0
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+17			9			16				16				0			0
+0			0			17				25				0			0
+
+

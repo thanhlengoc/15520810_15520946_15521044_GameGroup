@@ -4,6 +4,9 @@
 #include"SwordMan.h"
 #include"Player.h"
 #include"Collision.h"
+#include"Dog.h"
+#include"Butterfly.h"
+#include"Eagle.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 

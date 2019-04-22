@@ -14,24 +14,24 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble = new map<const char*, double>();
 
 		/* window_width, window_height là kích thước cửa sổ */
-		globalsConfigurationDouble->insert(pair<const char*, double>("window_width", 512));
-		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 448));
+		globalsConfigurationDouble->insert(pair<const char*, double>("window_width", 600));
+		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 500));
 
 		/* backbuffer_width, backbuffer_height là kích thước của backbuffer */
-		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_width", 256));
-		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_height", 150));
+		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_width", 250));
+		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_height", 208));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 60));
 		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_animation_time_default", 190));
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -270));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 110));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 150));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 170));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_fall_stand", -70));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_jump_height", 23));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_sit", 19));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_height", 30));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_dead_delay", 3000));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_dead_delay", 1500));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 130));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 100));
 

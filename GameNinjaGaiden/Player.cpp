@@ -93,7 +93,7 @@ void Player::onUpdate(float dt)
 			{
 				if (isMoveDown)
 				{
-					setVx(getDirection() * 89);
+					setVx(getDirection() * 35);
 					setVy(vy);
 				}
 				else
@@ -110,7 +110,7 @@ void Player::onUpdate(float dt)
 		action = PLAYER_ACTION_JUMP;	
 		if (isOnAttack)
 		{
-			action = PLAYER_ACTION_JUMP_ATTACK;
+			action = PLAYER_ACTION_ATTACK;
 		}
 	}
 	if (isOnAttack && getIsOnGround())
@@ -123,8 +123,23 @@ void Player::onUpdate(float dt)
 
 void Player::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
+	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
+	{
+		//van toc khong duoc tang dan deu khi dung tren san
+		if (ny == 1)
+		{
+			setIsOnGround(true);
+		}
+
+		if (ny != 0)
+		{
+			setVy(-10);
+		}
+		preventMovementWhenCollision(collisionTime, nx, ny);
+	}
 	if (other->getCollisionType() == COLLISION_TYPE_WATER)
 	{
+		startDeadDelay();
 		isDead = true;
 	}
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);

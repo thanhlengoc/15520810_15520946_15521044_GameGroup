@@ -123,12 +123,15 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ChangeSpace.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionType.h" />
     <ClInclude Include="CollisionTypeCollide.h" />
     <ClInclude Include="DelayTime.h" />
+    <ClInclude Include="Dog.h" />
+    <ClInclude Include="Eagle.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FrameAnimation.h" />
     <ClInclude Include="Game.h" />
@@ -157,9 +160,12 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DelayTime.cpp" />
+    <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="Eagle.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />

@@ -23,6 +23,10 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_SWORDMAN]->InitFromFile("Image/Animation/swordman/out/image.png", "Image/Animation/swordman/out/swordman.info.dat");
 	sprites[SPRITE_INFO_RYU]->InitFromFile("Image/Animation/ryu/out/image.png", "Image/Animation/ryu/out/ryu.info.dat");
 	sprites[SPRITE_INFO_RYU]->image->direction = TEXTURE_DIRECTION_RIGHT;
+	//sprites[SPRITE_INFO_DOG]->InitFromFile("Image/Animation/dog/out/image.png", "Image/Animation/dog/out/dog.info.dat");
+	//sprites[SPRITE_INFO_BUTTERFLY]->InitFromFile("Image/Animation/butterfly/out/image.png", "Image/Animation/butterfly/out/butterfly.info.dat");
+	//sprites[SPRITE_INFO_EAGLE]->InitFromFile("Image/Animation/eagle/out/image.png", "Image/Animation/eagle/out/eagle.info.dat");
+
 }
 SpriteManager::~SpriteManager()
 {
