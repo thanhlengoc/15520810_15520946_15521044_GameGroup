@@ -104,8 +104,9 @@ void World::Init(const char * tilesheetPath,
 	}
 
 	/* bắt đầu từ space 0 */
-	setCurrentSpace(0);
+	setCurrentSpace(1);
 	resetLocationInSpace();
+	//resetLocationInSpace();
 }
 
 void World::Init(const char * folderPath)
@@ -137,6 +138,30 @@ void World::update(float dt)
 	KEY* key = KEY::getInstance();
 	key->update();
 	/* chuyển space khi nhấn phím */
+	if (key->isJumpPress)
+	{
+		if (getCurrentSpaceIndex() == 1)
+		{
+			setCurrentSpace(0);
+			resetLocationInSpace();
+		}
+		if (getCurrentSpaceIndex() == 3)
+		{
+			setCurrentSpace(2);
+			resetLocationInSpace();
+		}
+		if (getCurrentSpaceIndex() == 3)
+		{
+			setCurrentSpace(2);
+			resetLocationInSpace();
+		}
+		if (getCurrentSpaceIndex() == 4)
+		{
+			setCurrentSpace(5);
+			resetLocationInSpace();
+		}
+	}
+
 	if (key->isSpace1Down)
 	{
 		setCurrentSpace(0);
@@ -144,12 +169,12 @@ void World::update(float dt)
 	}
 	if (key->isSpace2Down)
 	{
-		setCurrentSpace(1);
+		setCurrentSpace(2);
 		resetLocationInSpace();
 	}
 	if (key->isSpace3Down)
 	{
-		setCurrentSpace(2);
+		setCurrentSpace(5);
 		resetLocationInSpace();
 	}
 
