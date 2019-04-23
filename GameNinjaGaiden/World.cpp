@@ -6,7 +6,10 @@
 #include"Collision.h"
 #include"Dog.h"
 #include"Butterfly.h"
-#include"Eagle.h"
+#include"Bird.h"
+#include"Bat.h"
+#include"BanShee.h"
+#include"MachineGun.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -43,6 +46,26 @@ void World::Init(const char * tilesheetPath,
 		case SPRITE_INFO_SWORDMAN:
 			obj = new SwordMan();
 			break;
+		/*
+		case SPRITE_INFO_BUTTERFLY:
+			obj = new Butterfly();
+			break;
+		case SPRITE_INFO_DOG:
+			obj = new Dog();
+			break;
+		case SPRITE_INFO_BIRD:
+			obj = new Bird();
+			break;
+		case SPRITE_INFO_BAT:
+			obj = new Bat();
+			break;
+		case SPRITE_INFO_BANSHEE:
+			obj = new BanShee();
+			break;
+		case SPRITE_INFO_MACHINE_GUN:
+			obj = new Machine();
+			break;
+		*/
 
 		default:
 			obj = new BaseObject();

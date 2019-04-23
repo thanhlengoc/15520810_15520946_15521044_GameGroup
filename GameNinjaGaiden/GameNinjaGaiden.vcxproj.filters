@@ -147,10 +147,19 @@
     <ClInclude Include="Dog.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Eagle.h">
+    <ClInclude Include="Butterfly.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Butterfly.h">
+    <ClInclude Include="Bird.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BanShee.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineGun.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
@@ -233,10 +242,19 @@
     <ClCompile Include="Dog.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Eagle.cpp">
+    <ClCompile Include="Butterfly.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Butterfly.cpp">
+    <ClCompile Include="Bird.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BanShee.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineGun.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
   </ItemGroup>

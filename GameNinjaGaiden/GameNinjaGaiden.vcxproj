@@ -122,7 +122,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BanShee.h" />
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="Bat.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ChangeSpace.h" />
@@ -131,7 +133,7 @@
     <ClInclude Include="CollisionTypeCollide.h" />
     <ClInclude Include="DelayTime.h" />
     <ClInclude Include="Dog.h" />
-    <ClInclude Include="Eagle.h" />
+    <ClInclude Include="Bird.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FrameAnimation.h" />
     <ClInclude Include="Game.h" />
@@ -142,6 +144,7 @@
     <ClInclude Include="GameUtils.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="MachineGun.h" />
     <ClInclude Include="MovableRect.h" />
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Player.h" />
@@ -159,13 +162,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BanShee.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DelayTime.cpp" />
     <ClCompile Include="Dog.cpp" />
-    <ClCompile Include="Eagle.cpp" />
+    <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
@@ -174,6 +179,7 @@
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="KEY.cpp" />
+    <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MovableRect.cpp" />
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Player.cpp" />

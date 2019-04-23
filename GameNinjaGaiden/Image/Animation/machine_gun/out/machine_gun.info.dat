@@ -1,0 +1,36 @@
+Sprite machine_gun
+R	G	B
+255	255	163	177
+Animation Count
+3
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			16				32				0			0
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+16			0			15				32				0			0
+0			0			16				32				0			0
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+31			0			24				32				0			0
+55			0			20				32				0			0
+
+

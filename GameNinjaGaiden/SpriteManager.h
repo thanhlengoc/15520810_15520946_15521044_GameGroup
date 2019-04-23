@@ -10,15 +10,19 @@
 enum SPRITE_INFO
 {
 	/* đối tượng không có hình ảnh ta sẽ đặt số âm */
+	SPRITE_INFO_GATE = -3,
 	SPRITE_INFO_WATER = -2,
 	SPRITE_INFO_GROUND = -1,
 	/* đối tượng có hình ảnh ta sẽ đặt số dương */
 	SPRITE_INFO_RYU = 0,
 	// thêm các sprite_info khác ở đây
 	SPRITE_INFO_SWORDMAN = 1,
-	//SPRITE_INFO_DOG = 3,
-	//SPRITE_INFO_BUTTERFLY = 4,
-	//SPRITE_INFO_EAGLE = 5,
+	SPRITE_INFO_BUTTERFLY = 2,
+	SPRITE_INFO_DOG = 3,
+	SPRITE_INFO_BIRD = 4,
+	SPRITE_INFO_BAT = 5,
+	SPRITE_INFO_BANSHEE = 6,
+	SPRITE_INFO_MACHINE_GUN = 7,
 
 	SPRITE_COUNT
 };

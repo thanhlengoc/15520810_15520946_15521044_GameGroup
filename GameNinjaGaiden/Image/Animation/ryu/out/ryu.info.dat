@@ -104,9 +104,10 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 Name
 Animation
 Frame Count
-1
+2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 79			10			16				22				0			0
+79			0			10				10				0			0
 
 

@@ -6,6 +6,7 @@ enum COLLISION_TYPE
 	/* thêm các collisionType khác trong tool vào đây */
 	COLLISION_TYPE_WATER,
 	COLLISION_TYPE_PLAYER,
+	COLLISION_TYPE_GATE_1,
 	/* số lượng collisionType luôn nằm cuối */
 	COLLISION_TYPE_COUNT
 };
