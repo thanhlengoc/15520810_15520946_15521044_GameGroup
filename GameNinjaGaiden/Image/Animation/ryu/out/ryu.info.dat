@@ -2,11 +2,11 @@ Sprite ryu
 R	G	B
 255	255	163	177
 Animation Count
-10
+13
 
 
 Name
-Animation
+Stand
 Frame Count
 1
 
@@ -15,7 +15,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Run
 Frame Count
 3
 
@@ -26,7 +26,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Jump
 Frame Count
 4
 
@@ -38,7 +38,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+JumpAttack
 Frame Count
 4
 
@@ -50,7 +50,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Attack
 Frame Count
 3
 
@@ -61,7 +61,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Defence
 Frame Count
 3
 
@@ -72,7 +72,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Sit
 Frame Count
 1
 
@@ -81,7 +81,7 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+SitAttack
 Frame Count
 3
 
@@ -92,22 +92,50 @@ FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 
 
 Name
-Animation
+Climbwait
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+513			3			16				29				0			0
+
+
+Name
+Climb
 Frame Count
 2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-513			1			16				31				0			0
-529			3			16				29				0			0
+529			1			16				31				0			0
+513			3			16				29				0			0
 
 
 Name
-Animation
+Die
 Frame Count
 2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
 79			10			16				22				0			0
-79			0			10				10				0			0
+99			0			14				11				0			0
+
+
+Name
+Hurt
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+79			10			16				22				0			0
+
+
+Name
+Reset
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			17				32				0			1
+99			0			14				11				0			0
 
 

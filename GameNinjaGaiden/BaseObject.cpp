@@ -40,7 +40,10 @@ void BaseObject::onInitFromFile(ifstream& fs, int mapHeight)
 	y = mapHeight - y;
 	/* khởi tạo x y width height cho đối tượng */
 	set(x, y, width, height);
-
+	Rect* initBox = new Rect();
+	// set init box de restore
+	initBox->set(x, y, width, height);
+	setInitBox(initBox);
 	setCollisionType((COLLISION_TYPE)collisionType);
 }
 
@@ -80,6 +83,8 @@ void BaseObject::onUpdate(float dt)
 void BaseObject::render(Camera* camera)
 {
 	if (getSprite() == 0)
+		return;
+	if (!getRenderActive())
 		return;
 	if (!isAlive())
 		return;
@@ -192,7 +197,7 @@ int BaseObject::distanceHorToFirstLocation()
 void BaseObject::restoreLocation()
 {
 	set(initBox->getX(), initBox->getY(), initBox->getWidth(), initBox->getHeight());
-	setAlive(true);
+	//setAlive(true);
 }
 
 BaseObject::BaseObject()
@@ -201,7 +206,7 @@ BaseObject::BaseObject()
 	setSprite(NULL);
 	animationGameTime.init(GLOBALS_D("object_animation_time_default"));
 	setAlive(true);
-	//setRenderActive(true);
+	setRenderActive(true);
 }
 
 void BaseObject::setRenderActive(bool renderActive)

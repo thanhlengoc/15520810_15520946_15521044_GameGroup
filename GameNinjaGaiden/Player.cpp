@@ -13,8 +13,66 @@ Player * Player::getInstance()
 void Player::onUpdate(float dt)
 {
 	PLAYER_ACTION action;
-	
+	double vx = GLOBALS_D("player_vx");
+	double vy = GLOBALS_D("player_vy_jump");
+
 	setInterval(60);
+	action = PLAYER_ACTION_STAND;
+
+	if (isHurtLeft || isHurtRight)
+	{
+		if (hurtDelay.isTerminated())
+		{
+			setAnimation(PLAYER_ACTION_STAND);
+			isHurtLeft = isHurtRight = false;
+		}
+		if (!hurtDelay.isOnTime())
+		{
+			if (getIsOnGround())
+			{
+				if (isHurtLeft)
+				{
+					setVx(32);
+					setVy(107);
+				}
+				else if (isHurtRight)
+				{
+					setVx(-32);
+					setVy(107);
+				}
+				setAnimation(PLAYER_ACTION_HURT);
+			}
+			else
+			{
+				if (isHurtLeft)
+				{
+					setVx(32);
+					setVy(60);
+				}
+				else if (isHurtRight)
+				{
+					setVx(-32);
+					setVy(60);
+				}
+				setAnimation(PLAYER_ACTION_HURT);
+				hurtDelay.start();
+			}
+		}
+		else if (hurtDelay.isOnTime())
+		{
+			if (getIsOnGround())
+			{
+				setVx(0);
+				setVy(0);
+				setAnimation(PLAYER_ACTION_RESET);
+			}
+			hurtDelay.update();
+		}
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+	
+	
 	if (isDead)
 	{
 		setAnimation(PLAYER_ACTION_DIE);
@@ -27,9 +85,11 @@ void Player::onUpdate(float dt)
 		deadDelay.update();
 		if (deadDelay.isTerminated())
 		{
+			resetEnemy->resetLocationEmemy();
 			int currentSpaceIndex = changeSpace->getCurrentSpaceIndex();
 			changeSpace->setCurrentSpace(currentSpaceIndex);
 			changeSpace->resetLocationInSpace();
+			
 			isDead = false;
 		}
 		return;
@@ -42,6 +102,16 @@ void Player::onUpdate(float dt)
 	if (key->isAttackPress)
 	{
 		setIsOnAttack(true);
+		Weapon* weapon = Weapon::getInstance();
+		if (getDirection() == 1)
+		{
+			weapon->setLocation(getX()+60, getY());
+		}
+		else
+		{
+			weapon->setLocation(getX() - 40, getY());
+		}
+		weapon->setDirection(getDirection());
 	}
 	if (getIsOnGround())
 	{
@@ -64,13 +134,11 @@ void Player::onUpdate(float dt)
 			{
 				setHeight(25);
 				action = PLAYER_ACTION_SIT_ATTACK;
+				
 			}
 		}
 		else
 		{
-			double vx = GLOBALS_D("player_vx");
-			double vy = GLOBALS_D("player_vy_jump");
-
 			bool isMoveDown = key->isLeftDown || key->isRightDown;
 			if (isMoveDown)
 			{
@@ -91,16 +159,7 @@ void Player::onUpdate(float dt)
 
 			if (key->isJumpPress)
 			{
-				if (isMoveDown)
-				{
-					setVx(getDirection() * 35);
-					setVy(vy);
-				}
-				else
-				{
-					setVy(vy);
-				}
-				
+				setVy(vy);
 			}
 		}
 	}
@@ -108,15 +167,27 @@ void Player::onUpdate(float dt)
 	{
 		setHeight(GLOBALS_D("player_jump_height"));
 		action = PLAYER_ACTION_JUMP;	
+		bool isMoveDown = key->isLeftDown || key->isRightDown;
 		if (isOnAttack)
 		{
 			action = PLAYER_ACTION_ATTACK;
+			setVx(0);
+		}
+		if (isMoveDown)
+		{
+			setVx(getDirection() * 50);
+		}
+		else
+		{
+			setVx(0);
 		}
 	}
 	if (isOnAttack && getIsOnGround())
 	{
 		setVx(0);
+		
 	}
+
 	setAnimation(action);
 	PhysicsObject::onUpdate(dt);
 }
@@ -137,17 +208,18 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 		}
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
+	
 	if (other->getCollisionType() == COLLISION_TYPE_WATER)
 	{
-		startDeadDelay();
+		deadDelay.start();
 		isDead = true;
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_GATE_1)
+	{
+		changeSpace->setCurrentSpace(3);
+		changeSpace->resetLocationInSpace();
+	}
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
-}
-
-void Player::startDeadDelay()
-{
-	deadDelay.start();
 }
 
 void Player::setIsOnAttack(bool isOnAttack)
@@ -163,12 +235,15 @@ bool Player::isAttack()
 Player::Player()
 {
 	setSprite(SPR(SPRITE_INFO_RYU));
+	setCollisionType(COLLISION_TYPE_PLAYER);
 	key = KEY::getInstance();
 	setDirection(TEXTURE_DIRECTION_RIGHT);
 	setAnimation(PLAYER_ACTION_STAND);
 	isDead = false;
+	isHurtLeft = isHurtRight = false;
 	setAlive(true);
 	deadDelay.init(GLOBALS_D("player_dead_delay"));
+	hurtDelay.init(900);
 }
 
 

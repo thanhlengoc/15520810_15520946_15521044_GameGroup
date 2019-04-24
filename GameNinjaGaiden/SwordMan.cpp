@@ -1,66 +1,94 @@
 #include "SwordMan.h"
 
+bool SwordMan::onContactPlayer()
+{
+	return contactPlayer;
+}
+
+void SwordMan::setContactPlayer(bool contactPlayer)
+{
+	this->contactPlayer = contactPlayer;
+}
+
+void SwordMan::setSwordmanState(SWORDMAN_STATE swordmanState)
+{
+	this->swordmanState = swordmanState;
+}
+
 void SwordMan::onUpdate(float dt)
 {
-	Player* player = Player::getInstance();
+	Camera* camera = Camera::getInstance();
 	SWORDMAN_ACTION action;
-
-	setFollowPlayer();
-	action = SWORDMAN_ACTION_STAND;
 	setVx(0);
-	setInterval(GLOBALS_D("enemy_animation_time_default"));
-	isOnAttack = false;
-	if (isDead)
-	{
-		if (tickTime == 0)
-		{
-			setX((getX() + 26)*getDirection());
-			setY(getY() + 5);
-		}
-		tickTime++;
-		setVx(0);
-		setAnimation(SWORDMAN_ACTION_DIE);
+	action = SWORDMAN_ACTION_STAND;
 
-		deadTime.update();
-		if (deadTime.isTerminated())
-			setAlive(false);
+	if (player->isDead)
+	{
+		restoreLocation();
+		PhysicsObject::onUpdate(dt);
 		return;
 	}
-	else
-	if (abs(getMidX() - Player::getInstance()->getMidX()) < GLOBALS_D("zombie_distance_to_activity") && !player->isDead && !isDead)
+	if (abs(getMidX() - camera->getMidX()) > 104)
 	{
-		action = SWORDMAN_ACTION_RUN_ATTACK;
-		setVx(-getDirection() * 40);
+		setAlive(true);
+		setRenderActive(false);
 		setFollowPlayer();
-		if (abs(getMidX() - Player::getInstance()->getMidX()) < 23)
+	}
+	else if(isAlive() && !player->isHurtLeft && !player->isHurtRight)
+	{
+		setRenderActive(true);
+		if (getIsOnDistanceMove())
 		{
-			if (player->isAttack() && isAlive())
+			action = SWORDMAN_ACTION_RUN_ATTACK;
+			double vx = 32;
+			TEXTURE_DIRECTION direction;
+			if (getDirection() == 1)
 			{
-				deadTime.start();
-				isDead = true;
+				direction = TEXTURE_DIRECTION_LEFT;
+			}
+			else
+			{
+				direction = TEXTURE_DIRECTION_RIGHT;
+			}
+			setDirection(direction);
+			setVx(getDirection()*vx);
+			setIsOnDistanceMove(false);
+			setAnimation(action);
+			PhysicsObject::onUpdate(dt);
+			return;
+		}
+		else
+		{
+			action = SWORDMAN_ACTION_RUN_ATTACK;
+			setVx(-getDirection() * 32);
+			if ((abs(getMidX() - player->getMidX()) < 18) && getIsLastFrameAnimationDone() && getRenderActive()
+				&& (abs(getBottom() - player->getBottom()) < 10))
+			{
+				if ((getMidX() - player->getMidX()) > 0)
+				{
+					player->isHurtRight = true;
+				}
+				else
+				{
+					player->isHurtLeft = true;
+				}
+			}
+
+			if (abs(getMidX() - player->getMidX()) < 30 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 10))
+			{
+				restoreLocation();
+				setRenderActive(false);
+				setAlive(false);
+
+				Weapon* weapon = Weapon::getInstance();
+				weapon->setRenderActive(true);
+
+				PhysicsObject::onUpdate(dt);
+				return;
 			}
 		}
-		if (abs(getMidX() - Player::getInstance()->getMidX()) < 18 && isAlive())
-		{
-			setVx(0);
-			isOnAttack = true;
-		}
 	}
-	else
-	{
-		action = SWORDMAN_ACTION_STAND;
-		setVx(0);
-	}
-	if (isOnAttack && getIsLastFrameAnimationDone())
-	{
-		player->isDead = true;
-		player->startDeadDelay();
-		player->update(dt);
-	}
-	
-	setAnimation(action);
-
-	
+	setAnimation(action);	
 	PhysicsObject::onUpdate(dt);
 }
 
@@ -69,22 +97,33 @@ void SwordMan::onCollision(MovableRect * other, float collisionTime, int nx, int
 	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
 	{
 		//van toc khong duoc tang dan deu khi dung tren san
-		if (ny == 1)
-		{
-			setIsOnGround(true);
-		}
-
-		if (ny != 0)
-		{
-			setVy(-10);
-		}
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_DISTANCE_MOVE_ENEMY)
+	{
+		setIsOnDistanceMove(true);
+	}
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive())
+	{
+		if ((getMidX() - player->getMidX()) > 0)
+		{
+			player->isHurtRight = true;
+		}
+		else
+		{
+			player->isHurtLeft = true;
+		}
+	}
+	if (other->getCollisionType() == COLLISION_TYPE_WEAPON)
+	{
+		//setAlive(false);
+	}
+	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 }
 
 void SwordMan::setFollowPlayer()
 {
-	int distance = Player::getInstance()->getMidX() - getMidX();
+	int distance = player->getMidX() - getMidX();
 	if (distance < 0)
 	{
 		setDirection(TEXTURE_DIRECTION_RIGHT);
@@ -95,20 +134,20 @@ void SwordMan::setFollowPlayer()
 	}
 }
 
-void SwordMan::restoreLocation()
+void SwordMan::resetLocationEmemy()
 {
-	BaseObject::restoreLocation();
+	setAnimation(SWORDMAN_ACTION_STAND);
+	set(getInitBox()->getX(), getInitBox()->getY(), getInitBox()->getWidth(), getInitBox()->getHeight());
+	setAlive(true);
 }
 
 SwordMan::SwordMan()
 {
 	setAnimation(SWORDMAN_ACTION_STAND);
-	deadTime.init(200);
-	isOnAttack = false;
-	setAlive(true);
-	isDead = false;
-	tickTime = 0;
-	setVx(0);
+	setInterval(200);
+	player = Player::getInstance();
+	player->resetEnemy = dynamic_cast<ResetEnemy*>(this);
+	setPhysicsEnable(true);
 }
 
 SwordMan::~SwordMan()

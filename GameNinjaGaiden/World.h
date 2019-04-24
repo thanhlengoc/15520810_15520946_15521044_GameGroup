@@ -5,7 +5,6 @@
 #include"CollisionTypeCollide.h"
 #include"Spaces.h"
 #include"ChangeSpace.h"
-#include"ResetEnemyInWorld.h"
 
 class World : public ChangeSpace
 {

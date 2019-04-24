@@ -21,9 +21,9 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_width", 250));
 		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_height", 208));
 
-		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 60));
+		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_animation_time_default", 190));
-		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -270));
+		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -280));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 110));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 170));
@@ -32,14 +32,14 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_sit", 19));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_height", 30));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_dead_delay", 1500));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 130));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 110));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 100));
 
-		globalsConfigurationDouble->insert(pair<const char*, double>("zombie_distance_to_activity", 150));
+		globalsConfigurationDouble->insert(pair<const char*, double>("zombie_distance_to_activity", 90));
 		//zombie_distance_to_activ
 
 		/* fps là frame_per_second càng lớn càng mượt nhưng nó sử dụng nhiều cpu hơn */
-		globalsConfigurationDouble->insert(pair<const char*, double>("fps", 70));
+		globalsConfigurationDouble->insert(pair<const char*, double>("fps", 90));
 
 		/* TODO tạo thêm các giá trị cấu hình double game tại đây
 		Ví dụ: globalsConfiguration->insert(pair<const char*, double>("gia_tri_key", 10)); 10 la gia tri cua gia_tri_key

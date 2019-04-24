@@ -45,7 +45,7 @@ void Enemy::onIntersect(MovableRect * other)
 	{
 		onContactPlayer();
 		player->isDead = true;
-		player->startDeadDelay();
+		//player->startDeadDelay();
 	}
 }
 

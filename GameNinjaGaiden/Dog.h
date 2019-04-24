@@ -7,6 +7,8 @@ enum {
 };
 class Dog:public PhysicsObject {
 public:
+
+	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 	Dog();
 	~Dog();
 };

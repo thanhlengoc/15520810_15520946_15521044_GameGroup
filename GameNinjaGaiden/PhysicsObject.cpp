@@ -90,6 +90,17 @@ void PhysicsObject::setIsOnGround(bool isOnGround)
 	this->isOnGround = isOnGround;
 }
 
+bool PhysicsObject::getIsOnDistanceMove()
+{
+	return isOnDistanceMove;
+}
+
+void PhysicsObject::setIsOnDistanceMove(bool isOnDistanceMove)
+{
+	this->isOnDistanceMove = isOnDistanceMove;
+}
+
 void PhysicsObject::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {	
+	BaseObject::onCollision(other, collisionTime, nx, ny);
 }

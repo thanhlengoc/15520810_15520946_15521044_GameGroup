@@ -10,6 +10,7 @@ class PhysicsObject :
 	/* cho phép trọng lực hay không */
 	bool physicsEnable;
 	bool isOnGround;
+	bool isOnDistanceMove;
 
 public:
 	float getAx();
@@ -26,6 +27,10 @@ public:
 
 	bool getIsOnGround();
 	void setIsOnGround(bool isOnGround);
+
+	bool getIsOnDistanceMove();
+	void setIsOnDistanceMove(bool isOndistanceMove);
+
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 
 	/* override lại phương thức update của BaseObject */

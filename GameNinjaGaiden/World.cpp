@@ -10,6 +10,8 @@
 #include"Bat.h"
 #include"BanShee.h"
 #include"MachineGun.h"
+#include"Weapon.h"
+#include"AdditionalObject.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -19,7 +21,14 @@ void World::Init(const char * tilesheetPath,
 {
 	Player* player = Player::getInstance();
 	player->set(40, 70, 17, 32);
+
+	Weapon* weapon = Weapon::getInstance();
+
 	player->changeSpace = dynamic_cast<ChangeSpace*>(this);
+	
+	//Weapon* weapon = Weapon::getInstance();
+	//weapon->set(40, 70, 17, 32);
+
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
 
@@ -32,12 +41,13 @@ void World::Init(const char * tilesheetPath,
 
 	/* khởi tạo đối tượng */
 	int objectCount;
+	int collisionType, id, x, y, width, height;
+
 	ifstream fs(objectsPath);
 	fs >> objectCount;
 	for (size_t i = 0; i < objectCount; i++)
 	{
 		BaseObject* obj;
-		int id;
 		/* đọc id đối tượng */
 		fs >> id;
 		switch (id)
@@ -45,6 +55,9 @@ void World::Init(const char * tilesheetPath,
 
 		case SPRITE_INFO_SWORDMAN:
 			obj = new SwordMan();
+			break;
+		case SPRITE_INFO_WEAPON:
+			obj = new Weapon();
 			break;
 		/*
 		case SPRITE_INFO_BUTTERFLY:
@@ -65,12 +78,13 @@ void World::Init(const char * tilesheetPath,
 		case SPRITE_INFO_MACHINE_GUN:
 			obj = new Machine();
 			break;
-		*/
+			*/
 
 		default:
 			obj = new BaseObject();
 			break;
 		}
+
 		/* đọc thông số của đối tượng */
 		obj->onInitFromFile(fs, worldHeight);
 		if (id >= 0)
@@ -129,7 +143,6 @@ void World::Init(const char * tilesheetPath,
 	/* bắt đầu từ space 0 */
 	setCurrentSpace(1);
 	resetLocationInSpace();
-	//resetLocationInSpace();
 }
 
 void World::Init(const char * folderPath)
@@ -206,6 +219,7 @@ void World::update(float dt)
 		/* cập nhật đối tượng */
 		allObjects[i]->update(dt);
 		Collision::CheckCollision(Player::getInstance(), allObjects[i]);
+		Collision::CheckCollision(Weapon::getInstance(), allObjects[i]);
 	}
 	/* xét va chạm cho các loại đối tượng với nhau */
 	for (size_t i = 0; i < collisionTypeCollides.size(); i++)
@@ -228,7 +242,8 @@ void World::update(float dt)
 		}
 
 	}
-
+	//AdditionalObject::objectsUpdate();
+	Weapon::getInstance()->update(dt);
 	Player::getInstance()->update(dt);
 	Camera::getInstance()->update();
 }
@@ -268,6 +283,7 @@ void World::render()
 		allObjects[i]->render(Camera::getInstance());
 	}
 	Player::getInstance()->render(Camera::getInstance());
+	Weapon::getInstance()->render(Camera::getInstance());
 }
 
 World::World()

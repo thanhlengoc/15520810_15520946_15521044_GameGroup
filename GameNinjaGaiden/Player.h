@@ -5,6 +5,9 @@
 #include"DelayTime.h"
 #include"World.h"
 #include"ChangeSpace.h"
+#include"ResetEnemy.h"
+#include"Weapon.h"
+
 
 enum PLAYER_ACTION
 {
@@ -16,8 +19,11 @@ enum PLAYER_ACTION
 	PLAYER_ACTION_DEFENCE,
 	PLAYER_ACTION_SIT,
 	PLAYER_ACTION_SIT_ATTACK,
+	PLAYER_ACTION_CLIMB_WAIT,
 	PLAYER_ACTION_CLIMB,
-	PLAYER_ACTION_DIE
+	PLAYER_ACTION_DIE,
+	PLAYER_ACTION_HURT,
+	PLAYER_ACTION_RESET
 };
 
 class Player :
@@ -26,19 +32,27 @@ class Player :
 	static Player* instance;
 	KEY* key;
 	bool isOnAttack;
-
+	
 	DelayTime deadDelay;
+	DelayTime hurtDelay;
+	
+
 public:
 	static Player* getInstance();
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 
-	void startDeadDelay();
+	bool isHurtRight;
+	bool isHurtLeft;
+
 	bool isDead;
+	bool isResetEnemy;
+
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();
 
 	ChangeSpace* changeSpace;
+	ResetEnemy* resetEnemy;
 
 	Player();
 	~Player();

@@ -46,6 +46,12 @@
     <Filter Include="Header Files\Bar">
       <UniqueIdentifier>{21d6eeff-fcd0-45d4-ab1a-7f6779441286}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{264dd9de-f51b-45a5-991b-5bc06eb3ae8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Weapon">
+      <UniqueIdentifier>{e9317954-3cda-4e83-8d47-f16c7493e4d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -93,9 +99,6 @@
     <ClInclude Include="GameTime.h">
       <Filter>Header Files\Time</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Rect.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
@@ -135,9 +138,6 @@
     <ClInclude Include="ResetEnemy.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="ResetEnemyInWorld.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreBar.h">
       <Filter>Header Files\Bar</Filter>
     </ClInclude>
@@ -161,6 +161,18 @@
     </ClInclude>
     <ClInclude Include="MachineGun.h">
       <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionsObjectCollection.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="AdditionalObject.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +233,6 @@
     <ClCompile Include="Rect.cpp">
       <Filter>Header Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Header Files\Object</Filter>
-    </ClCompile>
     <ClCompile Include="SwordMan.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
@@ -256,6 +265,18 @@
     </ClCompile>
     <ClCompile Include="MachineGun.cpp">
       <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Header Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Header Files\Player\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionsObjectCollection.cpp">
+      <Filter>Header Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="AdditionalObject.cpp">
+      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
