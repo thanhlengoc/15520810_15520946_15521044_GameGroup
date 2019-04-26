@@ -56,7 +56,7 @@ void SwordMan::onUpdate(float dt)
 				}
 			}
 
-			if (abs(getMidX() - player->getMidX()) < 33 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 10))
+			if (abs(getMidX() - player->getMidX()) < 36 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 10))
 			{
 				bool checkRight = player->getDirection() == 1 && (getMidX() - player->getMidX()) >= 0;
 				bool checkLeft = player->getDirection() == -1 && (getMidX() - player->getMidX()) <= 0;
@@ -109,14 +109,18 @@ void SwordMan::onUpdate(float dt)
 		}
 		else if (1445 < getMidX() && getMidX() < 1472)
 		{
-			if (getX() <= 1443)
+			if (getX() <= 1436)
 			{
 				setDirection(TEXTURE_DIRECTION_LEFT);
 			}
-			if (getX() >= 1468)
+			if (getX() >= 1447)
 			{
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}
+			setVx(-getDirection() * 31.2);
+			setAnimation(action);
+			PhysicsObject::onUpdate(dt);
+			return;
 		}
 		else if (1473 < getMidX() && getMidX() < 1535)
 		{
@@ -124,7 +128,7 @@ void SwordMan::onUpdate(float dt)
 			{
 				setDirection(TEXTURE_DIRECTION_LEFT);
 			}
-			if (getX() >= 1530)
+			if (getX() >= 1519)
 			{
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}

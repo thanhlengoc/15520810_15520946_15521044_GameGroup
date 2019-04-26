@@ -4,12 +4,13 @@
 enum {
 	BANSHEE_WAIT,
 	BANSHEE_RUN,
-	BANSHEE_ATTACK,
-	BANSHEE_WEAPON_THROW
+	BANSHEE_THROW
 };
 class BanShee:public PhysicsObject
 {
 public:
+	void onUpdate(float dt) override;
+	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 	BanShee();
 	~BanShee();
 };

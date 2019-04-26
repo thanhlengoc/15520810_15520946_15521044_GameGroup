@@ -56,7 +56,6 @@ void World::Init(const char * tilesheetPath,
 		case SPRITE_INFO_WEAPON:
 			obj = new Weapon();
 			break;
-		/*
 		case SPRITE_INFO_BUTTERFLY:
 			obj = new Butterfly();
 			break;
@@ -75,7 +74,6 @@ void World::Init(const char * tilesheetPath,
 		case SPRITE_INFO_MACHINE_GUN:
 			obj = new Machine();
 			break;
-			*/
 
 		default:
 			obj = new BaseObject();

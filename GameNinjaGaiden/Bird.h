@@ -8,6 +8,7 @@ enum {
 class Bird:public PhysicsObject
 {
 public:
+	void onUpdate(float dt) override;
 	Bird();
 	~Bird();
 };

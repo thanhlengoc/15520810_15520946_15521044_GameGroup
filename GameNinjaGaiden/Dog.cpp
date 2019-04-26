@@ -1,5 +1,10 @@
 #include "Dog.h"
 
+void Dog::onUpdate(float dt)
+{
+	PhysicsObject::onUpdate(dt);
+}
+
 void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
 	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
@@ -8,7 +13,7 @@ void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 
 Dog::Dog()
 {
-	setAnimation(DOG_WAIT);
+	setAnimation(DOG_RUN);
 }
 
 Dog::~Dog()

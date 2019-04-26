@@ -2,7 +2,16 @@ Sprite bat
 R	G	B
 255	255	163	177
 Animation Count
+2
+
+
+Name
+Animation
+Frame Count
 1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			16				13				0			0
 
 
 Name
@@ -11,7 +20,7 @@ Frame Count
 2
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-0			0			15				13				0			0
-15			0			16				13				0			0
+16			0			15				13				0			0
+0			0			16				13				0			7
 
 

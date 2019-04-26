@@ -208,8 +208,8 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 	}
 	if (other->getCollisionType() == COLLISION_TYPE_GATE)
 	{
-			changeSpace->setCurrentSpace(3);
-			changeSpace->resetLocationInSpace();		
+		changeSpace->setCurrentSpace(3);
+		changeSpace->resetLocationInSpace();		
 	}
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 }
