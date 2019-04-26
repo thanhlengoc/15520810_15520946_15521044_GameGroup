@@ -26,7 +26,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -280));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 110));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 170));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 180));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_fall_stand", -70));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_jump_height", 23));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_sit", 19));
@@ -39,7 +39,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		//zombie_distance_to_activ
 
 		/* fps là frame_per_second càng lớn càng mượt nhưng nó sử dụng nhiều cpu hơn */
-		globalsConfigurationDouble->insert(pair<const char*, double>("fps", 90));
+		globalsConfigurationDouble->insert(pair<const char*, double>("fps", 120));
 
 		/* TODO tạo thêm các giá trị cấu hình double game tại đây
 		Ví dụ: globalsConfiguration->insert(pair<const char*, double>("gia_tri_key", 10)); 10 la gia tri cua gia_tri_key

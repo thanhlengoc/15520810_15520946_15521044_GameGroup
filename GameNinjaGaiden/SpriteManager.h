@@ -10,8 +10,7 @@
 enum SPRITE_INFO
 {
 	/* đối tượng không có hình ảnh ta sẽ đặt số âm */
-	SPRITE_INFO_GATE_1 = -4,
-	SPRITE_INFO_DISTANCE_MOVE_ENEMY = -3,
+	SPRITE_INFO_GATE = -3,
 	SPRITE_INFO_WATER = -2,
 	SPRITE_INFO_GROUND = -1,
 	/* đối tượng có hình ảnh ta sẽ đặt số dương */

@@ -99,20 +99,12 @@ void Player::onUpdate(float dt)
 	{
 		setIsOnAttack(false);
 	}
+	
 	if (key->isAttackPress)
 	{
 		setIsOnAttack(true);
-		Weapon* weapon = Weapon::getInstance();
-		if (getDirection() == 1)
-		{
-			weapon->setLocation(getX()+60, getY());
-		}
-		else
-		{
-			weapon->setLocation(getX() - 40, getY());
-		}
-		weapon->setDirection(getDirection());
 	}
+
 	if (getIsOnGround())
 	{
 		setHeight(GLOBALS_D("player_height"));
@@ -214,10 +206,10 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 		deadDelay.start();
 		isDead = true;
 	}
-	if (other->getCollisionType() == COLLISION_TYPE_GATE_1)
+	if (other->getCollisionType() == COLLISION_TYPE_GATE)
 	{
-		changeSpace->setCurrentSpace(3);
-		changeSpace->resetLocationInSpace();
+			changeSpace->setCurrentSpace(3);
+			changeSpace->resetLocationInSpace();		
 	}
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 }

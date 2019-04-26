@@ -21,13 +21,10 @@ void World::Init(const char * tilesheetPath,
 {
 	Player* player = Player::getInstance();
 	player->set(40, 70, 17, 32);
+	player->changeSpace = dynamic_cast<ChangeSpace*>(this);
 
 	Weapon* weapon = Weapon::getInstance();
-
-	player->changeSpace = dynamic_cast<ChangeSpace*>(this);
 	
-	//Weapon* weapon = Weapon::getInstance();
-	//weapon->set(40, 70, 17, 32);
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
@@ -242,8 +239,8 @@ void World::update(float dt)
 		}
 
 	}
-	//AdditionalObject::objectsUpdate();
-	Weapon::getInstance()->update(dt);
+
+	Weapon::getInstance()->update(dt);;
 	Player::getInstance()->update(dt);
 	Camera::getInstance()->update();
 }

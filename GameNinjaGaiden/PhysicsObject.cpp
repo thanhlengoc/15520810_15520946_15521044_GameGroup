@@ -13,6 +13,7 @@ PhysicsObject::PhysicsObject()
 
 void PhysicsObject::onUpdate(float dt)
 {
+	setIsOnDistanceMove(false);
 	setIsOnGround(false);
 
 	if (getPhysicsEnable())

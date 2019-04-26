@@ -12,8 +12,19 @@ Weapon * Weapon::getInstance()
 	return instance;
 }
 
+bool Weapon::isRenderWeapon()
+{
+	return isRender;
+}
+
+void Weapon::setRenderWeapon(bool isRender)
+{
+	this->isRender = isRender;
+}
+
 void Weapon::onUpdate(float dt)
 {
+	Player* player = Player::getInstance();
 	setInterval(200);
 	if (getRenderActive())
 	{
@@ -22,6 +33,7 @@ void Weapon::onUpdate(float dt)
 		{
 			setRenderActive(false);
 		}
+		
 	}
 	PhysicsObject::onUpdate(dt);
 }

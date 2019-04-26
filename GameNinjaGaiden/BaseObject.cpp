@@ -197,7 +197,6 @@ int BaseObject::distanceHorToFirstLocation()
 void BaseObject::restoreLocation()
 {
 	set(initBox->getX(), initBox->getY(), initBox->getWidth(), initBox->getHeight());
-	//setAlive(true);
 }
 
 BaseObject::BaseObject()
