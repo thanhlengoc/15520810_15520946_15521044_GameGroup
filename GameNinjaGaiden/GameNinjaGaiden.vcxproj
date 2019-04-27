@@ -124,7 +124,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AdditionalObject.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanShee.h" />
     <ClInclude Include="BaseObject.h" />
@@ -154,7 +153,6 @@
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
-    <ClInclude Include="ResetEnemy.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Spaces.h" />
     <ClInclude Include="Sprite.h" />
@@ -166,7 +164,6 @@
     <ClInclude Include="SwordMan.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AdditionalObject.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanShee.cpp" />
     <ClCompile Include="BaseObject.cpp" />

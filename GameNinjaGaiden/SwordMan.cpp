@@ -1,20 +1,5 @@
 #include "SwordMan.h"
 
-bool SwordMan::onContactPlayer()
-{
-	return contactPlayer;
-}
-
-void SwordMan::setContactPlayer(bool contactPlayer)
-{
-	this->contactPlayer = contactPlayer;
-}
-
-void SwordMan::setSwordmanState(SWORDMAN_STATE swordmanState)
-{
-	this->swordmanState = swordmanState;
-}
-
 void SwordMan::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
@@ -81,10 +66,6 @@ void SwordMan::onUpdate(float dt)
 				}
 			}
 		}
-		bool distance1 = 0 < getMidX() && getMidX() < 600;
-		bool distance2 = 1100 < getMidX() && getMidX() < 1400;
-		bool distance3 = 1440 < getMidX() && getMidX() < 1450;
-		bool distance4 = 1700 < getMidX() && getMidX() < 2100;
 
 		if (0 < getMidX() && getMidX() < 600)
 		{
@@ -185,19 +166,11 @@ void SwordMan::setFollowPlayer()
 	}
 }
 
-void SwordMan::resetLocationEmemy()
-{
-	setAnimation(SWORDMAN_ACTION_STAND);
-	set(getInitBox()->getX(), getInitBox()->getY(), getInitBox()->getWidth(), getInitBox()->getHeight());
-}
-
 SwordMan::SwordMan()
 {
 	setAnimation(SWORDMAN_ACTION_STAND);
 	setInterval(200);
 	player = Player::getInstance();
-	player->resetEnemy = dynamic_cast<ResetEnemy*>(this);
-	setPhysicsEnable(true);
 }
 
 SwordMan::~SwordMan()

@@ -5,7 +5,6 @@
 #include"DelayTime.h"
 #include"World.h"
 #include"ChangeSpace.h"
-#include"ResetEnemy.h"
 #include"Weapon.h"
 
 
@@ -44,15 +43,12 @@ public:
 
 	bool isHurtRight;
 	bool isHurtLeft;
-
 	bool isDead;
-	bool isResetEnemy;
 
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();
 
 	ChangeSpace* changeSpace;
-	ResetEnemy* resetEnemy;
 
 	Player();
 	~Player();

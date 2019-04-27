@@ -135,9 +135,6 @@
     <ClInclude Include="World.h">
       <Filter>Header Files\WorldView</Filter>
     </ClInclude>
-    <ClInclude Include="ResetEnemy.h">
-      <Filter>Header Files\Interface</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreBar.h">
       <Filter>Header Files\Bar</Filter>
     </ClInclude>
@@ -170,9 +167,6 @@
     </ClInclude>
     <ClInclude Include="CollisionsObjectCollection.h">
       <Filter>Header Files\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="AdditionalObject.h">
-      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -274,9 +268,6 @@
     </ClCompile>
     <ClCompile Include="CollisionsObjectCollection.cpp">
       <Filter>Header Files\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="AdditionalObject.cpp">
-      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

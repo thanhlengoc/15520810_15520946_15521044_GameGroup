@@ -85,7 +85,6 @@ void Player::onUpdate(float dt)
 		deadDelay.update();
 		if (deadDelay.isTerminated())
 		{
-			resetEnemy->resetLocationEmemy();
 			int currentSpaceIndex = changeSpace->getCurrentSpaceIndex();
 			changeSpace->setCurrentSpace(currentSpaceIndex);
 			changeSpace->resetLocationInSpace();
@@ -159,15 +158,21 @@ void Player::onUpdate(float dt)
 	{
 		setHeight(GLOBALS_D("player_jump_height"));
 		action = PLAYER_ACTION_JUMP;	
-		bool isMoveDown = key->isLeftDown || key->isRightDown;
+
 		if (isOnAttack)
 		{
 			action = PLAYER_ACTION_ATTACK;
 			setVx(0);
 		}
-		if (isMoveDown)
+		if (key->isLeftDown)
 		{
-			setVx(getDirection() * 50);
+			setDirection(TEXTURE_DIRECTION_LEFT);
+			setVx(-50);
+		}
+		else if(key->isRightDown)
+		{
+			setDirection(TEXTURE_DIRECTION_RIGHT);
+			setVx(50);
 		}
 		else
 		{

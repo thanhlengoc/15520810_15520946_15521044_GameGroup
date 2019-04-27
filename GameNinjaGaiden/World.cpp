@@ -11,7 +11,6 @@
 #include"BanShee.h"
 #include"MachineGun.h"
 #include"Weapon.h"
-#include"AdditionalObject.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
