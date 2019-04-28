@@ -1,27 +1,22 @@
 #pragma once
-#pragma once
 #include "PhysicsObject.h"
 #include"SpriteManager.h"
-#include"KEY.h"
 #include"Player.h"
 
 enum {
-	WEAPON_SWORD
+	WEAPON_THROW
 };
 
-class Weapon :
+class WeaponThrow :
 	public PhysicsObject
 {
-	static Weapon* instance;
-	bool isRender;
-public:
-	static Weapon* getInstance();
+	static WeaponThrow* instance;
 
-	bool isRenderWeapon();
-	void setRenderWeapon(bool isRender);
+public:
+	static WeaponThrow* getInstance();
 
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
-	Weapon();
-	~Weapon();
+	WeaponThrow();
+	~WeaponThrow();
 };

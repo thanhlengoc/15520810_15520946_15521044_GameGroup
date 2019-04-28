@@ -52,6 +52,9 @@
     <Filter Include="Header Files\Player\Weapon">
       <UniqueIdentifier>{e9317954-3cda-4e83-8d47-f16c7493e4d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enemy\Weapon">
+      <UniqueIdentifier>{ba58c06e-f96a-4e36-992b-6163dcec981f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -162,11 +165,17 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files\Player\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="CollisionsObjectCollection.h">
       <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponPlayer.h">
+      <Filter>Header Files\Player\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponShot.h">
+      <Filter>Header Files\Enemy\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponThrow.h">
+      <Filter>Header Files\Enemy\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -263,11 +272,17 @@
     <ClCompile Include="Player.cpp">
       <Filter>Header Files\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Weapon.cpp">
-      <Filter>Header Files\Player\Weapon</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionsObjectCollection.cpp">
       <Filter>Header Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponPlayer.cpp">
+      <Filter>Header Files\Player\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponShot.cpp">
+      <Filter>Header Files\Enemy\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponThrow.cpp">
+      <Filter>Header Files\Enemy\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "PhysicsObject.h"
 #include"Player.h"
-#include"Weapon.h"
+#include"WeaponPlayer.h"
 
 enum SWORDMAN_STATE {
 	SWORDMAN_STATE_WAIT,
@@ -21,6 +21,8 @@ class SwordMan :
 
 public:
 	Player* player;
+	WeaponPlayer* weapon_player;
+
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 	void setFollowPlayer();

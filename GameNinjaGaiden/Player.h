@@ -5,8 +5,7 @@
 #include"DelayTime.h"
 #include"World.h"
 #include"ChangeSpace.h"
-#include"Weapon.h"
-
+#include"WeaponShot.h"
 
 enum PLAYER_ACTION
 {

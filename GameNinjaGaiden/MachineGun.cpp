@@ -6,8 +6,6 @@ void Machine::onUpdate(float dt)
 	MACHINE_GUN_ACTION action;
 	setVx(0);
 
-	Weapon* weapon = Weapon::getInstance();
-
 	if (player->isDead)
 	{
 		restoreLocation();
@@ -29,18 +27,18 @@ void Machine::onUpdate(float dt)
 			bool checkLeft = player->getDirection() == -1 && (getMidX() - player->getMidX()) <= 0;
 			if (checkRight || checkLeft)
 			{
-				Weapon* weapon = Weapon::getInstance();
-				weapon->setRenderActive(true);
+				weapon_player->setRenderActive(true);
 				if (getDirection() == 1)
 				{
-					weapon->set(getX() + 10, getY(), getWidth(), getHeight());
+					weapon_player->set(getX() + 10, getY(), getWidth(), getHeight());
 				}
 				else
 				{
-					weapon->set(getX(), getY(), getWidth(), getHeight());
+					weapon_player->set(getX(), getY(), getWidth(), getHeight());
 				}
 
 				restoreLocation();
+				weapon_shot->setRenderActive(false);
 				setRenderActive(false);
 				setAlive(false);
 				PhysicsObject::onUpdate(dt);
@@ -59,35 +57,45 @@ void Machine::onUpdate(float dt)
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}
 		}
-		if (isShot)
+		if (getRenderActive() && isAlive())
 		{
-			setVx(0);
-			setAnimation(MACHINE_GUN_SHOT);
-			if (getIsLastFrameAnimationDone())
+			if (isShot)
 			{
-				numberShot++;
+				setVx(0);
+				setAnimation(MACHINE_GUN_SHOT);
+				if (getIsLastFrameAnimationDone())
+				{
+					numberShot++;
+					weapon_shot->setLocation(getMidX(), getMidY());
+					weapon_shot->setVx(-getDirection() * 32);
+					weapon_shot->setDx(-getDirection() * 2);
+					weapon_shot->setAnimation(WEAPON_SHOT);
+					weapon_shot->setDirection(getDirection());
+					weapon_shot->setRenderActive(true);
+					weapon_shot->onUpdate(dt);
+				}
+				if (numberShot == 1)
+				{
+					isShot = false;
+					numberShot = 0;
+				}
+				PhysicsObject::onUpdate(dt);
+				return;
 			}
-			if (numberShot == 2)
+			else
 			{
-				isShot = false;
-				numberShot = 0;
-			}
-			PhysicsObject::onUpdate(dt);
-			return;
-		}
-		else
-		{
-			setFollowPlayer();
-			setVx(-getDirection() * 30);
-			setAnimation(MACHINE_GUN_RUN);
-			if (getIsLastFrameAnimationDone())
-			{
-				numberRun++;
-			}
-			if (numberRun == 3)
-			{
-				isShot = true;
-				numberRun = 0;
+				setFollowPlayer();
+				setVx(-getDirection() * 31.253);
+				setAnimation(MACHINE_GUN_RUN);
+				if (getIsLastFrameAnimationDone())
+				{
+					numberRun++;
+				}
+				if (numberRun == 3)
+				{
+					isShot = true;
+					numberRun = 0;
+				}
 			}
 		}
 	}
@@ -130,9 +138,10 @@ void Machine::setFollowPlayer()
 Machine::Machine()
 {
 	setAnimation(MACHINE_GUN_WAIT);
-	setInterval(220);
+	setInterval(200);
 	player = Player::getInstance();
-	isShot = false;
+	weapon_player = WeaponPlayer::getInstance();
+	weapon_shot = WeaponShot::getInstance();
 	numberShot = 0;
 	numberRun = 0;
 }

@@ -7,8 +7,6 @@ void Dog::onUpdate(float dt)
 
 	action = DOG_WAIT;
 
-	Weapon* weapon = Weapon::getInstance();
-
 	if (player->isDead)
 	{
 		restoreLocation();
@@ -69,15 +67,14 @@ void Dog::onUpdate(float dt)
 		bool checkLeft = player->getDirection() == -1 && (getMidX() - player->getMidX()) <= 0;
 		if (checkRight || checkLeft)
 		{
-			Weapon* weapon = Weapon::getInstance();
-			weapon->setRenderActive(true);
+			weapon_player->setRenderActive(true);
 			if (getDirection() == 1)
 			{
-				weapon->set(getX() + 10, getY()+30, getWidth(), getHeight());
+				weapon_player->set(getX() + 10, getY()+30, getWidth(), getHeight());
 			}
 			else
 			{
-				weapon->set(getX(), getY()+30, getWidth(), getHeight());
+				weapon_player->set(getX(), getY()+30, getWidth(), getHeight());
 			}
 
 			restoreLocation();
@@ -114,7 +111,7 @@ void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 		setIsOnGround(true);
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
-	if (other->getCollisionType() == COLLISION_TYPE_WATER && getRenderActive())
+	if (other->getCollisionType() == COLLISION_TYPE_WATER_SURFACE && getRenderActive())
 	{
 		restoreLocation();
 		setRenderActive(false);
@@ -162,6 +159,7 @@ Dog::Dog()
 	setAnimation(DOG_WAIT);
 	setInterval(200);
 	player = Player::getInstance();
+	weapon_player = WeaponPlayer::getInstance();
 	setRenderActive(false);
 	setAlive(false);
 }

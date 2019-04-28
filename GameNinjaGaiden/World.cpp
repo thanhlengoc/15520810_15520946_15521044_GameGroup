@@ -10,7 +10,9 @@
 #include"Bat.h"
 #include"BanShee.h"
 #include"MachineGun.h"
-#include"Weapon.h"
+#include"WeaponPlayer.h"
+#include"WeaponShot.h"
+#include"WeaponThrow.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -22,8 +24,9 @@ void World::Init(const char * tilesheetPath,
 	player->set(40, 70, 17, 32);
 	player->changeSpace = dynamic_cast<ChangeSpace*>(this);
 
-	Weapon* weapon = Weapon::getInstance();
-	
+	WeaponPlayer* weapon_player = WeaponPlayer::getInstance();
+	WeaponShot* weapon_shot = WeaponShot::getInstance();
+	WeaponThrow* weapon_throw = WeaponThrow::getInstance();
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
@@ -51,9 +54,6 @@ void World::Init(const char * tilesheetPath,
 
 		case SPRITE_INFO_SWORDMAN:
 			obj = new SwordMan();
-			break;
-		case SPRITE_INFO_WEAPON:
-			obj = new Weapon();
 			break;
 		case SPRITE_INFO_BUTTERFLY:
 			obj = new Butterfly();
@@ -213,7 +213,9 @@ void World::update(float dt)
 		/* cập nhật đối tượng */
 		allObjects[i]->update(dt);
 		Collision::CheckCollision(Player::getInstance(), allObjects[i]);
-		Collision::CheckCollision(Weapon::getInstance(), allObjects[i]);
+		Collision::CheckCollision(WeaponPlayer::getInstance(), allObjects[i]);
+		Collision::CheckCollision(WeaponShot::getInstance(), Player::getInstance());
+		Collision::CheckCollision(WeaponThrow::getInstance(), Player::getInstance());
 	}
 	/* xét va chạm cho các loại đối tượng với nhau */
 	for (size_t i = 0; i < collisionTypeCollides.size(); i++)
@@ -237,7 +239,9 @@ void World::update(float dt)
 
 	}
 
-	Weapon::getInstance()->update(dt);;
+	WeaponPlayer::getInstance()->update(dt);
+	WeaponShot::getInstance()->update(dt);
+	WeaponThrow::getInstance()->update(dt);
 	Player::getInstance()->update(dt);
 	Camera::getInstance()->update();
 }
@@ -277,7 +281,9 @@ void World::render()
 		allObjects[i]->render(Camera::getInstance());
 	}
 	Player::getInstance()->render(Camera::getInstance());
-	Weapon::getInstance()->render(Camera::getInstance());
+	WeaponPlayer::getInstance()->render(Camera::getInstance());
+	WeaponShot::getInstance()->render(Camera::getInstance());
+	WeaponThrow::getInstance()->render(Camera::getInstance());
 }
 
 World::World()

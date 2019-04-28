@@ -1,0 +1,16 @@
+Sprite weapon_throw
+R	G	B
+255	255	163	177
+Animation Count
+1
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			0			8				15				0			0
+
+

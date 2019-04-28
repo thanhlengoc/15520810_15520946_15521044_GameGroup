@@ -8,8 +8,6 @@ void SwordMan::onUpdate(float dt)
 
 	action = SWORDMAN_ACTION_STAND;
 
-	Weapon* weapon = Weapon::getInstance();
-
 	if (player->isDead)
 	{
 		restoreLocation();
@@ -26,8 +24,20 @@ void SwordMan::onUpdate(float dt)
 	{
 		setRenderActive(true);
 		action = SWORDMAN_ACTION_RUN_ATTACK;
+
 		if (isAlive() && !player->isHurtLeft && !player->isHurtRight)
 		{
+			if (abs(getMidX() - player->getMidX()) <= 2 && abs(getMidY() - player->getMidY()) <= 2 && !player->isHurtLeft && !player->isHurtRight)
+			{
+				if ((getMidX() - player->getMidX()) > 0)
+				{
+					player->isHurtRight = true;
+				}
+				else
+				{
+					player->isHurtLeft = true;
+				}
+			}
 			if ((abs(getMidX() - player->getMidX()) < 18) && getIsLastFrameAnimationDone() && getRenderActive()
 				&& (abs(getBottom() - player->getBottom()) < 10))
 			{
@@ -47,21 +57,21 @@ void SwordMan::onUpdate(float dt)
 				bool checkLeft = player->getDirection() == -1 && (getMidX() - player->getMidX()) <= 0;
 				if (checkRight || checkLeft)
 				{
-					Weapon* weapon = Weapon::getInstance();
-					weapon->setRenderActive(true);
+					weapon_player->setRenderActive(true);
 					if (getDirection() == 1)
 					{
-						weapon->set(getX() + 10, getY(), getWidth(), getHeight());
+						weapon_player->set(getX() + 10, getY(), getWidth(), getHeight());
 					}
 					else
 					{
-						weapon->set(getX(), getY(), getWidth(), getHeight());
+						weapon_player->set(getX(), getY(), getWidth(), getHeight());
 					}
 
 					restoreLocation();
 					setRenderActive(false);
 					setAlive(false);
 					PhysicsObject::onUpdate(dt);
+					weapon_player->onUpdate(dt);
 					return;
 				}
 			}
@@ -171,6 +181,7 @@ SwordMan::SwordMan()
 	setAnimation(SWORDMAN_ACTION_STAND);
 	setInterval(200);
 	player = Player::getInstance();
+	weapon_player = WeaponPlayer::getInstance();
 }
 
 SwordMan::~SwordMan()

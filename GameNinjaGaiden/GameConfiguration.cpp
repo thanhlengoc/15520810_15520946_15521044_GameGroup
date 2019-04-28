@@ -14,8 +14,8 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble = new map<const char*, double>();
 
 		/* window_width, window_height là kích thước cửa sổ */
-		globalsConfigurationDouble->insert(pair<const char*, double>("window_width", 600));
-		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 500));
+		globalsConfigurationDouble->insert(pair<const char*, double>("window_width", 750));
+		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 624));
 
 		/* backbuffer_width, backbuffer_height là kích thước của backbuffer */
 		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_width", 250));
@@ -23,10 +23,10 @@ double GameConfiguration::GetConfiguration(const char * key)
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_animation_time_default", 190));
-		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -280));
+		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -480));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 94));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 180));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 240));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_fall_stand", -70));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_jump_height", 23));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_sit", 19));

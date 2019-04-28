@@ -32,13 +32,13 @@ void Player::onUpdate(float dt)
 			{
 				if (isHurtLeft)
 				{
-					setVx(32);
-					setVy(107);
+					setVx(52);
+					setVy(180);
 				}
 				else if (isHurtRight)
 				{
-					setVx(-32);
-					setVy(107);
+					setVx(-52);
+					setVy(180);
 				}
 				setAnimation(PLAYER_ACTION_HURT);
 			}
@@ -46,13 +46,13 @@ void Player::onUpdate(float dt)
 			{
 				if (isHurtLeft)
 				{
-					setVx(32);
-					setVy(60);
+					setVx(52);
+					setVy(120);
 				}
 				else if (isHurtRight)
 				{
-					setVx(-32);
-					setVy(60);
+					setVx(-52);
+					setVy(120);
 				}
 				setAnimation(PLAYER_ACTION_HURT);
 				hurtDelay.start();
@@ -205,7 +205,7 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 		}
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
-	
+
 	if (other->getCollisionType() == COLLISION_TYPE_WATER)
 	{
 		deadDelay.start();

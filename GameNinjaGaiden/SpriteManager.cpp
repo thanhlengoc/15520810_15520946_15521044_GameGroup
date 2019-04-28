@@ -23,7 +23,9 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_SWORDMAN]->InitFromFile("Image/Animation/swordman/out/image.png", "Image/Animation/swordman/out/swordman.info.dat");
 	sprites[SPRITE_INFO_RYU]->InitFromFile("Image/Animation/ryu/out/image.png", "Image/Animation/ryu/out/ryu.info.dat");
 	sprites[SPRITE_INFO_RYU]->image->direction = TEXTURE_DIRECTION_RIGHT;
-	sprites[SPRITE_INFO_WEAPON]->InitFromFile("Image/Animation/weapon/out/image.png", "Image/Animation/weapon/out/weapon.info.dat");
+	sprites[SPRITE_INFO_WEAPON_PLAYER]->InitFromFile("Image/Animation/weapon/out/image.png", "Image/Animation/weapon/out/weapon.info.dat");
+	sprites[SPRITE_INFO_WEAPON_SHOT]->InitFromFile("Image/Animation/weapon_shot/out/image.png", "Image/Animation/weapon_shot/out/weapon_shot.info.dat");
+	sprites[SPRITE_INFO_WEAPON_THROW]->InitFromFile("Image/Animation/weapon_throw/out/image.png", "Image/Animation/weapon_throw/out/weapon_throw.info.dat");
 	sprites[SPRITE_INFO_BUTTERFLY]->InitFromFile("Image/Animation/butterfly/out/image.png", "Image/Animation/butterfly/out/butterfly.info.dat");
 	sprites[SPRITE_INFO_DOG]->InitFromFile("Image/Animation/dog/out/image.png", "Image/Animation/dog/out/dog.info.dat");
 	sprites[SPRITE_INFO_BIRD]->InitFromFile("Image/Animation/bird/out/image.png", "Image/Animation/bird/out/bird.info.dat");

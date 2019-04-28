@@ -1,6 +1,7 @@
 #pragma once
 #include "PhysicsObject.h"
 #include"Player.h"
+#include"WeaponPlayer.h"
 
 enum DOG_ACTION {
 	DOG_WAIT,
@@ -9,7 +10,7 @@ enum DOG_ACTION {
 class Dog:
 	public PhysicsObject {
 public:
-
+	WeaponPlayer* weapon_player;
 	Player* player;
 	void onUpdate(float dt) override;
 	void restoreLocation() override;
