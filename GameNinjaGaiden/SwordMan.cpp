@@ -11,6 +11,7 @@ void SwordMan::onUpdate(float dt)
 	if (player->isDead)
 	{
 		restoreLocation();
+		setAlive(true);
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -135,7 +136,7 @@ void SwordMan::onUpdate(float dt)
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}
 		}
-		setVx(-getDirection() * 32);
+		setVx(-getDirection() * GLOBALS_D("enemy_vx"));
 	}
 
 	setAnimation(action);

@@ -85,7 +85,7 @@ void Machine::onUpdate(float dt)
 			else
 			{
 				setFollowPlayer();
-				setVx(-getDirection() * 31.253);
+				setVx(-getDirection() * GLOBALS_D("enemy_vx"));
 				setAnimation(MACHINE_GUN_RUN);
 				if (getIsLastFrameAnimationDone())
 				{

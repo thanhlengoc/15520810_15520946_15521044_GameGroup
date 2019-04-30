@@ -24,6 +24,8 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_animation_time_default", 190));
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_default_ay", -480));
+		globalsConfigurationDouble->insert(pair<const char*, double>("weapon_throw_ay", -700));
+		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_vx", 31.3));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vx", 94));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_vy_jump", 240));

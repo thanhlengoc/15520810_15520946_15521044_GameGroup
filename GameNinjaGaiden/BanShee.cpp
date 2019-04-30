@@ -4,11 +4,14 @@ void BanShee::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 	BANSHEE_ACTION action;
-	setVx(0);
 
+	setAy(GLOBALS_D("weapon_throw_ay"));
 	if (player->isDead)
 	{
 		restoreLocation();
+		setAlive(true);
+		numberThrow = 1;
+		directVx = 1;
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -47,31 +50,39 @@ void BanShee::onUpdate(float dt)
 			}
 		}
 
-		if (810 < getMidX() && getMidX() < 840)
-		{
-			if (getX() <= 800)
+		if (getRenderActive() && isAlive()) {
+			if (weapon_throw->getRenderActive())
 			{
-				setVx(31);
+
+				setAnimation(BANSHEE_RUN);
+				if (750 < getMidX() && getMidX() < 835)
+				{
+					if (getMidX() <= 800)
+					{
+						directVx = 1;
+					}
+					if (getMidX() >= 820)
+					{
+						directVx = -1;
+					}
+					setVx(directVx * GLOBALS_D("enemy_vx"));
+				}
+				if (1215 < getMidX() && getMidX() < 1250)
+				{
+					if (getMidX() <= 1220)
+					{
+						directVx = 1;
+					}
+					if (getMidX() >= 1239)
+					{
+						directVx = -1;
+					}
+					setVx(directVx * 31);
+				}
+				PhysicsObject::onUpdate(dt);
+				return;
 			}
-			if (getX() >= 835)
-			{
-				setVx(-31);
-			}
-		}
-		else if (1216 < getMidX() && getMidX() < 1247)
-		{
-			if (getX() <= 1211)
-			{
-				setVx(31);
-			}
-			if (getX() >= 1242)
-			{
-				setVx(-31);
-			}
-		}
-		if (getRenderActive() && isAlive())
-		{
-			if (!weapon_throw->getRenderActive())
+			else
 			{
 				setAnimation(BANSHEE_THROW);
 				if (getIsLastFrameAnimationDone())
@@ -79,14 +90,18 @@ void BanShee::onUpdate(float dt)
 					switch (numberThrow)
 					{
 					case 1:
+						vxThrow = 15;
+						vyThrow = 150;
+						break;
+					case 2:
 						vxThrow = 33;
 						vyThrow = 140;
 						break;
-					case 2:
+					case 3:
 						vxThrow = 78;
 						vyThrow = 180;
 						break;
-					case 3:
+					case 4:
 						vxThrow = 93;
 						vyThrow = 210;
 						numberThrow = 0;
@@ -95,17 +110,11 @@ void BanShee::onUpdate(float dt)
 					numberThrow++;
 					weapon_throw->setLocation(getMidX(), getMidY());
 					weapon_throw->setVy(vyThrow);
-					weapon_throw->setVx(-vxThrow*getDirection());
+					weapon_throw->setVx(-vxThrow * getDirection());
 					weapon_throw->setDirection((TEXTURE_DIRECTION)-getDirection());
 					weapon_throw->setRenderActive(true);
 					weapon_throw->onUpdate(dt);
-
 				}
-				PhysicsObject::onUpdate(dt);
-			}
-			else
-			{
-				setAnimation(BANSHEE_RUN);
 			}
 		}
 	}
@@ -148,11 +157,12 @@ void BanShee::setFollowPlayer()
 BanShee::BanShee()
 {
 	setAnimation(BANSHEE_WAIT);
-	setInterval(200);
+	setInterval(150);
 	player = Player::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	weapon_throw = WeaponThrow::getInstance();
 	numberThrow = 1;
+	directVx = 1;
 }
 
 BanShee::~BanShee()

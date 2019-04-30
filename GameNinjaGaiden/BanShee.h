@@ -14,6 +14,8 @@ class BanShee:public PhysicsObject
 	int numberThrow;
 	float vxThrow;
 	float vyThrow;
+	int directVx;
+
 public:
 	Player* player;
 	WeaponPlayer* weapon_player;

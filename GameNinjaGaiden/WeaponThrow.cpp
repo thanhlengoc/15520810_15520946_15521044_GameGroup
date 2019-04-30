@@ -17,7 +17,7 @@ void WeaponThrow::onUpdate(float dt)
 	if (getRenderActive())
 	{
 		setAnimation(WEAPON_THROW);
-		if (Camera::getInstance()->getBottom() - getBottom()>30)
+		if (Camera::getInstance()->getBottom() - getBottom()>0)
 		{
 			setVx(0);
 			setRenderActive(false);
