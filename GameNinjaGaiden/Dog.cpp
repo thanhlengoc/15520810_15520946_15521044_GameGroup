@@ -3,26 +3,22 @@
 void Dog::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
-	DOG_ACTION action;
 
-	action = DOG_WAIT;
+	setDirectDefault();
 
 	if (player->isDead)
 	{
 		restoreLocation();
 		setRenderActive(false);
+		setVx(0);
 		setAlive(false);
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
-	if (!isAlive())
-	{
-		setDirectDefault();
-	}
 	float distanceVisible = getMidX() - camera->getMidX();
 	if (getDirection()==1)
 	{
-		if (108<=distanceVisible && distanceVisible<=110 && !isAlive())
+		if (109<=distanceVisible && distanceVisible<=110 && !isAlive())
 		{
 			setRenderActive(true);
 			setAlive(true);
@@ -30,7 +26,7 @@ void Dog::onUpdate(float dt)
 	}
 	else
 	{
-		if (-110 <= distanceVisible && distanceVisible <= -108 && isAlive())
+		if (-110 <= distanceVisible && distanceVisible <= -109 && !isAlive())
 		{
 			setRenderActive(true);
 			setAlive(true);
@@ -38,14 +34,22 @@ void Dog::onUpdate(float dt)
 	}
 	if (isAlive())
 	{
-		if (abs(getMidX() - camera->getMidX()) >= 125)
+		if (abs(getMidX() - camera->getMidX()) >= 155)
 		{
 			restoreLocation();
-			setRenderActive(false);
 			setAlive(false);
+			setRenderActive(false);
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
+	}
+	else
+	{
+		restoreLocation();
+		setAlive(false);
+		setRenderActive(false);
+		PhysicsObject::onUpdate(dt);
+		return;
 	}
 	if ((abs(getMidX() - player->getMidX()) < 18) && getRenderActive()
 		&& (abs(getBottom() - player->getBottom()) < 10) && !player->isHurtLeft && !player->isHurtRight)
@@ -70,14 +74,16 @@ void Dog::onUpdate(float dt)
 			weapon_player->setRenderActive(true);
 			if (getDirection() == 1)
 			{
-				weapon_player->set(getX() + 10, getY()+30, getWidth(), getHeight());
+				weapon_player->setLocation(getMidX() + 15, getY()+15);
 			}
 			else
 			{
-				weapon_player->set(getX(), getY()+30, getWidth(), getHeight());
+				weapon_player->setLocation(getMidX() + 10, getY()+15);
 			}
+			weapon_player->startAnimationWeapon();
 
 			restoreLocation();
+			setVx(0);
 			setAlive(false);
 			setRenderActive(false);
 			PhysicsObject::onUpdate(dt);
@@ -88,13 +94,12 @@ void Dog::onUpdate(float dt)
 	{
 		if (getIsOnGround())
 		{
-			setVx(-getDirection() * 100);
-			setVy(65);
+			setVx(-getDirection() * 97);
+			setVy(90);
 		}
-		action = DOG_RUN;
+		setAnimation(DOG_RUN);
 	}
 
-	setAnimation(action);
 	PhysicsObject::onUpdate(dt);
 }
 
@@ -111,10 +116,8 @@ void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 		setIsOnGround(true);
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
-	if (other->getCollisionType() == COLLISION_TYPE_WATER_SURFACE && getRenderActive())
+	if (other->getCollisionType() == COLLISION_TYPE_WATER_SURFACE && getRenderActive() && isAlive())
 	{
-		restoreLocation();
-		setRenderActive(false);
 		setAlive(false);
 	}
 	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive())

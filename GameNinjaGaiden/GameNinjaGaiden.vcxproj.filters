@@ -177,6 +177,9 @@
     <ClInclude Include="WeaponThrow.h">
       <Filter>Header Files\Enemy\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="WeaponThrowManager.h">
+      <Filter>Header Files\Enemy\Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">

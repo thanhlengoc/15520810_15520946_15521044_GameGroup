@@ -9,6 +9,7 @@ void Machine::onUpdate(float dt)
 	if (player->isDead)
 	{
 		restoreLocation();
+		setVx(0);
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -30,15 +31,15 @@ void Machine::onUpdate(float dt)
 				weapon_player->setRenderActive(true);
 				if (getDirection() == 1)
 				{
-					weapon_player->set(getX() + 10, getY(), getWidth(), getHeight());
+					weapon_player->setLocation(getMidX() + 15, getY());
 				}
 				else
 				{
-					weapon_player->set(getX(), getY(), getWidth(), getHeight());
+					weapon_player->setLocation(getMidX() + 10, getY());
 				}
+				weapon_player->startAnimationWeapon();
 
 				restoreLocation();
-				weapon_shot->setRenderActive(false);
 				setRenderActive(false);
 				setAlive(false);
 				PhysicsObject::onUpdate(dt);

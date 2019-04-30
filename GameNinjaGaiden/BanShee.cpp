@@ -3,13 +3,14 @@
 void BanShee::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
-	BANSHEE_ACTION action;
+	setVx(0);
 
 	setAy(GLOBALS_D("weapon_throw_ay"));
 	if (player->isDead)
 	{
 		restoreLocation();
 		setAlive(true);
+		setVx(0);
 		numberThrow = 1;
 		directVx = 1;
 		PhysicsObject::onUpdate(dt);
@@ -34,12 +35,13 @@ void BanShee::onUpdate(float dt)
 				weapon_player->setRenderActive(true);
 				if (getDirection() == 1)
 				{
-					weapon_player->set(getX() + 10, getY(), getWidth(), getHeight());
+					weapon_player->setLocation(getMidX() + 15, getY());
 				}
 				else
 				{
-					weapon_player->set(getX(), getY(), getWidth(), getHeight());
+					weapon_player->setLocation(getMidX() + 10, getY());
 				}
+				weapon_player->startAnimationWeapon();
 
 				restoreLocation();
 				weapon_throw->setRenderActive(false);
@@ -53,7 +55,6 @@ void BanShee::onUpdate(float dt)
 		if (getRenderActive() && isAlive()) {
 			if (weapon_throw->getRenderActive())
 			{
-
 				setAnimation(BANSHEE_RUN);
 				if (750 < getMidX() && getMidX() < 835)
 				{
@@ -67,7 +68,7 @@ void BanShee::onUpdate(float dt)
 					}
 					setVx(directVx * GLOBALS_D("enemy_vx"));
 				}
-				if (1215 < getMidX() && getMidX() < 1250)
+				else if (1215 < getMidX() && getMidX() < 1250)
 				{
 					if (getMidX() <= 1220)
 					{

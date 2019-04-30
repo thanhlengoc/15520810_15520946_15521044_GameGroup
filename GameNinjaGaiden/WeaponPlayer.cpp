@@ -10,17 +10,22 @@ WeaponPlayer * WeaponPlayer::getInstance()
 	return instance;
 }
 
+void WeaponPlayer::startAnimationWeapon()
+{
+	endAnimation.start();
+}
+
 void WeaponPlayer::onUpdate(float dt)
 {
 	setInterval(200);
 	if (getRenderActive())
 	{
 		setAnimation(WEAPON_PLAYER_SWORD);
-		if (getIsLastFrameAnimationDone())
+		endAnimation.update();
+		if (endAnimation.isTerminated())
 		{
 			setRenderActive(false);
 		}
-		
 	}
 	PhysicsObject::onUpdate(dt);
 }
@@ -36,6 +41,7 @@ WeaponPlayer::WeaponPlayer()
 	setCollisionType(COLLISION_TYPE_WEAPON_PLAYER);
 	setRenderActive(false);
 	setPhysicsEnable(false);
+	endAnimation.init(200);
 }
 
 
