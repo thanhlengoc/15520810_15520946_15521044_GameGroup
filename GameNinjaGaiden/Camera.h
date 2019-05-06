@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include"MovableRect.h"
 #include"Spaces.h"
+
 /* camera là 1 hình chữ nhật có thể di chuyển nên sẽ kế thừa lại lớp MovableRect */
 class Camera : public MovableRect
 {

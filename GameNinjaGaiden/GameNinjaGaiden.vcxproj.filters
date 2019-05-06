@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Enemy\Weapon">
       <UniqueIdentifier>{ba58c06e-f96a-4e36-992b-6163dcec981f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enemy\Item">
+      <UniqueIdentifier>{3ed0fda3-ec7b-4249-b83b-ad8acb6b0fc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -180,6 +183,9 @@
     <ClInclude Include="WeaponThrowManager.h">
       <Filter>Header Files\Enemy\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Enemy\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -286,6 +292,9 @@
     </ClCompile>
     <ClCompile Include="WeaponThrow.cpp">
       <Filter>Header Files\Enemy\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

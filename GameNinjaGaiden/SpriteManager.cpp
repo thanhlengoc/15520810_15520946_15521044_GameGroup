@@ -32,6 +32,8 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_BAT]->InitFromFile("Image/Animation/bat/out/image.png", "Image/Animation/bat/out/bat.info.dat");
 	sprites[SPRITE_INFO_BANSHEE]->InitFromFile("Image/Animation/banshee/out/image.png", "Image/Animation/banshee/out/banshee.info.dat");
 	sprites[SPRITE_INFO_MACHINE_GUN]->InitFromFile("Image/Animation/machine_gun/out/image.png", "Image/Animation/machine_gun/out/machine_gun.info.dat");
+	//sprites[SPRITE_INFO_SCORE_BAR]->InitFromFile("Image/ScoreBar/scorebar.png", "Image/ScoreBar/scorebar.info.dat");
+	sprites[RYU_MISC]->InitFromFile("Image/Scorebar/misc/out/misc.png", "Image/Scorebar/misc/out/misc.info.dat");
 
 }
 SpriteManager::~SpriteManager()

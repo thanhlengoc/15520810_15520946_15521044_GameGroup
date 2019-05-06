@@ -86,7 +86,7 @@ void Machine::onUpdate(float dt)
 			else
 			{
 				setFollowPlayer();
-				setVx(-getDirection() * GLOBALS_D("enemy_vx"));
+				setVx(-getDirection() * 31.2);
 				setAnimation(MACHINE_GUN_RUN);
 				if (getIsLastFrameAnimationDone())
 				{
@@ -139,7 +139,7 @@ void Machine::setFollowPlayer()
 Machine::Machine()
 {
 	setAnimation(MACHINE_GUN_WAIT);
-	setInterval(200);
+	setInterval(150);
 	player = Player::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	weapon_shot = WeaponShot::getInstance();

@@ -1,5 +1,6 @@
 #pragma once
 #include"PhysicsObject.h"
+#include"Player.h"
 
 enum {
 	BUTTERFLY_WAIT,
@@ -9,6 +10,7 @@ class Butterfly: public PhysicsObject
 {
 
 public:
+	Player* player;
 	void onUpdate(float dt) override;
 
 	Butterfly();

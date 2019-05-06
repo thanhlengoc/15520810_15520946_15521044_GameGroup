@@ -7,6 +7,7 @@
 #include"TileMap.h"
 #include"World.h"
 #include"Player.h"
+#include"ChangeSpace.h"
 
 class Game
 {
@@ -23,6 +24,11 @@ public:
 	void GameUpdate(float dt);
 	/* Các câu lệnh vẽ của game */
 	void GameRender();
+
+	//void setCurrentSpace(int spaceIndex) override;
+	//Space* getCurrentSpace() override;
+	//int getCurrentSpaceIndex() override;
+	//void resetLocationInSpace() override;
 
 	Game();
 	~Game();

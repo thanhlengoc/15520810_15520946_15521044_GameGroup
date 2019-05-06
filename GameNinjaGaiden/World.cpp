@@ -180,11 +180,6 @@ void World::update(float dt)
 			setCurrentSpace(2);
 			resetLocationInSpace();
 		}
-		if (getCurrentSpaceIndex() == 3)
-		{
-			setCurrentSpace(2);
-			resetLocationInSpace();
-		}
 		if (getCurrentSpaceIndex() == 4)
 		{
 			setCurrentSpace(5);

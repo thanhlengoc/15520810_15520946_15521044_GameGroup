@@ -12,6 +12,8 @@ Player * Player::getInstance()
 
 void Player::onUpdate(float dt)
 {
+	//ScoreBar* scorebar = ScoreBar::getInstance();
+
 	PLAYER_ACTION action;
 	double vx = GLOBALS_D("player_vx");
 	double vy = GLOBALS_D("player_vy_jump");

@@ -93,7 +93,6 @@ void Camera::update()
 	/* cập nhật vị trí camera */
 	goX();
 	goY();
-
 }
 
 Camera::Camera()

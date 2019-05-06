@@ -1,5 +1,5 @@
 ﻿#include "Game.h"
-
+#include "ScoreBar.h"
 
 /* singleton pattern */
 Game * Game::instance = 0;
@@ -26,11 +26,13 @@ void Game::GameInit()
 void Game::GameUpdate(float dt)
 {
 	world->update(dt);
+	ScoreBar::getInstance()->update();
 }
 /* Các câu lệnh vẽ của game */
 void Game::GameRender()
 {
 	world->render();
+	//ScoreBar::getInstance()->render();
 }
 
 Game::Game()
