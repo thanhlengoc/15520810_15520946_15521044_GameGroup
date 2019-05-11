@@ -13,6 +13,9 @@
 #include"WeaponPlayer.h"
 #include"WeaponShot.h"
 #include"WeaponThrow.h"
+#include"Runner.h"
+#include"Gunner.h"
+#include"Sparrow.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -22,7 +25,6 @@ void World::Init(const char * tilesheetPath,
 {
 	Player* player = Player::getInstance();
 	player->set(40, 70, 17, 32);
-	player->changeSpace = dynamic_cast<ChangeSpace*>(this);
 
 	WeaponPlayer* weapon_player = WeaponPlayer::getInstance();
 	WeaponShot* weapon_shot = WeaponShot::getInstance();
@@ -72,6 +74,15 @@ void World::Init(const char * tilesheetPath,
 			break;
 		case SPRITE_INFO_MACHINE_GUN:
 			obj = new Machine();
+			break;
+		case SPRITE_INFO_RUNNER:
+			obj = new Runner();
+			break;
+		case SPRITE_INFO_GUNNER:
+			obj = new Gunner();
+			break;
+		case SPRITE_INFO_SPARROW:
+			obj = new Sparrow();
 			break;
 
 		default:
@@ -135,8 +146,8 @@ void World::Init(const char * tilesheetPath,
 	}
 
 	/* bắt đầu từ space 0 */
-	setCurrentSpace(1);
-	resetLocationInSpace();
+	changeSpace->setCurrentSpace(1);
+	changeSpace->resetLocationInSpace();
 }
 
 void World::Init(const char * folderPath)
@@ -170,37 +181,37 @@ void World::update(float dt)
 	/* chuyển space khi nhấn phím */
 	if (key->isJumpPress)
 	{
-		if (getCurrentSpaceIndex() == 1)
+		if (changeSpace->getCurrentSpaceIndex() == 1)
 		{
-			setCurrentSpace(0);
-			resetLocationInSpace();
+			changeSpace->setCurrentSpace(0);
+			changeSpace->resetLocationInSpace();
 		}
-		if (getCurrentSpaceIndex() == 3)
+		if (changeSpace->getCurrentSpaceIndex() == 3)
 		{
-			setCurrentSpace(2);
-			resetLocationInSpace();
+			changeSpace->setCurrentSpace(2);
+			changeSpace->resetLocationInSpace();
 		}
-		if (getCurrentSpaceIndex() == 4)
+		if (changeSpace->getCurrentSpaceIndex() == 4)
 		{
-			setCurrentSpace(5);
-			resetLocationInSpace();
+			changeSpace->setCurrentSpace(5);
+			changeSpace->resetLocationInSpace();
 		}
 	}
 
 	if (key->isSpace1Down)
 	{
-		setCurrentSpace(0);
-		resetLocationInSpace();
+		changeSpace->setCurrentSpace(0);
+		changeSpace->resetLocationInSpace();
 	}
 	if (key->isSpace2Down)
 	{
-		setCurrentSpace(2);
-		resetLocationInSpace();
+		changeSpace->setCurrentSpace(2);
+		changeSpace->resetLocationInSpace();
 	}
 	if (key->isSpace3Down)
 	{
-		setCurrentSpace(5);
-		resetLocationInSpace();
+		changeSpace->setCurrentSpace(5);
+		changeSpace->resetLocationInSpace();
 	}
 
 	for (size_t i = 0; i < allObjects.Count; i++)
@@ -241,6 +252,7 @@ void World::update(float dt)
 	Camera::getInstance()->update();
 }
 
+/*
 void World::setCurrentSpace(int spaceIndex)
 {
 	currentSpaceIndex = spaceIndex;
@@ -266,6 +278,7 @@ void World::resetLocationInSpace()
 	camera->setLocation(getCurrentSpace()->CameraX, getCurrentSpace()->CameraY);
 	player->setLocation(getCurrentSpace()->PlayerX, getCurrentSpace()->PlayerY);
 }
+*/
 
 void World::render()
 {
