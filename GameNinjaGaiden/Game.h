@@ -9,7 +9,7 @@
 #include"Player.h"
 #include"ChangeSpace.h"
 
-class Game
+class Game: public ChangeSpace
 {
 	/* singleton pattern */
 	static Game* instance;
@@ -25,10 +25,10 @@ public:
 	/* Các câu lệnh vẽ của game */
 	void GameRender();
 
-	//void setCurrentSpace(int spaceIndex) override;
-	//Space* getCurrentSpace() override;
-	//int getCurrentSpaceIndex() override;
-	//void resetLocationInSpace() override;
+	void setCurrentSpace(int spaceIndex) override;
+	Space* getCurrentSpace() override;
+	int getCurrentSpaceIndex() override;
+	void resetLocationInSpace() override;
 
 	Game();
 	~Game();
