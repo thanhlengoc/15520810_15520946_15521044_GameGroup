@@ -186,6 +186,15 @@
     <ClInclude Include="Item.h">
       <Filter>Header Files\Enemy\Item</Filter>
     </ClInclude>
+    <ClInclude Include="Runner.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Gunner.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sparrow.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -295,6 +304,15 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Gunner.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Runner.cpp">
+      <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sparrow.cpp">
+      <Filter>Header Files\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

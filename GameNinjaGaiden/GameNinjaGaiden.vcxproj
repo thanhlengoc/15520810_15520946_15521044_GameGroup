@@ -146,6 +146,7 @@
     <ClInclude Include="GameTexture.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="GameUtils.h" />
+    <ClInclude Include="Gunner.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
@@ -154,8 +155,10 @@
     <ClInclude Include="PhysicsObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="Runner.h" />
     <ClInclude Include="ScoreBar.h" />
     <ClInclude Include="Spaces.h" />
+    <ClInclude Include="Sparrow.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TileMap.h" />
@@ -186,6 +189,7 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GameUtils.cpp" />
+    <ClCompile Include="Gunner.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="KEY.cpp" />
     <ClCompile Include="MachineGun.cpp" />
@@ -193,7 +197,9 @@
     <ClCompile Include="PhysicsObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="Runner.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
+    <ClCompile Include="Sparrow.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="TileMap.cpp" />
