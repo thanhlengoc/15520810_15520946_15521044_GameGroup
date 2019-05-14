@@ -43,6 +43,8 @@ public:
 	bool isHurtRight;
 	bool isHurtLeft;
 	bool isDead;
+	bool endDeadTime;
+	void startDeadTime();
 
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();
