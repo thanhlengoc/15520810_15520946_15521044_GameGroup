@@ -75,9 +75,10 @@ ScoreBar::ScoreBar()
 {
 	scoreBar = new GameTexture("Image/ScoreBar/score_bar.png", D3DCOLOR_XRGB(10, 20, 60));
 	miscSprite = SpriteManager::getInstance()->getSprite(RYU_MISC);
-	timeGame.setDeltaTime(1000);
+	timeGame.init(1000);
+	timeGame.start();
 
-	ifstream ifs("Image/ScoreBar/score_bar_item_location.txt");
+	ifstream ifs("Image/ScoreBar/score_bar_item_location.dat");
 	ignoreLineIfstream(ifs, 1);
 	ifs >> lifeLocation.X >> lifeLocation.Y >> lifeLocation.MaxLength;
 	setPlayerLife(2);
@@ -107,7 +108,7 @@ ScoreBar::ScoreBar()
 
 	setHealth(maxHealth);
 	setBossHealth(maxHealth);
-	setTime(900);
+	setTime(150);
 	//setSubWeapon(0);
 }
 
@@ -132,8 +133,10 @@ void ScoreBar::render()
 
 void ScoreBar::update()
 {
-	if (timeGame.atTime())
+	timeGame.update();
+	if (timeGame.isTerminated())
 	{
+		timeGame.start();
 		increaseTime(-1);
 	}
 }

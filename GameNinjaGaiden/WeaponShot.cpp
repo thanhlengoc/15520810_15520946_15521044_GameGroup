@@ -23,7 +23,7 @@ void WeaponShot::onUpdate(float dt)
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
-		if (abs(getMidX() - player->getMidX()) <= 2 && abs(getMidY() - player->getMidY()) <= 2 && !player->isHurtLeft && !player->isHurtRight)
+		if (abs(getMidX() - player->getMidX()) <= 2 && abs(getMidY() - player->getMidY()) <= 15 && !player->isHurtLeft && !player->isHurtRight)
 		{
 			if ((getMidX() - player->getMidX()) > 0)
 			{

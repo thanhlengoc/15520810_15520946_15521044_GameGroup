@@ -1,4 +1,5 @@
 #include "SwordMan.h"
+#include"ScoreBar.h"
 
 void SwordMan::onUpdate(float dt)
 {
@@ -8,7 +9,7 @@ void SwordMan::onUpdate(float dt)
 
 	action = SWORDMAN_ACTION_STAND;
 
-	if (player->isDead)
+	if (player->endDeadTime)
 	{
 		restoreLocation();
 		setVx(0);
@@ -133,6 +134,61 @@ void SwordMan::onUpdate(float dt)
 				setDirection(TEXTURE_DIRECTION_LEFT);
 			}
 			if (getX() >= 2020)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
+		}
+		else if (2564 < getMidX() && getMidX() < 2729)
+		{
+			if (getX() <= 2570)
+			{
+				setDirection(TEXTURE_DIRECTION_LEFT);
+			}
+			if (getX() >= 2700)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
+		}
+		else if (3172 < getMidX() && getMidX() < 3200)
+		{
+			if (getMidX() <= 3175)
+			{
+				setDirection(TEXTURE_DIRECTION_LEFT);
+			}
+			if (getMidX() >= 3195)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
+		}
+		else if (3460 < getMidX() && getMidX() < 3553)
+		{
+			if (getMidX() <= 3470)
+			{
+				setDirection(TEXTURE_DIRECTION_LEFT);
+			}
+			if (getMidX() >= 3548)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
+		}
+		else if (4197 < getMidX() && getMidX() < 4258)
+		{
+			if (getMidX() <= 4205)
+			{
+				setDirection(TEXTURE_DIRECTION_LEFT);
+			}
+			if (getMidX() >= 4248)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
+		}
+		else if (5252 < getMidX() && getMidX() < 5363)
+		{
+			if (getMidX() <= 5260)
+			{
+				setDirection(TEXTURE_DIRECTION_LEFT);
+			}
+			if (getMidX() >= 5355)
 			{
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}
