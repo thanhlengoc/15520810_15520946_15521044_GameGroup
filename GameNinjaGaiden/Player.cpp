@@ -1,4 +1,5 @@
 ﻿#include "Player.h"
+#include"ScoreBar.h"
 
 Player * Player::instance = 0;
 Player * Player::getInstance()
@@ -12,11 +13,10 @@ Player * Player::getInstance()
 
 void Player::onUpdate(float dt)
 {
-	//ScoreBar* scorebar = ScoreBar::getInstance();
-
 	PLAYER_ACTION action;
 	double vx = GLOBALS_D("player_vx");
 	double vy = GLOBALS_D("player_vy_jump");
+	endDeadTime = false;
 
 	setInterval(60);
 	action = PLAYER_ACTION_STAND;
@@ -66,6 +66,7 @@ void Player::onUpdate(float dt)
 			{
 				setVx(0);
 				setVy(0);
+				setHeight(GLOBALS_D("player_height"));
 				setAnimation(PLAYER_ACTION_RESET);
 			}
 			hurtDelay.update();
@@ -91,6 +92,10 @@ void Player::onUpdate(float dt)
 			changeSpace->setCurrentSpace(currentSpaceIndex);
 			changeSpace->resetLocationInSpace();
 			
+			//ScoreBar::getInstance()->restoreHealth();
+			//ScoreBar::getInstance()->restoreBossHealth();
+			
+			endDeadTime = true;
 			isDead = false;
 		}
 		return;
@@ -127,7 +132,6 @@ void Player::onUpdate(float dt)
 			{
 				setHeight(25);
 				action = PLAYER_ACTION_SIT_ATTACK;
-				
 			}
 		}
 		else
@@ -221,6 +225,11 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 }
 
+void Player::startDeadTime()
+{
+	deadDelay.start();
+}
+
 void Player::setIsOnAttack(bool isOnAttack)
 {
 	this->isOnAttack = isOnAttack;
@@ -242,7 +251,8 @@ Player::Player()
 	isHurtLeft = isHurtRight = false;
 	setAlive(true);
 	deadDelay.init(GLOBALS_D("player_dead_delay"));
-	hurtDelay.init(900);
+	hurtDelay.init(1200);
+	endDeadTime = false;
 }
 
 
