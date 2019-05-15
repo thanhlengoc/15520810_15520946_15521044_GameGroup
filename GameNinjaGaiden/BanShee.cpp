@@ -6,7 +6,7 @@ void BanShee::onUpdate(float dt)
 	setVx(0);
 
 	setAy(GLOBALS_D("weapon_throw_ay"));
-	if (player->isDead)
+	if (player->endDeadTime)
 	{
 		restoreLocation();
 		setAlive(true);
