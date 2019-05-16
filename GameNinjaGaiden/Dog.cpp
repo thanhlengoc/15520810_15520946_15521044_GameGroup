@@ -6,7 +6,7 @@ void Dog::onUpdate(float dt)
 
 	setDirectDefault();
 
-	if (player->isDead)
+	if (player->endDeadTime)
 	{
 		restoreLocation();
 		setRenderActive(false);
@@ -155,6 +155,16 @@ void Dog::setDirectDefault()
 	{
 					setDirection(TEXTURE_DIRECTION_RIGHT);
 	}
+	else
+		if (getMidX() >= 5000 && getMidX() <= 5188)
+		{
+			setDirection(TEXTURE_DIRECTION_LEFT);
+		}
+		else
+			if (getMidX() >= 5333 && getMidX() <= 5350)
+			{
+				setDirection(TEXTURE_DIRECTION_RIGHT);
+			}
 }
 
 Dog::Dog()
