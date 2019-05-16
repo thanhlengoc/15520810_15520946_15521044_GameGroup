@@ -6,7 +6,7 @@ void Machine::onUpdate(float dt)
 	MACHINE_GUN_ACTION action;
 	setVx(0);
 
-	if (player->isDead)
+	if (player->endDeadTime)
 	{
 		restoreLocation();
 		setVx(0);
