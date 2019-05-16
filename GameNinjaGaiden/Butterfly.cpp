@@ -3,7 +3,7 @@
 void Butterfly::onUpdate(float dt)
 {
 
-	if (player->isDead)
+	if (player->endDeadTime)
 	{
 		restoreLocation();
 		setRenderActive(true);
