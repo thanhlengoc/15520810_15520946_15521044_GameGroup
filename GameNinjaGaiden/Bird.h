@@ -18,4 +18,6 @@ public:
 	void setDirectDefault();
 	void setFollowPlayer();
 
+	Bird();
+	~Bird();
 };
