@@ -1,4 +1,4 @@
-#include "Bird.h"
+﻿#include "Bird.h"
 
 void Bird::onUpdate(float dt)
 {
@@ -34,7 +34,7 @@ void Bird::onUpdate(float dt)
 	}
 	if (isAlive())
 	{
-		if (abs(getMidX() - camera->getMidX()) >= 155)
+		if (abs(getMidX() - camera->getMidX()) >= 115)
 		{
 			restoreLocation();
 			setAlive(false);
@@ -52,7 +52,7 @@ void Bird::onUpdate(float dt)
 		return;
 	}
 	if ((abs(getMidX() - player->getMidX()) < 18) && getRenderActive()
-		&& (abs(getBottom() - player->getBottom()) < 10) && !player->isHurtLeft && !player->isHurtRight)
+		&& (abs(getBottom() - player->getBottom()) < 15) && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{
@@ -64,7 +64,7 @@ void Bird::onUpdate(float dt)
 		}
 	}
 
-	if (abs(getMidX() - player->getMidX()) < 36 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 10)
+	if (abs(getMidX() - player->getMidX()) < 36 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 15)
 		&& getRenderActive())
 	{
 		bool checkRight = player->getDirection() == 1 && (getMidX() - player->getMidX()) >= 0;
@@ -92,43 +92,80 @@ void Bird::onUpdate(float dt)
 	}
 	if (getRenderActive())
 	{
-		
-		if (getMidY() > (player->getMidY()-50) && isInit)
-		{
-			setVx(-getDirection() * 150);
-			setVy(-150);
-			setDx(getVx() * dt);
-			setDy(getVy() * dt);
-			isWait = false;
-			changeDirection = true;
-		}
-		else
-		{
-			isInit = false;
-			if (!isWait)
+			switch (birdState)
 			{
-				if (changeDirection)
+			case BIRD_WAIT:
+				if (getX() - player->getX() < 100)
+					setState(BIRD_FLY);
+				break;
+			case BIRD_FLY:
+				setVy(player->getY() - getY() - 80);
+				setVx(player->getX() - getX() - 80);
+				if (player->getY() - getY() > 10 && player->getY() - getY() > 10)
 				{
-					setFollowPlayer();
-					changeDirection = false;
+					setAx(50);
+					setAy(10);
+					setVy(-20);
 				}
-				setVx(-getDirection() * 150);
-				setVy(150);
-				setDx(getVx()* dt);
-				setDy(getVy()* dt);
+				if (player->getX() - getX() > 40)
+				{
+					setVx((player->getMidX() - getMidX()) * 2);
+					setVy((50 - getMidY()) * 2);
+					setDirection(TEXTURE_DIRECTION_LEFT);
+					setState(BIRD_FIRST_FLY);
+				}
+				break;
+			case BIRD_FIRST_FLY:
+				if (getMidX() > player->getMidX())
+				{
+					setAy(-50);
+					setAx(-100);
+					setState(BIRD_FLY_DOWN_RIGHT);
+				}
+				break;
+			case BIRD_FLY_DOWN_RIGHT:
+				setFollowPlayer();
+				if (getMidY() >= 80)
+				{
+					setVy(-50);
+					setVx(50);
+					setState(BIRD_FLY_UP_RIGHT);
+				}
+				break;
+			case BIRD_FLY_UP_RIGHT:
+				if (getY() < 10) {
+					setVx(-(getMidX() - player->getMidX()) * 2);
+					setVy((50 - getMidY()) * 2);
+					setState(BIRD_SECOND_FLY);
+				}
+				break;
+			case BIRD_SECOND_FLY:
+				if (getMidX() < player->getMidX())
+				{
+					setAy(-50);
+					setAx(100);
+					setState(BIRD_FLY_DOWN_LEFT);
+				}
+				break;
+			case BIRD_FLY_DOWN_LEFT:
+				setFollowPlayer();
+				if (getMidY() >= 80)
+				{
+					setVy(-50);
+					setVx(-50);
+					setState(BIRD_FLY_UP_LEFT);
+				}
+				break;
+			case BIRD_FLY_UP_LEFT:
+				if (getY() < 10) {
+					setVx((player->getMidX() - getMidX()) * 2);
+					setVy((50 - getMidY()) * 2);
+					setState(BIRD_FIRST_FLY);
+				}
+				break;
 			}
-			
-			if (getMidY() > (player->getMidY() + 150))
-			{
-				isWait = true;
-				isInit = true;
-			}
-			
+			setAnimation(BIRD_FLY);
 		}
-
-		setAnimation(BIRD_FLY);
-	}
-
 	PhysicsObject::onUpdate(dt);
 }
 
@@ -170,6 +207,11 @@ void Bird::setDirectDefault()
 							setDirection(TEXTURE_DIRECTION_RIGHT);
 }
 
+void Bird::setState(BIRD_STATE birdState)
+{
+	this->birdState = birdState;
+}
+
 void Bird::setFollowPlayer()
 {
 	int distance = player->getMidX() - getMidX();
@@ -185,16 +227,13 @@ void Bird::setFollowPlayer()
 
 Bird::Bird()
 {
-	setPhysicsEnable(false);
+	setAy(0);
 	setAnimation(BIRD_WAIT);
+	setState(BIRD_WAIT);
 	player = Player::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	setRenderActive(false);
 	setAlive(false);
-	isInit = true;
-	waitFlyTime.init(1000);
-	isWait = false;
-	changeDirection = true;
 }
 
 Bird::~Bird()
