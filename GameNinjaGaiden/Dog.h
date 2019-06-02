@@ -9,7 +9,8 @@ enum DOG_ACTION {
 };
 class Dog:
 	public PhysicsObject {
-public:WeaponPlayer* weapon_player;
+public:
+	WeaponPlayer* weapon_player;
 	Player* player;
 	void onUpdate(float dt) override;
 	void restoreLocation() override;

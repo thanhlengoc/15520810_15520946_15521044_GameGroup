@@ -9,7 +9,11 @@ enum {
 };
 class Bird:public PhysicsObject
 {
-public:
+	bool isInit;
+	DelayTime waitFlyTime;
+	bool isWait;
+	bool changeDirection;
+ public:
 	WeaponPlayer* weapon_player;
 	Player* player;
 	void onUpdate(float dt) override;
