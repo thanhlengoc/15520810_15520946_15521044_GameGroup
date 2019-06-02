@@ -169,7 +169,6 @@
     <ClInclude Include="WeaponShot.h" />
     <ClInclude Include="WeaponPlayer.h" />
     <ClInclude Include="WeaponThrow.h" />
-    <ClInclude Include="WeaponThrowManager.h" />
     <ClInclude Include="WindowGame.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SwordMan.h" />

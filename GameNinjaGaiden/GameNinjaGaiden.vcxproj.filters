@@ -180,9 +180,6 @@
     <ClInclude Include="WeaponThrow.h">
       <Filter>Header Files\Enemy\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponThrowManager.h">
-      <Filter>Header Files\Enemy\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\Enemy\Item</Filter>
     </ClInclude>
