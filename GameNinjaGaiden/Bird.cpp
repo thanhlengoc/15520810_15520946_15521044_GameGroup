@@ -4,8 +4,6 @@ void Bird::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
-	setDirectDefault();
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -34,11 +32,12 @@ void Bird::onUpdate(float dt)
 	}
 	if (isAlive())
 	{
-		if (abs(getMidX() - camera->getMidX()) >= 115)
+		if (abs(getMidX() - camera->getMidX()) >= 150)
 		{
 			restoreLocation();
 			setAlive(false);
 			setRenderActive(false);
+			setDirectDefault();
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
@@ -48,6 +47,7 @@ void Bird::onUpdate(float dt)
 		restoreLocation();
 		setAlive(false);
 		setRenderActive(false);
+		setDirectDefault();
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -196,15 +196,25 @@ void Bird::setDirectDefault()
 	if (getMidX() >= 541 && getMidX() <= 576)
 		setDirection(TEXTURE_DIRECTION_RIGHT);
 	else if (getMidX() >= 706 && getMidX() <= 734)
-			setDirection(TEXTURE_DIRECTION_RIGHT);
-		else if (getMidX() >= 1047 && getMidX() <= 1068)
-				setDirection(TEXTURE_DIRECTION_LEFT);
-			else if (getMidX() >= 1558 && getMidX() <= 1594)
-					setDirection(TEXTURE_DIRECTION_LEFT);
-				else if (getMidX() >= 1690 && getMidX() <= 1709)
-						setDirection(TEXTURE_DIRECTION_LEFT);
-					else if (getMidX() >= 1868 && getMidX() <= 1904)
-							setDirection(TEXTURE_DIRECTION_RIGHT);
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 1047 && getMidX() <= 1068)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 1558 && getMidX() <= 1594)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 1690 && getMidX() <= 1709)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 1868 && getMidX() <= 1904)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 3211 && getMidX() <= 3247)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 3748 && getMidX() <= 3765)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 4711 && getMidX() <= 4730)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 4976 && getMidX() <= 5000)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 5300 && getMidX() <= 5320)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
 }
 
 void Bird::setState(BIRD_STATE birdState)
@@ -234,6 +244,7 @@ Bird::Bird()
 	weapon_player = WeaponPlayer::getInstance();
 	setRenderActive(false);
 	setAlive(false);
+	setDirectDefault();
 }
 
 Bird::~Bird()

@@ -80,6 +80,7 @@ void SwordMan::onUpdate(float dt)
 			}
 		}
 
+		setInterval(200);
 		if (0 < getMidX() && getMidX() < 600)
 		{
 			if (getX() <= 40)
@@ -159,6 +160,11 @@ void SwordMan::onUpdate(float dt)
 			{
 				setDirection(TEXTURE_DIRECTION_RIGHT);
 			}
+			setInterval(170);
+			setVx(-getDirection() * 31.25);
+			setAnimation(action);
+			PhysicsObject::onUpdate(dt);
+			return;
 		}
 		else if (3460 < getMidX() && getMidX() < 3553)
 		{

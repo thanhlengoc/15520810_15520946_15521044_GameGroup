@@ -4,8 +4,6 @@ void Dog::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
-	setDirectDefault();
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -39,6 +37,7 @@ void Dog::onUpdate(float dt)
 			restoreLocation();
 			setAlive(false);
 			setRenderActive(false);
+			setDirectDefault();
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
@@ -48,6 +47,7 @@ void Dog::onUpdate(float dt)
 		restoreLocation();
 		setAlive(false);
 		setRenderActive(false);
+		setDirectDefault();
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -106,7 +106,6 @@ void Dog::onUpdate(float dt)
 void Dog::restoreLocation()
 {
 	BaseObject::restoreLocation();
-	setDirectDefault();
 }
 
 void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
@@ -137,34 +136,17 @@ void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 void Dog::setDirectDefault()
 {
 	if (getMidX() >= 205 && getMidX() <= 270)
-	{
 		setDirection(TEXTURE_DIRECTION_LEFT);
-	}
-	else
-	if (getMidX() >= 892 && getMidX() <= 927)
-	{
-			setDirection(TEXTURE_DIRECTION_RIGHT);
-	}
-	else
-	if (getMidX() >= 934 && getMidX() <= 959)
-	{
-				setDirection(TEXTURE_DIRECTION_LEFT);
-	}
-	else
-	if (getMidX() >= 1248 && getMidX() <= 1315)
-	{
-					setDirection(TEXTURE_DIRECTION_RIGHT);
-	}
-	else
-		if (getMidX() >= 5000 && getMidX() <= 5188)
-		{
-			setDirection(TEXTURE_DIRECTION_LEFT);
-		}
-		else
-			if (getMidX() >= 5333 && getMidX() <= 5350)
-			{
-				setDirection(TEXTURE_DIRECTION_RIGHT);
-			}
+	else if (getMidX() >= 892 && getMidX() <= 927)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 934 && getMidX() <= 959)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 1248 && getMidX() <= 1315)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 5000 && getMidX() <= 5188)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 5333 && getMidX() <= 5350)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
 }
 
 Dog::Dog()
@@ -175,6 +157,7 @@ Dog::Dog()
 	weapon_player = WeaponPlayer::getInstance();
 	setRenderActive(false);
 	setAlive(false);
+	setDirectDefault();
 }
 
 Dog::~Dog()

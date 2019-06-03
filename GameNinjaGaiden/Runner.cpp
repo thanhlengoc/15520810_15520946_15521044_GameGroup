@@ -3,14 +3,11 @@
 void Runner::restoreLocation()
 {
 	BaseObject::restoreLocation();
-	setDirectDefault();
 }
 
 void Runner::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
-
-	setDirectDefault();
 
 	if (player->endDeadTime)
 	{
@@ -45,6 +42,7 @@ void Runner::onUpdate(float dt)
 			restoreLocation();
 			setAlive(false);
 			setRenderActive(false);
+			setDirectDefault();
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
@@ -54,6 +52,7 @@ void Runner::onUpdate(float dt)
 		restoreLocation();
 		setAlive(false);
 		setRenderActive(false);
+		setDirectDefault();
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
@@ -98,7 +97,15 @@ void Runner::onUpdate(float dt)
 	}
 	if (getRenderActive())
 	{
-		setVx(-getDirection() * 100);
+		if ((3906 <= getMidX() && getMidX() <= 3908)||(4065 <= getMidX() && getMidX() <= 4067))
+		{
+			setVy(60);
+			setVx(-getDirection() * 100);
+		}
+		else
+		{
+			setVx(-getDirection() * 100);
+		}
 		setAnimation(RUNNER_RUN);
 	}
 
@@ -132,7 +139,12 @@ void Runner::onCollision(MovableRect * other, float collisionTime, int nx, int n
 
 void Runner::setDirectDefault()
 {
-	setDirection(TEXTURE_DIRECTION_RIGHT);
+	if (getMidX() >= 3885 && getMidX() <= 3902)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	else if (getMidX() >= 3917 && getMidX() <= 3933)
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	else if (getMidX() >= 3945 && getMidX() <= 3961)
+		setDirection(TEXTURE_DIRECTION_RIGHT);
 }
 
 Runner::Runner()
@@ -142,6 +154,7 @@ Runner::Runner()
 	weapon_player = WeaponPlayer::getInstance();
 	setRenderActive(false);
 	setAlive(false);
+	setDirectDefault();
 }
 
 Runner::~Runner()
