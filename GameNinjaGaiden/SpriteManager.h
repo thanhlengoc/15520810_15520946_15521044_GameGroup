@@ -10,6 +10,7 @@
 enum SPRITE_INFO
 {
 	/* đối tượng không có hình ảnh ta sẽ đặt số âm */
+	SPRITE_INFO_WOOD_BAR = -7,
 	SPRITE_INFO_LADDER = -6,
 	SPRITE_INFO_CLIFF = -5,
 	SPRITE_INFO_WATER_SURFACE = -4,

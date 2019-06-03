@@ -15,7 +15,7 @@ void PhysicsObject::onUpdate(float dt)
 {
 	setIsOnDistanceMove(false);
 	setIsOnGround(false);
-
+	
 	if (getPhysicsEnable())
 	{
 		/* v = v0 + at công thức vật lý lớp 10 */
@@ -89,6 +89,16 @@ bool PhysicsObject::getIsOnGround()
 void PhysicsObject::setIsOnGround(bool isOnGround)
 {
 	this->isOnGround = isOnGround;
+}
+
+bool PhysicsObject::getIsOnLadder()
+{
+	return isOnLadder;
+}
+
+void PhysicsObject::setIsOnLadder(bool isOnLadder)
+{
+	this->isOnLadder = isOnLadder;
 }
 
 bool PhysicsObject::getIsOnDistanceMove()

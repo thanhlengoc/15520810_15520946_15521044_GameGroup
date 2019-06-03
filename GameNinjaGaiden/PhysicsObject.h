@@ -11,6 +11,7 @@ class PhysicsObject :
 	bool physicsEnable;
 	bool isOnGround;
 	bool isOnDistanceMove;
+	bool isOnLadder;
 
 public:
 	float getAx();
@@ -27,6 +28,9 @@ public:
 
 	bool getIsOnGround();
 	void setIsOnGround(bool isOnGround);
+
+	bool getIsOnLadder();
+	void setIsOnLadder(bool isOnLadder);
 
 	bool getIsOnDistanceMove();
 	void setIsOnDistanceMove(bool isOndistanceMove);

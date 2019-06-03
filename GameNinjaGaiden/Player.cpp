@@ -23,6 +23,9 @@ void Player::onUpdate(float dt)
 
 	if (isHurtLeft || isHurtRight)
 	{
+		setIsOnLadder(false);
+		setAy(GLOBALS_D("object_default_ay"));
+		setPhysicsEnable(true);
 		if (hurtDelay.isTerminated())
 		{
 			setAnimation(PLAYER_ACTION_STAND);
@@ -106,11 +109,50 @@ void Player::onUpdate(float dt)
 		setIsOnAttack(false);
 	}
 	
-	if (key->isAttackPress)
+	if (key->isAttackPress && !getIsOnLadder())
 	{
 		setIsOnAttack(true);
 	}
 
+	if (getIsOnLadder())
+	{
+		setHeight(GLOBALS_D("player_height"));
+		setAy(0);
+
+		if (getY() > 135)
+		{
+			setAnimation(PLAYER_ACTION_CLIMB_WAIT);
+			setY(135);
+		}
+		if (key->isUpDown)
+		{
+			setVy(55);
+			setAnimation(PLAYER_ACTION_CLIMB);
+		}
+		else if (key->isDownDown)
+		{
+			setVy(-55);
+			setAnimation(PLAYER_ACTION_CLIMB);
+		}
+		else if (key->isJumpDown)
+		{
+			setVy(vy);
+			setVx(-getDirection()*vx);
+			setIsOnLadder(false);
+			setAy(GLOBALS_D("object_default_ay"));
+			setPhysicsEnable(true);
+		}
+		else
+		{
+			setDx(0);
+			setDy(0);
+			setVx(0);
+			setVy(0);
+			setAnimation(PLAYER_ACTION_CLIMB_WAIT);
+		}
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
 	if (getIsOnGround())
 	{
 		setHeight(GLOBALS_D("player_height"));
@@ -199,7 +241,6 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 {
 	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
 	{
-		//van toc khong duoc tang dan deu khi dung tren san
 		if (ny == 1)
 		{
 			setIsOnGround(true);
@@ -209,7 +250,8 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 		{
 			setVy(-10);
 		}
-		preventMovementWhenCollision(collisionTime, nx, ny);
+		if(!getIsOnLadder())
+			preventMovementWhenCollision(collisionTime, nx, ny);
 	}
 
 	if (other->getCollisionType() == COLLISION_TYPE_WATER)
@@ -219,8 +261,38 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 	}
 	if (other->getCollisionType() == COLLISION_TYPE_GATE)
 	{
-		changeSpace->setCurrentSpace(3);
-		changeSpace->resetLocationInSpace();		
+		if (changeSpace->getCurrentSpaceIndex() == 0)
+		{
+			changeSpace->setCurrentSpace(3);
+			changeSpace->resetLocationInSpace();
+		}
+		else if (changeSpace->getCurrentSpaceIndex() == 2)
+		{
+			changeSpace->setCurrentSpace(4);
+			changeSpace->resetLocationInSpace();
+		}
+	}
+	if (other->getCollisionType() == COLLISION_TYPE_LADDER)
+	{
+		setIsOnLadder(true);
+		preventMovementWhenCollision(collisionTime, nx, ny);
+	}
+	if (other->getCollisionType() == COLLISION_TYPE_WOOD_BAR)
+	{
+		if (getY() > 110)
+		{
+			if (ny == 1)
+			{
+				setIsOnGround(true);
+			}
+
+			if (ny != 0)
+			{
+				setVy(-10);
+			}
+			if (!getIsOnLadder())
+				preventMovementWhenCollision(collisionTime, nx, ny);
+		}
 	}
 	PhysicsObject::onCollision(other, collisionTime, nx, ny);
 }
