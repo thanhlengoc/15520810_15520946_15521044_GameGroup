@@ -15,11 +15,11 @@ double GameConfiguration::GetConfiguration(const char * key)
 
 		/* window_width, window_height là kích thước cửa sổ */
 		globalsConfigurationDouble->insert(pair<const char*, double>("window_width", 750));
-		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 624));
+		globalsConfigurationDouble->insert(pair<const char*, double>("window_height", 654));
 
 		/* backbuffer_width, backbuffer_height là kích thước của backbuffer */
 		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_width", 250));
-		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_height", 208));
+		globalsConfigurationDouble->insert(pair<const char*, double>("backbuffer_height", 218));
 
 		globalsConfigurationDouble->insert(pair<const char*, double>("object_animation_time_default", 120));
 		globalsConfigurationDouble->insert(pair<const char*, double>("enemy_animation_time_default", 190));

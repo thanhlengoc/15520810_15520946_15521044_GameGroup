@@ -108,9 +108,6 @@
     <ClInclude Include="Rect.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files\AnimationSprite</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\WorldView</Filter>
     </ClInclude>
@@ -191,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="Sparrow.h">
       <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\AnimationSprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

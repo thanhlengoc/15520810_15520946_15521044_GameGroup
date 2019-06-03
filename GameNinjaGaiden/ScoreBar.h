@@ -67,6 +67,7 @@ public:
 	int getHealth();
 	void setHealth(int health);
 	void increaseHealth(int health);
+	void decreaseHealth(int health);
 
 	int getBossHealth();
 	void setBossHealth(int health);

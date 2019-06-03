@@ -28,6 +28,7 @@ void Player::onUpdate(float dt)
 		setPhysicsEnable(true);
 		if (hurtDelay.isTerminated())
 		{
+			ScoreBar::getInstance()->decreaseHealth(1);
 			setAnimation(PLAYER_ACTION_STAND);
 			isHurtLeft = isHurtRight = false;
 		}

@@ -1,8 +1,8 @@
-Sprite Misc
+Sprite misc
 R	G	B
-0	10	0	0
+255	0	0	0
 Animation Count
-1
+3
 
 
 Name
@@ -11,16 +11,17 @@ Frame Count
 10
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-121			188			7				7				0			0
-121			198			7				7				0			0
-129			188			7				7				0			0
-129			198			7				7				0			0
-137			188			7				7				0			0
-137			198			7				7				0			0
-145			188			7				7				0			0
-145			198			7				7				0			0
-153			188			7				7				0			0
-153			198			7				7				0			0
+0			0			7				7				0			0
+7			0			6				7				0			0
+13			0			7				7				0			0
+20			0			7				7				0			0
+27			0			7				7				0			0
+34			0			7				7				0			0
+41			0			7				7				0			0
+48			0			7				7				0			0
+55			0			7				7				0			0
+62			0			7				7				0			0
+
 
 Name
 Animation
@@ -28,5 +29,15 @@ Frame Count
 1
 
 FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
-184			189			3				6				0			0
+69			1			3				6				0			0
+
+
+Name
+Animation
+Frame Count
+1
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+69			1			3				6				0			0
+
 

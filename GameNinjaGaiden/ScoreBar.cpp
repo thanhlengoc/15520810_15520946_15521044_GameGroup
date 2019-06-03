@@ -1,4 +1,4 @@
-#include "ScoreBar.h"
+﻿#include "ScoreBar.h"
 #include"Player.h"
 
 #define NUMBER_WIDTH 8
@@ -86,7 +86,7 @@ ScoreBar::ScoreBar()
 
 	ignoreLineIfstream(ifs, 2);
 	ifs >> heartLocation.X >> heartLocation.Y >> heartLocation.MaxLength;
-	setHeartCount(5);
+	setHeartCount(2);
 
 	ignoreLineIfstream(ifs, 2);
 	ifs >> stageLocation.X >> stageLocation.Y >> stageLocation.MaxLength;
@@ -242,6 +242,11 @@ int ScoreBar::getBossHealth()
 void ScoreBar::setBossHealth(int health)
 {
 	this->bossHealth = health;
+}
+void ScoreBar::decreaseHealth(int health)
+{
+	if (this->health > 0)
+		this->health -= health;
 }
 void ScoreBar::increaseBossHealth(int health)
 {
