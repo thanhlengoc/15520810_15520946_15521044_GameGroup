@@ -33,7 +33,7 @@ double GameConfiguration::GetConfiguration(const char * key)
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_jump_height", 23));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_sit", 19));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_height", 30));
-		globalsConfigurationDouble->insert(pair<const char*, double>("player_dead_delay", 1500));
+		globalsConfigurationDouble->insert(pair<const char*, double>("player_dead_delay", 2500));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vx", 110));
 		globalsConfigurationDouble->insert(pair<const char*, double>("player_hit_vy", 100));
 

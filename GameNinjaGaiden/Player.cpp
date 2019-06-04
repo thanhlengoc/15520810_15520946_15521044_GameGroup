@@ -21,6 +21,21 @@ void Player::onUpdate(float dt)
 	setInterval(60);
 	action = PLAYER_ACTION_STAND;
 
+	switch (changeSpace->getCurrentSpaceIndex())
+	{
+	case 0:
+		ScoreBar::getInstance()->setCurrentStageNumber(01);
+		break;
+	case 2:
+		ScoreBar::getInstance()->setCurrentStageNumber(02);
+		break;
+	case 5:
+		ScoreBar::getInstance()->setCurrentStageNumber(03);
+		break;
+	default:
+		break;
+	}
+
 	if (ScoreBar::getInstance()->getHealth() <= 0)
 	{
 		if (lostHeal)
@@ -28,6 +43,15 @@ void Player::onUpdate(float dt)
 			deadDelay.start();
 			isDead = true;
 			lostHeal = false;
+		}
+	}
+	if (ScoreBar::getInstance()->getTime() <= 0)
+	{
+		if (restartTime)
+		{
+			deadDelay.start();
+			isDead = true;
+			restartTime = false;
 		}
 	}
 
@@ -93,7 +117,7 @@ void Player::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
-	
+
 	if (isDead)
 	{
 		setAnimation(PLAYER_ACTION_DIE);
@@ -108,15 +132,35 @@ void Player::onUpdate(float dt)
 		{
 			setRenderActive(false);
 			int currentSpaceIndex = changeSpace->getCurrentSpaceIndex();
-			changeSpace->setCurrentSpace(currentSpaceIndex);
-			changeSpace->resetLocationInSpace();
+			if (currentSpaceIndex == 5)
+			{
+				changeSpace->setCurrentSpace(2);
+				changeSpace->resetLocationInSpace();
+			}
+			else
+			{
+				changeSpace->setCurrentSpace(currentSpaceIndex);
+				changeSpace->resetLocationInSpace();
+			}
 
 			ScoreBar::getInstance()->restoreHealth();
-			//ScoreBar::getInstance()->restoreBossHealth();
+			ScoreBar::getInstance()->restoreBossHealth();
+
+			int countLife = ScoreBar::getInstance()->getPlayerLife();
+			if (countLife == 0)
+			{
+				ScoreBar::getInstance()->setPlayerLife(2);
+				ScoreBar::getInstance()->setScore(0);
+			}
+			else
+			{
+				ScoreBar::getInstance()->setPlayerLife(countLife - 1);
+			}
 
 			endDeadTime = true;
 			isDead = false;
 			lostHeal = true;
+			restartTime = true;
 			setDirection(TEXTURE_DIRECTION_RIGHT);
 			setRenderActive(true);
 		}
@@ -128,7 +172,7 @@ void Player::onUpdate(float dt)
 	{
 		setIsOnAttack(false);
 	}
-	
+
 	if (key->isAttackPress && !getIsOnLadder())
 	{
 		setIsOnAttack(true);
@@ -157,7 +201,7 @@ void Player::onUpdate(float dt)
 		else if (key->isJumpDown)
 		{
 			setVy(vy);
-			setVx(-getDirection()*vx);
+			setVx(-getDirection() * vx);
 			setIsOnLadder(false);
 			setAy(GLOBALS_D("object_default_ay"));
 			setPhysicsEnable(true);
@@ -201,7 +245,7 @@ void Player::onUpdate(float dt)
 			bool isMoveDown = key->isLeftDown || key->isRightDown;
 			if (isMoveDown)
 			{
-				setVx(getDirection()*vx);
+				setVx(getDirection() * vx);
 				action = PLAYER_ACTION_RUN;
 			}
 			else
@@ -225,7 +269,7 @@ void Player::onUpdate(float dt)
 	else
 	{
 		setHeight(GLOBALS_D("player_jump_height"));
-		action = PLAYER_ACTION_JUMP;	
+		action = PLAYER_ACTION_JUMP;
 
 		if (isOnAttack)
 		{
@@ -237,7 +281,7 @@ void Player::onUpdate(float dt)
 			setDirection(TEXTURE_DIRECTION_LEFT);
 			setVx(-50);
 		}
-		else if(key->isRightDown)
+		else if (key->isRightDown)
 		{
 			setDirection(TEXTURE_DIRECTION_RIGHT);
 			setVx(50);
@@ -250,7 +294,7 @@ void Player::onUpdate(float dt)
 	if (isOnAttack && getIsOnGround())
 	{
 		setVx(0);
-		
+
 	}
 
 	setAnimation(action);
@@ -332,6 +376,11 @@ bool Player::isAttack()
 	return isOnAttack;
 }
 
+int Player::getSpacePlayer()
+{
+	return changeSpace->getCurrentSpaceIndex();
+}
+
 Player::Player()
 {
 	setSprite(SPR(SPRITE_INFO_RYU));
@@ -347,6 +396,7 @@ Player::Player()
 	endDeadTime = false;
 	decreaseHeal = true;
 	lostHeal = true;
+	restartTime = true;
 }
 
 

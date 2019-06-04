@@ -6,6 +6,14 @@ void Machine::onUpdate(float dt)
 	MACHINE_GUN_ACTION action;
 	setVx(0);
 
+	if (player->isDead)
+	{
+		setAnimation(MACHINE_GUN_WAIT);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -67,15 +75,43 @@ void Machine::onUpdate(float dt)
 				if (getIsLastFrameAnimationDone())
 				{
 					numberShot++;
-					weapon_shot->setLocation(getMidX(), getMidY());
-					weapon_shot->setVx(-getDirection() * 32);
-					weapon_shot->setDx(-getDirection() * 2);
-					weapon_shot->setAnimation(WEAPON_SHOT);
-					weapon_shot->setDirection(getDirection());
-					weapon_shot->setRenderActive(true);
-					weapon_shot->onUpdate(dt);
+					switch (numberShot)
+					{
+					case 1:
+						weapon_shot->setLocation(getMidX(), getMidY());
+						weapon_shot->setVx(-getDirection() * 32);
+						weapon_shot->setDx(-getDirection() * 2);
+						weapon_shot->setAnimation(WEAPON_SHOT);
+						weapon_shot->setDirection(getDirection());
+						weapon_shot->setRenderActive(true);
+						weapon_shot->setSprite(SPR(SPRITE_INFO_WEAPON_SHOT));
+						weapon_shot->onUpdate(dt);
+						break;
+					case 2:
+						weapon_shot_second->setLocation(getMidX(), getMidY());
+						weapon_shot_second->setVx(-getDirection() * 32);
+						weapon_shot_second->setDx(-getDirection() * 2);
+						weapon_shot_second->setAnimation(WEAPON_SHOT);
+						weapon_shot_second->setDirection(getDirection());
+						weapon_shot_second->setRenderActive(true);
+						weapon_shot->setSprite(SPR(SPRITE_INFO_WEAPON_SHOT));
+						weapon_shot_second->onUpdate(dt);
+						break;
+					case 3:
+						weapon_shot_three->setLocation(getMidX(), getMidY());
+						weapon_shot_three->setVx(-getDirection() * 32);
+						weapon_shot_three->setDx(-getDirection() * 2);
+						weapon_shot_three->setAnimation(WEAPON_SHOT);
+						weapon_shot_three->setDirection(getDirection());
+						weapon_shot_three->setRenderActive(true);
+						weapon_shot->setSprite(SPR(SPRITE_INFO_WEAPON_SHOT));
+						weapon_shot_three->onUpdate(dt);
+					default:
+						break;
+					}
+					
 				}
-				if (numberShot == 1)
+				if (numberShot == 3)
 				{
 					isShot = false;
 					numberShot = 0;
@@ -144,6 +180,8 @@ Machine::Machine()
 	player = Player::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	weapon_shot = WeaponShot::getInstance();
+	weapon_shot_second = WeaponShotSecond::getInstance();
+	weapon_shot_three = WeaponShotThree::getInstance();
 	numberShot = 0;
 	numberRun = 0;
 }

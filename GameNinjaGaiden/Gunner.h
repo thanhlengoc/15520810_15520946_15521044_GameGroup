@@ -2,6 +2,7 @@
 #include"PhysicsObject.h"
 #include"Player.h"
 #include"WeaponPlayer.h"
+#include"WeaponShotSecond.h"
 
 enum GUNNER_ACTION {
 	GUNNER_WAIT,
@@ -20,6 +21,7 @@ public:
 	Player* player;
 	WeaponPlayer* weapon_player;
 	WeaponShot* weapon_shot;
+	WeaponShotSecond* weapon_shot_second;
 
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;

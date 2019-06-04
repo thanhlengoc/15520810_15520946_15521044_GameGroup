@@ -3,6 +3,8 @@
 #include"Player.h"
 #include"WeaponPlayer.h"
 #include"WeaponShot.h"
+#include"WeaponShotSecond.h"
+#include"WeaponShotThree.h"
 
 enum MACHINE_GUN_ACTION{
 	MACHINE_GUN_WAIT,
@@ -12,9 +14,9 @@ enum MACHINE_GUN_ACTION{
 class Machine
 	:public PhysicsObject
 {
-	bool isDead;
+	//bool isDead;
 	bool isShot;
-	bool isRun;
+	//bool isRun;
 	int numberShot;
 	int numberRun;
 
@@ -22,6 +24,8 @@ public:
 	Player* player;
 	WeaponPlayer* weapon_player;
 	WeaponShot* weapon_shot;
+	WeaponShotSecond* weapon_shot_second;
+	WeaponShotThree* weapon_shot_three;
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 	void setFollowPlayer();

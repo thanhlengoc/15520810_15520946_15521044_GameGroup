@@ -58,6 +58,12 @@
     <Filter Include="Header Files\Player\Ultils">
       <UniqueIdentifier>{e92e8177-f996-4fe8-86df-821900ac0ac3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Enemy\Weapon\Banshee">
+      <UniqueIdentifier>{6f8cbc4b-e2e8-46b9-a41e-afd05ebcb9c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enemy\Weapon\MachineGun">
+      <UniqueIdentifier>{a20efbbd-2a4f-440f-8bcc-ea5af23e8369}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -168,12 +174,6 @@
     <ClInclude Include="WeaponPlayer.h">
       <Filter>Header Files\Player\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponShot.h">
-      <Filter>Header Files\Enemy\Weapon</Filter>
-    </ClInclude>
-    <ClInclude Include="WeaponThrow.h">
-      <Filter>Header Files\Enemy\Weapon</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files\Enemy\Item</Filter>
     </ClInclude>
@@ -191,6 +191,18 @@
     </ClInclude>
     <ClInclude Include="Boss.h">
       <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponThrow.h">
+      <Filter>Header Files\Enemy\Weapon\Banshee</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponShot.h">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponShotSecond.h">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponShotThree.h">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -290,12 +302,6 @@
     <ClCompile Include="WeaponPlayer.cpp">
       <Filter>Header Files\Player\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponShot.cpp">
-      <Filter>Header Files\Enemy\Weapon</Filter>
-    </ClCompile>
-    <ClCompile Include="WeaponThrow.cpp">
-      <Filter>Header Files\Enemy\Weapon</Filter>
-    </ClCompile>
     <ClCompile Include="Gunner.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
@@ -310,6 +316,18 @@
     </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponThrow.cpp">
+      <Filter>Header Files\Enemy\Weapon\Banshee</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponShot.cpp">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponShotSecond.cpp">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponShotThree.cpp">
+      <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

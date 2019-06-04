@@ -4,10 +4,10 @@
 #include"Player.h"
 #include"WeaponPlayer.h"
 
-enum {
+enum
+{
 	WEAPON_SHOT
 };
-
 class WeaponShot :
 	public PhysicsObject
 {

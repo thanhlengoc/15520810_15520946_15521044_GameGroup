@@ -168,6 +168,8 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="WeaponShot.h" />
     <ClInclude Include="WeaponPlayer.h" />
+    <ClInclude Include="WeaponShotSecond.h" />
+    <ClInclude Include="WeaponShotThree.h" />
     <ClInclude Include="WeaponThrow.h" />
     <ClInclude Include="WindowGame.h" />
     <ClInclude Include="World.h" />
@@ -208,6 +210,8 @@
     <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="WeaponShot.cpp" />
     <ClCompile Include="WeaponPlayer.cpp" />
+    <ClCompile Include="WeaponShotSecond.cpp" />
+    <ClCompile Include="WeaponShotThree.cpp" />
     <ClCompile Include="WeaponThrow.cpp" />
     <ClCompile Include="WindowGame.cpp" />
     <ClCompile Include="WinMain.cpp" />

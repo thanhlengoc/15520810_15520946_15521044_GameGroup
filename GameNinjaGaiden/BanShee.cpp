@@ -6,6 +6,16 @@ void BanShee::onUpdate(float dt)
 	setVx(0);
 
 	setAy(GLOBALS_D("weapon_throw_ay"));
+
+	if (player->isDead)
+	{
+		setAnimation(BANSHEE_WAIT);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+
 	if (player->endDeadTime)
 	{
 		restoreLocation();

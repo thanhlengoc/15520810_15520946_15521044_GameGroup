@@ -109,6 +109,8 @@ ScoreBar::ScoreBar()
 	setHealth(maxHealth);
 	setBossHealth(maxHealth);
 	setTime(150);
+	setPlayerLife(2);
+	setHeartCount(0);
 	//setSubWeapon(0);
 }
 

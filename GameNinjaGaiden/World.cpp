@@ -17,6 +17,8 @@
 #include"Gunner.h"
 #include"Sparrow.h"
 #include"Boss.h"
+#include"WeaponShotSecond.h"
+#include"WeaponShotThree.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -30,6 +32,8 @@ void World::Init(const char * tilesheetPath,
 	WeaponPlayer* weapon_player = WeaponPlayer::getInstance();
 	WeaponShot* weapon_shot = WeaponShot::getInstance();
 	WeaponThrow* weapon_throw = WeaponThrow::getInstance();
+	WeaponShotSecond* weapon_shot_second = WeaponShotSecond::getInstance();
+	WeaponShotThree* weapon_shot_three = WeaponShotThree::getInstance();
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
@@ -226,6 +230,8 @@ void World::update(float dt)
 		Collision::CheckCollision(WeaponPlayer::getInstance(), allObjects[i]);
 		Collision::CheckCollision(WeaponShot::getInstance(), Player::getInstance());
 		Collision::CheckCollision(WeaponThrow::getInstance(), Player::getInstance());
+		Collision::CheckCollision(WeaponShotSecond::getInstance(), Player::getInstance());
+		Collision::CheckCollision(WeaponShotThree::getInstance(), Player::getInstance());
 	}
 	/* xét va chạm cho các loại đối tượng với nhau */
 	for (size_t i = 0; i < collisionTypeCollides.size(); i++)
@@ -252,6 +258,8 @@ void World::update(float dt)
 	WeaponPlayer::getInstance()->update(dt);
 	WeaponShot::getInstance()->update(dt);
 	WeaponThrow::getInstance()->update(dt);
+	WeaponShotSecond::getInstance()->update(dt);
+	WeaponShotThree::getInstance()->update(dt);
 	Player::getInstance()->update(dt);
 	Camera::getInstance()->update();
 }
@@ -296,6 +304,8 @@ void World::render()
 	WeaponPlayer::getInstance()->render(Camera::getInstance());
 	WeaponShot::getInstance()->render(Camera::getInstance());
 	WeaponThrow::getInstance()->render(Camera::getInstance());
+	WeaponShotSecond::getInstance()->render(Camera::getInstance());
+	WeaponShotThree::getInstance()->render(Camera::getInstance());
 }
 
 World::World()

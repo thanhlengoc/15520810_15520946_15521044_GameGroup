@@ -9,6 +9,15 @@ void Runner::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
+	if (player->isDead)
+	{
+		setAnimation(RUNNER_WAIT);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+
 	if (player->endDeadTime)
 	{
 		restoreLocation();

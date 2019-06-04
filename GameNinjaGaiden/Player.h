@@ -32,10 +32,10 @@ class Player :
 	bool isOnAttack;
 	bool decreaseHeal;
 	bool lostHeal;
+	bool restartTime;
 
 	DelayTime deadDelay;
 	DelayTime hurtDelay;
-	
 
 public:
 	static Player* getInstance();
@@ -50,6 +50,8 @@ public:
 
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();
+
+	int getSpacePlayer();
 
 	ChangeSpace* changeSpace;
 

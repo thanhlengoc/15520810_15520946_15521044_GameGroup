@@ -11,6 +11,7 @@ class Butterfly: public PhysicsObject
 
 public:
 	Player* player;
+	void setFollowPlayer();
 	void onUpdate(float dt) override;
 
 	Butterfly();

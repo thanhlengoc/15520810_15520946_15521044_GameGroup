@@ -1,21 +1,19 @@
 #pragma once
 #include "PhysicsObject.h"
+#include"SpriteManager.h"
 #include"Player.h"
 #include"WeaponPlayer.h"
 
-enum {
-	BAT_WAIT,
-	BAT_FLY
-};
-class Bat:public PhysicsObject
+class WeaponShotSecond :
+	public PhysicsObject
 {
+	static WeaponShotSecond* instance;
+
 public:
-	Player* player;
+	static WeaponShotSecond* getInstance();
 	WeaponPlayer* weapon_player;
-	Camera* camera;
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
-	void setFollowPlayer();
-	Bat();
-	~Bat();
+	WeaponShotSecond();
+	~WeaponShotSecond();
 };

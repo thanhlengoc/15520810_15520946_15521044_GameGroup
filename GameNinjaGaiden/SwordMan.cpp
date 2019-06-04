@@ -9,6 +9,14 @@ void SwordMan::onUpdate(float dt)
 
 	action = SWORDMAN_ACTION_STAND;
 
+	if (player->isDead)
+	{
+		setAnimation(SWORDMAN_ACTION_STAND);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
 	if (player->endDeadTime)
 	{
 		restoreLocation();

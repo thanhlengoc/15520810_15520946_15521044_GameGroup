@@ -4,6 +4,15 @@ void Bird::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
+	if (player->isDead)
+	{
+		setAnimation(BIRD_WAIT);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+
 	if (player->endDeadTime)
 	{
 		restoreLocation();

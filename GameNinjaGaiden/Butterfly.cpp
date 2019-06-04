@@ -1,8 +1,21 @@
 #include "Butterfly.h"
 
+void Butterfly::setFollowPlayer()
+{
+	int distance = player->getMidX() - getMidX();
+	if (distance < 0)
+	{
+		setDirection(TEXTURE_DIRECTION_LEFT);
+	}
+	else
+	{
+		setDirection(TEXTURE_DIRECTION_RIGHT);
+	}
+}
+
 void Butterfly::onUpdate(float dt)
 {
-
+	setFollowPlayer();
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -20,7 +33,6 @@ void Butterfly::onUpdate(float dt)
 Butterfly::Butterfly()
 {
 	setPhysicsEnable(false);
-	setRenderActive(false);
 	setAnimation(BUTTERFLY_FLY);
 	setDirection(TEXTURE_DIRECTION_LEFT);
 	player = Player::getInstance();

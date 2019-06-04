@@ -63,11 +63,12 @@ void Gunner::onUpdate(float dt)
 						weapon_shot->setLocation(getMidX()+13, getMidY()+10);
 					}
 					
-					weapon_shot->setVx(-getDirection() * 35);
+					weapon_shot->setVx(-getDirection() * 45);
 					weapon_shot->setDx(-getDirection() * 2);
 					weapon_shot->setAnimation(WEAPON_SHOT);
 					weapon_shot->setDirection(getDirection());
 					weapon_shot->setRenderActive(true);
+					weapon_shot->setSprite(SPR(SPRITE_INFO_OTHER_SHOT));
 					weapon_shot->onUpdate(dt);
 				}
 				if (numberShot == 1)
