@@ -36,6 +36,7 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_GUNNER]->InitFromFile("Image/Animation/gunner/out/image.png", "Image/Animation/gunner/out/gunner.info.dat");
 	sprites[SPRITE_INFO_RUNNER]->InitFromFile("Image/Animation/runner/out/image.png", "Image/Animation/runner/out/runner.info.dat");
 	sprites[SPRITE_INFO_SPARROW]->InitFromFile("Image/Animation/sparrow/out/image.png", "Image/Animation/sparrow/out/sparrow.info.dat");
+	sprites[SPRITE_INFO_BOSS]->InitFromFile("Image/Animation/boss/out/image.png", "Image/Animation/boss/out/boss.info.dat");
 }
 SpriteManager::~SpriteManager()
 {

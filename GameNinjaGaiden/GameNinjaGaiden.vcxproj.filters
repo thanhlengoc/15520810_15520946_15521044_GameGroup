@@ -31,9 +31,6 @@
     <Filter Include="Header Files\Const">
       <UniqueIdentifier>{064f8f5a-e874-4aeb-8f42-7cc5ab87a2b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Ultils">
-      <UniqueIdentifier>{e92e8177-f996-4fe8-86df-821900ac0ac3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\WorldView">
       <UniqueIdentifier>{c3ae1cc8-c162-489e-9454-aad1664e3839}</UniqueIdentifier>
     </Filter>
@@ -57,6 +54,9 @@
     </Filter>
     <Filter Include="Header Files\Enemy\Item">
       <UniqueIdentifier>{3ed0fda3-ec7b-4249-b83b-ad8acb6b0fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Ultils">
+      <UniqueIdentifier>{e92e8177-f996-4fe8-86df-821900ac0ac3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,16 +91,16 @@
       <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="KEY.h">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClInclude>
     <ClInclude Include="List.h">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="GameUtils.h">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClInclude>
     <ClInclude Include="GameTime.h">
       <Filter>Header Files\Time</Filter>
@@ -130,7 +130,7 @@
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="TileMap.h">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClInclude>
     <ClInclude Include="WindowGame.h">
       <Filter>Header Files\GameTool</Filter>
@@ -189,6 +189,9 @@
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\AnimationSprite</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Header Files\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -234,10 +237,10 @@
       <Filter>Header Files\Const</Filter>
     </ClCompile>
     <ClCompile Include="GameUtils.cpp">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClCompile>
     <ClCompile Include="KEY.cpp">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClCompile>
     <ClCompile Include="MovableRect.cpp">
       <Filter>Header Files\Object</Filter>
@@ -252,7 +255,7 @@
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="TileMap.cpp">
-      <Filter>Header Files\Ultils</Filter>
+      <Filter>Header Files\Player\Ultils</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp">
       <Filter>Header Files\WorldView</Filter>
@@ -304,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Header Files\Enemy\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Header Files\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

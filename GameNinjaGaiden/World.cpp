@@ -16,6 +16,7 @@
 #include"Runner.h"
 #include"Gunner.h"
 #include"Sparrow.h"
+#include"Boss.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -83,6 +84,9 @@ void World::Init(const char * tilesheetPath,
 			break;
 		case SPRITE_INFO_SPARROW:
 			obj = new Sparrow();
+			break;
+		case SPRITE_INFO_BOSS:
+			obj = new Boss();
 			break;
 
 		default:

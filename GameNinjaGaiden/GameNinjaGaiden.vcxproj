@@ -132,6 +132,7 @@
     <ClInclude Include="BanShee.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ChangeSpace.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="BanShee.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collision.cpp" />
