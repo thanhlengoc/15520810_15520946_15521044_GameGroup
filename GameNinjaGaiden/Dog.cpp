@@ -52,7 +52,8 @@ void Dog::onUpdate(float dt)
 		return;
 	}
 	if ((abs(getMidX() - player->getMidX()) < 18) && getRenderActive()
-		&& (abs(getBottom() - player->getBottom()) < 10) && !player->isHurtLeft && !player->isHurtRight)
+		&& (abs(getBottom() - player->getBottom()) < 10)
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{
@@ -119,7 +120,8 @@ void Dog::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 	{
 		setAlive(false);
 	}
-	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive())
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive()
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{

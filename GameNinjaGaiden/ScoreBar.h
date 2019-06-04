@@ -1,5 +1,6 @@
 #include"SpriteManager.h"
 #include"DelayTime.h"
+#include"Player.h"
 
 struct SCORE_LOCATION
 {
@@ -37,6 +38,7 @@ class ScoreBar
 	int time;
 	DelayTime timeGame;
 public:
+	Player* player;
 	static ScoreBar* getInstance();
 	ScoreBar();
 	~ScoreBar();

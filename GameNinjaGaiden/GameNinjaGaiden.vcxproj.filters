@@ -141,9 +141,6 @@
     <ClInclude Include="ScoreBar.h">
       <Filter>Header Files\Bar</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Dog.h">
       <Filter>Header Files\Enemy</Filter>
     </ClInclude>
@@ -263,9 +260,6 @@
     <ClCompile Include="ScoreBar.cpp">
       <Filter>Header Files\Bar</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Header Files\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Dog.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
@@ -299,9 +293,6 @@
     <ClCompile Include="WeaponThrow.cpp">
       <Filter>Header Files\Enemy\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Gunner.cpp">
       <Filter>Header Files\Enemy</Filter>
     </ClCompile>
@@ -310,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="Sparrow.cpp">
       <Filter>Header Files\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Header Files\Enemy\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -52,7 +52,8 @@ void Bird::onUpdate(float dt)
 		return;
 	}
 	if ((abs(getMidX() - player->getMidX()) < 18) && getRenderActive()
-		&& (abs(getBottom() - player->getBottom()) < 15) && !player->isHurtLeft && !player->isHurtRight)
+		&& (abs(getBottom() - player->getBottom()) < 15)
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{
@@ -177,7 +178,8 @@ void Bird::restoreLocation()
 
 void Bird::onCollision(MovableRect* other, float collisionTime, int nx, int ny)
 {
-	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive())
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive()
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{

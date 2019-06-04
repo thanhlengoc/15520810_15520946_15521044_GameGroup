@@ -21,14 +21,29 @@ void Player::onUpdate(float dt)
 	setInterval(60);
 	action = PLAYER_ACTION_STAND;
 
+	if (ScoreBar::getInstance()->getHealth() <= 0)
+	{
+		if (lostHeal)
+		{
+			deadDelay.start();
+			isDead = true;
+			lostHeal = false;
+		}
+	}
+
 	if (isHurtLeft || isHurtRight)
 	{
+		if (decreaseHeal)
+		{
+			ScoreBar::getInstance()->decreaseHealth(1);
+			decreaseHeal = false;
+		}
 		setIsOnLadder(false);
 		setAy(GLOBALS_D("object_default_ay"));
 		setPhysicsEnable(true);
 		if (hurtDelay.isTerminated())
 		{
-			ScoreBar::getInstance()->decreaseHealth(1);
+			decreaseHeal = true;
 			setAnimation(PLAYER_ACTION_STAND);
 			isHurtLeft = isHurtRight = false;
 		}
@@ -79,32 +94,36 @@ void Player::onUpdate(float dt)
 		return;
 	}
 	
-	
 	if (isDead)
 	{
 		setAnimation(PLAYER_ACTION_DIE);
 		setDx(0);
 		setVx(0);
 		setDy(0);
-		setVy(60);
+		setVy(0);
 		setHeight(getCurrentFrameHeight());
 
 		deadDelay.update();
 		if (deadDelay.isTerminated())
 		{
+			setRenderActive(false);
 			int currentSpaceIndex = changeSpace->getCurrentSpaceIndex();
 			changeSpace->setCurrentSpace(currentSpaceIndex);
 			changeSpace->resetLocationInSpace();
-			
-			//ScoreBar::getInstance()->restoreHealth();
+
+			ScoreBar::getInstance()->restoreHealth();
 			//ScoreBar::getInstance()->restoreBossHealth();
-			
+
 			endDeadTime = true;
 			isDead = false;
+			lostHeal = true;
+			setDirection(TEXTURE_DIRECTION_RIGHT);
+			setRenderActive(true);
 		}
+		//PhysicsObject::onUpdate(dt);
 		return;
 	}
-	
+
 	if (getIsLastFrameAnimationDone() && isOnAttack)
 	{
 		setIsOnAttack(false);
@@ -326,6 +345,8 @@ Player::Player()
 	deadDelay.init(GLOBALS_D("player_dead_delay"));
 	hurtDelay.init(1200);
 	endDeadTime = false;
+	decreaseHeal = true;
+	lostHeal = true;
 }
 
 

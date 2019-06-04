@@ -30,7 +30,9 @@ class Player :
 	static Player* instance;
 	KEY* key;
 	bool isOnAttack;
-	
+	bool decreaseHeal;
+	bool lostHeal;
+
 	DelayTime deadDelay;
 	DelayTime hurtDelay;
 	

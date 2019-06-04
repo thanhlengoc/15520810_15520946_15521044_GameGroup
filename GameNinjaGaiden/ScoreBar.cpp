@@ -133,6 +133,7 @@ void ScoreBar::render()
 
 void ScoreBar::update()
 {
+	player = Player::getInstance();
 	timeGame.update();
 	if (timeGame.isTerminated())
 	{

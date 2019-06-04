@@ -105,7 +105,8 @@ void Machine::onUpdate(float dt)
 
 void Machine::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
-	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive())
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive()
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{

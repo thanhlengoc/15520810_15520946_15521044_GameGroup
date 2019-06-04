@@ -28,9 +28,9 @@ void SwordMan::onUpdate(float dt)
 		setRenderActive(true);
 		action = SWORDMAN_ACTION_RUN_ATTACK;
 
-		if (isAlive() && !player->isHurtLeft && !player->isHurtRight)
+		if (isAlive() && !player->isHurtLeft && !player->isHurtRight && !player->isDead)
 		{
-			if (abs(getMidX() - player->getMidX()) <= 2 && abs(getMidY() - player->getMidY()) <= 2 && !player->isHurtLeft && !player->isHurtRight)
+			if (abs(getMidX() - player->getMidX()) <= 2 && abs(getMidY() - player->getMidY()) <= 2)
 			{
 				if ((getMidX() - player->getMidX()) > 0)
 				{
@@ -212,7 +212,8 @@ void SwordMan::onCollision(MovableRect * other, float collisionTime, int nx, int
 	{
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
-	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive())
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive()
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{

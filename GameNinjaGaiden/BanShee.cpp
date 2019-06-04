@@ -80,6 +80,30 @@ void BanShee::onUpdate(float dt)
 					}
 					setVx(directVx * 31);
 				}
+				else if (3343 < getMidX() && getMidX() < 3392)
+				{
+					if (getMidX() <= 3355)
+					{
+						directVx = 1;
+					}
+					if (getMidX() >= 3385)
+					{
+						directVx = -1;
+					}
+					setVx(directVx * GLOBALS_D("enemy_vx"));
+				}
+				else if (3445 < getMidX() && getMidX() < 3486)
+				{
+					if (getMidX() <= 3455)
+					{
+						directVx = 1;
+					}
+					if (getMidX() >= 3482)
+					{
+						directVx = -1;
+					}
+					setVx(directVx * GLOBALS_D("enemy_vx"));
+				}
 				PhysicsObject::onUpdate(dt);
 				return;
 			}
@@ -124,7 +148,8 @@ void BanShee::onUpdate(float dt)
 
 void BanShee::onCollision(MovableRect * other, float collisionTime, int nx, int ny)
 {
-	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive())
+	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive()
+		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
 		if ((getMidX() - player->getMidX()) > 0)
 		{
