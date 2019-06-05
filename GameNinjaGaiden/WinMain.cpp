@@ -53,6 +53,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			GameDirectX::getInstance()->EndGraphics();// ket thuc ve len backbuffer
 			GameDirectX::getInstance()->PresentBackBuffer();// ve backbuffer len man hinh
 		}
+		else {
+			Sleep(timePerFrame - deltaTime);
+		}
 
 	}
 	return nCmdShow;
