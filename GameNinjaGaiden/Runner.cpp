@@ -9,15 +9,6 @@ void Runner::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
-	if (player->isDead)
-	{
-		setAnimation(RUNNER_WAIT);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -27,6 +18,7 @@ void Runner::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	float distanceVisible = getMidX() - camera->getMidX();
 	if (getDirection() == 1)
 	{
@@ -105,6 +97,17 @@ void Runner::onUpdate(float dt)
 			return;
 		}
 	}
+	if (player->isDead || player->getFreezeTime())
+	{
+		setPauseAnimation(true);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+	else
+		setPauseAnimation(false);
+
 	if (getRenderActive())
 	{
 		if ((3906 <= getMidX() && getMidX() <= 3908)||(4065 <= getMidX() && getMidX() <= 4067))

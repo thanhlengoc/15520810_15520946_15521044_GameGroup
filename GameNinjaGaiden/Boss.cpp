@@ -16,12 +16,14 @@ void Boss::onUpdate(float dt)
 
 		if (player->isDead)
 		{
-			setAnimation(BOSS_STAND);
+			setPauseAnimation(true);
 			setVx(0);
 			setVy(0);
 			PhysicsObject::onUpdate(dt);
 			return;
 		}
+		else
+			setPauseAnimation(false);
 
 		if (abs(getMidX() - player->getMidX()) < 36 && player->isAttack() && (abs(getBottom() - player->getBottom()) < 10)
 			&& getRenderActive())

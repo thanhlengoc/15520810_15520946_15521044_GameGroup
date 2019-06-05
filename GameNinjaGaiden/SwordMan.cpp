@@ -9,14 +9,6 @@ void SwordMan::onUpdate(float dt)
 
 	action = SWORDMAN_ACTION_STAND;
 
-	if (player->isDead)
-	{
-		setAnimation(SWORDMAN_ACTION_STAND);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -25,6 +17,7 @@ void SwordMan::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	if (abs(getMidX() - camera->getMidX()) > 110)
 	{
 		setAlive(true);
@@ -87,6 +80,16 @@ void SwordMan::onUpdate(float dt)
 				}
 			}
 		}
+		if (player->isDead || player->getFreezeTime())
+		{
+			setPauseAnimation(true);
+			setVx(0);
+			setVy(0);
+			PhysicsObject::onUpdate(dt);
+			return;
+		}
+		else
+			setPauseAnimation(false);
 
 		setInterval(200);
 		if (0 < getMidX() && getMidX() < 600)

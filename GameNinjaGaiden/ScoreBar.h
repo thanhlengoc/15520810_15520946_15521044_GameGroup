@@ -11,13 +11,13 @@ struct SCORE_LOCATION
 
 class ScoreBar 
 {
-	//SubWeaponItem* subWeapon;
+	int weapon;
 	Sprite* miscSprite;
 	GameTexture* scoreBar;
 	void renderNumber(int num, int x, int y, int maxLength);
 	void renderHealth();
 	void renderBossHealth();
-	//void renderSubWeapon();
+	void renderWeapon();
 	static ScoreBar* instance;
 	SCORE_LOCATION lifeLocation;
 	SCORE_LOCATION heartLocation;
@@ -45,7 +45,7 @@ public:
 	void render();
 	void update();
 
-	//void setSubWeapon(SubWeaponItem* subWeapon);
+	void setWeapon(int weapon);
 
 	void restoreHealth();
 	void restoreBossHealth();

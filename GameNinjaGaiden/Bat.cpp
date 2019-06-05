@@ -12,6 +12,7 @@ void Bat::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	float distanceVisible = getMidX() - camera->getMidX();
 	if (distanceVisible >= 110)
 	{
@@ -44,6 +45,17 @@ void Bat::onUpdate(float dt)
 			return;
 		}
 	}
+	if (player->isDead || player->getFreezeTime())
+	{
+		setPauseAnimation(true);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+	else
+		setPauseAnimation(false);
+
 	PhysicsObject::onUpdate(dt);
 }
 

@@ -151,7 +151,6 @@
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="GameUtils.h" />
     <ClInclude Include="Gunner.h" />
-    <ClInclude Include="Item.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="MachineGun.h" />
@@ -195,7 +194,6 @@
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GameUtils.cpp" />
     <ClCompile Include="Gunner.cpp" />
-    <ClCompile Include="Item.cpp" />
     <ClCompile Include="KEY.cpp" />
     <ClCompile Include="MachineGun.cpp" />
     <ClCompile Include="MovableRect.cpp" />

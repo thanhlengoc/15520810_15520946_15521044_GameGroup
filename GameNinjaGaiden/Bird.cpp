@@ -4,15 +4,6 @@ void Bird::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
-	if (player->isDead)
-	{
-		setAnimation(BIRD_WAIT);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -22,6 +13,7 @@ void Bird::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	float distanceVisible = getMidX() - camera->getMidX();
 	if (getDirection() == 1)
 	{
@@ -100,82 +92,94 @@ void Bird::onUpdate(float dt)
 			return;
 		}
 	}
+
+	if (player->isDead || player->getFreezeTime())
+	{
+		setPauseAnimation(true);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+	else
+		setPauseAnimation(false);
+
 	if (getRenderActive())
 	{
-			switch (birdState)
+		switch (birdState)
+		{
+		case BIRD_WAIT:
+			if (getX() - player->getX() < 100)
+				setState(BIRD_FLY);
+			break;
+		case BIRD_FLY:
+			setVy(player->getY() - getY() - 80);
+			setVx(player->getX() - getX() - 80);
+			if (player->getY() - getY() > 10 && player->getY() - getY() > 10)
 			{
-			case BIRD_WAIT:
-				if (getX() - player->getX() < 100)
-					setState(BIRD_FLY);
-				break;
-			case BIRD_FLY:
-				setVy(player->getY() - getY() - 80);
-				setVx(player->getX() - getX() - 80);
-				if (player->getY() - getY() > 10 && player->getY() - getY() > 10)
-				{
-					setAx(50);
-					setAy(10);
-					setVy(-20);
-				}
-				if (player->getX() - getX() > 40)
-				{
-					setVx((player->getMidX() - getMidX()) * 2);
-					setVy((50 - getMidY()) * 2);
-					setDirection(TEXTURE_DIRECTION_LEFT);
-					setState(BIRD_FIRST_FLY);
-				}
-				break;
-			case BIRD_FIRST_FLY:
-				if (getMidX() > player->getMidX())
-				{
-					setAy(-50);
-					setAx(-100);
-					setState(BIRD_FLY_DOWN_RIGHT);
-				}
-				break;
-			case BIRD_FLY_DOWN_RIGHT:
-				setFollowPlayer();
-				if (getMidY() >= 80)
-				{
-					setVy(-50);
-					setVx(50);
-					setState(BIRD_FLY_UP_RIGHT);
-				}
-				break;
-			case BIRD_FLY_UP_RIGHT:
-				if (getY() < 10) {
-					setVx(-(getMidX() - player->getMidX()) * 2);
-					setVy((50 - getMidY()) * 2);
-					setState(BIRD_SECOND_FLY);
-				}
-				break;
-			case BIRD_SECOND_FLY:
-				if (getMidX() < player->getMidX())
-				{
-					setAy(-50);
-					setAx(100);
-					setState(BIRD_FLY_DOWN_LEFT);
-				}
-				break;
-			case BIRD_FLY_DOWN_LEFT:
-				setFollowPlayer();
-				if (getMidY() >= 80)
-				{
-					setVy(-50);
-					setVx(-50);
-					setState(BIRD_FLY_UP_LEFT);
-				}
-				break;
-			case BIRD_FLY_UP_LEFT:
-				if (getY() < 10) {
-					setVx((player->getMidX() - getMidX()) * 2);
-					setVy((50 - getMidY()) * 2);
-					setState(BIRD_FIRST_FLY);
-				}
-				break;
+				setAx(50);
+				setAy(10);
+				setVy(-20);
 			}
-			setAnimation(BIRD_FLY);
+			if (player->getX() - getX() > 40)
+			{
+				setVx((player->getMidX() - getMidX()) * 2);
+				setVy((50 - getMidY()) * 2);
+				setDirection(TEXTURE_DIRECTION_LEFT);
+				setState(BIRD_FIRST_FLY);
+			}
+			break;
+		case BIRD_FIRST_FLY:
+			if (getMidX() > player->getMidX())
+			{
+				setAy(-50);
+				setAx(-100);
+				setState(BIRD_FLY_DOWN_RIGHT);
+			}
+			break;
+		case BIRD_FLY_DOWN_RIGHT:
+			setFollowPlayer();
+			if (getMidY() >= 80)
+			{
+				setVy(-50);
+				setVx(50);
+				setState(BIRD_FLY_UP_RIGHT);
+			}
+			break;
+		case BIRD_FLY_UP_RIGHT:
+			if (getY() < 10) {
+				setVx(-(getMidX() - player->getMidX()) * 2);
+				setVy((50 - getMidY()) * 2);
+				setState(BIRD_SECOND_FLY);
+			}
+			break;
+		case BIRD_SECOND_FLY:
+			if (getMidX() < player->getMidX())
+			{
+				setAy(-50);
+				setAx(100);
+				setState(BIRD_FLY_DOWN_LEFT);
+			}
+			break;
+		case BIRD_FLY_DOWN_LEFT:
+			setFollowPlayer();
+			if (getMidY() >= 80)
+			{
+				setVy(-50);
+				setVx(-50);
+				setState(BIRD_FLY_UP_LEFT);
+			}
+			break;
+		case BIRD_FLY_UP_LEFT:
+			if (getY() < 10) {
+				setVx((player->getMidX() - getMidX()) * 2);
+				setVy((50 - getMidY()) * 2);
+				setState(BIRD_FIRST_FLY);
+			}
+			break;
 		}
+		setAnimation(BIRD_FLY);
+	}
 	PhysicsObject::onUpdate(dt);
 }
 

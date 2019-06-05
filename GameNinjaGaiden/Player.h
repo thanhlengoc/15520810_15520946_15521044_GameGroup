@@ -33,9 +33,12 @@ class Player :
 	bool decreaseHeal;
 	bool lostHeal;
 	bool restartTime;
+	bool isFreezeTime;
+	bool isStartFreezeTime;
 
 	DelayTime deadDelay;
 	DelayTime hurtDelay;
+	DelayTime freezeTimeDelay;
 
 public:
 	static Player* getInstance();
@@ -47,6 +50,9 @@ public:
 	bool isDead;
 	bool endDeadTime;
 	void startDeadTime();
+
+	void setFreezeTime(bool isFreezeTime);
+	bool getFreezeTime();
 
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();

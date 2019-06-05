@@ -6,14 +6,6 @@ void Machine::onUpdate(float dt)
 	MACHINE_GUN_ACTION action;
 	setVx(0);
 
-	if (player->isDead)
-	{
-		setAnimation(MACHINE_GUN_WAIT);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -21,6 +13,7 @@ void Machine::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	if (abs(getMidX() - camera->getMidX()) > 110)
 	{
 		setAlive(true);
@@ -54,6 +47,17 @@ void Machine::onUpdate(float dt)
 				return;
 			}
 		}
+
+		if (player->isDead || player->getFreezeTime())
+		{
+			setPauseAnimation(true);
+			setVx(0);
+			setVy(0);
+			PhysicsObject::onUpdate(dt);
+			return;
+		}
+		else
+			setPauseAnimation(false);
 
 		if (1129 < getMidX() && getMidX() < 1403)
 		{

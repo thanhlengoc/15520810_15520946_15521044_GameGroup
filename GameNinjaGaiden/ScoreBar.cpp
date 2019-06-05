@@ -51,17 +51,15 @@ void ScoreBar::renderBossHealth()
 	}
 }
 
-/*
-void ScoreBar::renderSubWeapon()
+void ScoreBar::renderWeapon()
 {
-	if (this->subWeapon != 0)
+	if (weapon != 0)
 	{
-		this->subWeapon->getSprite()->render(subWeaponLocation.X,
-			subWeaponLocation.Y,
-			subWeapon->getAction(), 0);
+		miscSprite->render(subWeaponLocation.X,
+			subWeaponLocation.Y-3,
+			weapon, 0);
 	}
 }
-*/
 
 ScoreBar * ScoreBar::instance = 0;
 ScoreBar * ScoreBar::getInstance()
@@ -111,7 +109,7 @@ ScoreBar::ScoreBar()
 	setTime(150);
 	setPlayerLife(2);
 	setHeartCount(0);
-	//setSubWeapon(0);
+	setWeapon(0);
 }
 
 
@@ -129,7 +127,7 @@ void ScoreBar::render()
 	renderNumber(time, timeLocation.X, timeLocation.Y, timeLocation.MaxLength);
 	renderHealth();
 	renderBossHealth();
-	//renderSubWeapon();
+	renderWeapon();
 }
 
 
@@ -144,12 +142,10 @@ void ScoreBar::update()
 	}
 }
 
-/*
-void ScoreBar::setSubWeapon(SubWeaponItem * subWeapon)
+void ScoreBar::setWeapon(int weapon)
 {
-	this->subWeapon = subWeapon;
+	this->weapon = weapon;
 }
-*/
 
 void ScoreBar::restoreHealth()
 {

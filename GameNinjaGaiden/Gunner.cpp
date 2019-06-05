@@ -13,6 +13,7 @@ void Gunner::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	if (abs(getMidX() - camera->getMidX()) > 110)
 	{
 		setAlive(true);
@@ -46,6 +47,18 @@ void Gunner::onUpdate(float dt)
 				return;
 			}
 		}
+
+		if (player->isDead || player->getFreezeTime())
+		{
+			setPauseAnimation(true);
+			setVx(0);
+			setVy(0);
+			PhysicsObject::onUpdate(dt);
+			return;
+		}
+		else
+			setPauseAnimation(false);
+
 		if (getRenderActive() && isAlive())
 		{
 			if (isShot)

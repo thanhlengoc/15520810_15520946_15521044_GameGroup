@@ -4,15 +4,6 @@ void Dog::onUpdate(float dt)
 {
 	Camera* camera = Camera::getInstance();
 
-	if (player->isDead)
-	{
-		setAnimation(DOG_WAIT);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -22,6 +13,7 @@ void Dog::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+
 	float distanceVisible = getMidX() - camera->getMidX();
 	if (getDirection()==1)
 	{
@@ -100,6 +92,18 @@ void Dog::onUpdate(float dt)
 			return;
 		}
 	}
+
+	if (player->isDead || player->getFreezeTime())
+	{
+		setPauseAnimation(true);
+		setVx(0);
+		setVy(0);
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
+	else
+		setPauseAnimation(false);
+
 	if (getRenderActive())
 	{
 		if (getIsOnGround())

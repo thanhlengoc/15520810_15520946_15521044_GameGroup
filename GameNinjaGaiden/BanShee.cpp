@@ -7,15 +7,6 @@ void BanShee::onUpdate(float dt)
 
 	setAy(GLOBALS_D("weapon_throw_ay"));
 
-	if (player->isDead)
-	{
-		setAnimation(BANSHEE_WAIT);
-		setVx(0);
-		setVy(0);
-		PhysicsObject::onUpdate(dt);
-		return;
-	}
-
 	if (player->endDeadTime)
 	{
 		restoreLocation();
@@ -26,7 +17,8 @@ void BanShee::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
-	if (abs(getMidX() - camera->getMidX()) > 110)
+
+	if (abs(getMidX() - camera->getMidX()) > 108)
 	{
 		setAlive(true);
 		setRenderActive(false);
@@ -62,7 +54,19 @@ void BanShee::onUpdate(float dt)
 			}
 		}
 
+		if (player->isDead || player->getFreezeTime())
+		{
+			setPauseAnimation(true);
+			setVx(0);
+			setVy(0);
+			PhysicsObject::onUpdate(dt);
+			return;
+		}
+		else
+			setPauseAnimation(false);
+
 		if (getRenderActive() && isAlive()) {
+			
 			if (weapon_throw->getRenderActive())
 			{
 				setAnimation(BANSHEE_RUN);

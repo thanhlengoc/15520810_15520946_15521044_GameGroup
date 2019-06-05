@@ -21,6 +21,20 @@ void Player::onUpdate(float dt)
 	setInterval(60);
 	action = PLAYER_ACTION_STAND;
 
+	if (getFreezeTime())
+	{
+		if (!isStartFreezeTime)
+		{
+			freezeTimeDelay.start();
+			isStartFreezeTime = true;
+		}
+		freezeTimeDelay.update();
+		if (freezeTimeDelay.isTerminated())
+		{
+			setFreezeTime(false);
+			isStartFreezeTime = false;
+		}
+	}
 	switch (changeSpace->getCurrentSpaceIndex())
 	{
 	case 0:
@@ -145,6 +159,7 @@ void Player::onUpdate(float dt)
 
 			ScoreBar::getInstance()->restoreHealth();
 			ScoreBar::getInstance()->restoreBossHealth();
+			ScoreBar::getInstance()->setWeapon(0);
 
 			int countLife = ScoreBar::getInstance()->getPlayerLife();
 			if (countLife == 0)
@@ -366,6 +381,16 @@ void Player::startDeadTime()
 	deadDelay.start();
 }
 
+void Player::setFreezeTime(bool isFreezeTime)
+{
+	this->isFreezeTime = isFreezeTime;
+}
+
+bool Player::getFreezeTime()
+{
+	return isFreezeTime;
+}
+
 void Player::setIsOnAttack(bool isOnAttack)
 {
 	this->isOnAttack = isOnAttack;
@@ -397,6 +422,9 @@ Player::Player()
 	decreaseHeal = true;
 	lostHeal = true;
 	restartTime = true;
+	setFreezeTime(false);
+	isStartFreezeTime = false;
+	freezeTimeDelay.init(6000);
 }
 
 
