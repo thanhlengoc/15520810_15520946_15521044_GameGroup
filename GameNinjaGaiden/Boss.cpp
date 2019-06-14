@@ -125,8 +125,14 @@ void Boss::onUpdate(float dt)
 
 			if (getIsLastFrameAnimationDone())
 				countEnd++;
+
 			if (countEnd >= 3)
+			{
 				setRenderActive(false);
+				if(!isDead)
+					ScoreBar::getInstance()->increaseScore(1000);
+				isDead = true;
+			}
 			break;
 		}
 	}
@@ -169,6 +175,7 @@ Boss::Boss()
 	weapon_three = WeaponShotThree::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	isInjureActive = true;
+	isDead = false;
 }
 
 Boss::~Boss()

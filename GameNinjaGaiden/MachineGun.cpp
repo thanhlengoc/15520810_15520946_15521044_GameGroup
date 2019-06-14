@@ -1,4 +1,5 @@
 #include "MachineGun.h"
+#include "ScoreBar.h"
 
 void Machine::onUpdate(float dt)
 {
@@ -43,6 +44,7 @@ void Machine::onUpdate(float dt)
 				restoreLocation();
 				setRenderActive(false);
 				setAlive(false);
+				ScoreBar::getInstance()->increaseScore(200);
 				PhysicsObject::onUpdate(dt);
 				return;
 			}

@@ -101,6 +101,16 @@ void PhysicsObject::setIsOnLadder(bool isOnLadder)
 	this->isOnLadder = isOnLadder;
 }
 
+bool PhysicsObject::getIsOnCliff()
+{
+	return isOnCliff;
+}
+
+void PhysicsObject::setIsOnCliff(bool isOnCliff)
+{
+	this->isOnCliff = isOnCliff;
+}
+
 bool PhysicsObject::getIsOnDistanceMove()
 {
 	return isOnDistanceMove;

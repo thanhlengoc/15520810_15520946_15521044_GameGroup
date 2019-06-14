@@ -198,6 +198,12 @@
     <ClInclude Include="WeaponShotThree.h">
       <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -319,6 +325,12 @@
     </ClCompile>
     <ClCompile Include="WeaponShotThree.cpp">
       <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.cpp">
+      <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.cpp">
+      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

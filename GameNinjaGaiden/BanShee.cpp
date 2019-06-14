@@ -1,4 +1,5 @@
 #include "BanShee.h"
+#include "ScoreBar.h"
 
 void BanShee::onUpdate(float dt)
 {
@@ -44,11 +45,12 @@ void BanShee::onUpdate(float dt)
 					weapon_player->setLocation(getMidX() + 10, getY());
 				}
 				weapon_player->startAnimationWeapon();
-
 				restoreLocation();
 				weapon_throw->setRenderActive(false);
 				setRenderActive(false);
 				setAlive(false);
+
+				ScoreBar::getInstance()->increaseScore(300);
 				PhysicsObject::onUpdate(dt);
 				return;
 			}

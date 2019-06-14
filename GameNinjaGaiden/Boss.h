@@ -23,6 +23,7 @@ class Boss : public PhysicsObject
 	BOSS_STATE bossState;
 	bool isInjureActive;
 	int countEnd;
+	bool isDead;
 public:
 	Player* player;
 	WeaponShot* weapon_first;

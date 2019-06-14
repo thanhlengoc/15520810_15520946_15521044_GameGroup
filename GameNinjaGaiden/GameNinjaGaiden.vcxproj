@@ -128,6 +128,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.h" />
+    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanShee.h" />
     <ClInclude Include="BaseObject.h" />
@@ -175,6 +177,8 @@
     <ClInclude Include="SwordMan.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanShee.cpp" />
     <ClCompile Include="BaseObject.cpp" />

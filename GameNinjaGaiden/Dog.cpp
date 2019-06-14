@@ -1,4 +1,5 @@
 #include "Dog.h"
+#include "ScoreBar.h"
 
 void Dog::onUpdate(float dt)
 {
@@ -88,6 +89,7 @@ void Dog::onUpdate(float dt)
 			setVx(0);
 			setAlive(false);
 			setRenderActive(false);
+			ScoreBar::getInstance()->increaseScore(300);
 			PhysicsObject::onUpdate(dt);
 			return;
 		}

@@ -184,6 +184,8 @@ void World::Init(const char * folderPath)
 
 void World::update(float dt)
 {
+	//Grid::getInstance()->update(allObjects, objectsInCamera);
+
 	KEY* key = KEY::getInstance();
 	key->update();
 	/* chuyển space khi nhấn phím */

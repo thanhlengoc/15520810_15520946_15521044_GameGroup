@@ -232,6 +232,30 @@ void Player::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+	if (getIsOnCliff())
+	{
+		setHeight(GLOBALS_D("player_height"));
+		setAy(0);
+
+		if (key->isJumpDown)
+		{
+			setVy(vy);
+			setVx(-getDirection() * vx);
+			setIsOnCliff(false);
+			setAy(GLOBALS_D("object_default_ay"));
+			setPhysicsEnable(true);
+		}
+		else
+		{
+			setDx(0);
+			setDy(0);
+			setVx(0);
+			setVy(0);
+			setAnimation(PLAYER_ACTION_CLIMB_WAIT);
+		}
+		PhysicsObject::onUpdate(dt);
+		return;
+	}
 	if (getIsOnGround())
 	{
 		setHeight(GLOBALS_D("player_height"));
@@ -350,6 +374,11 @@ void Player::onCollision(MovableRect * other, float collisionTime, int nx, int n
 			changeSpace->setCurrentSpace(4);
 			changeSpace->resetLocationInSpace();
 		}
+	}
+	if (other->getCollisionType() == COLLISION_TYPE_CLIFF)
+	{
+		setIsOnCliff(true);
+		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
 	if (other->getCollisionType() == COLLISION_TYPE_LADDER)
 	{
