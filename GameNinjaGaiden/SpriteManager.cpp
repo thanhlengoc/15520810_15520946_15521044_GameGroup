@@ -39,6 +39,7 @@ SpriteManager::SpriteManager()
 	sprites[SPRITE_INFO_BOSS]->InitFromFile("Image/Animation/boss/out/image.png", "Image/Animation/boss/out/boss.info.dat");
 	sprites[SPRITE_INFO_BOSS_WEAPON]->InitFromFile("Image/Animation/boss_weapon/out/image.png", "Image/Animation/boss_weapon/out/boss_weapon.info.dat");
 	sprites[SPRITE_INFO_OTHER_SHOT]->InitFromFile("Image/Animation/other_shot/out/image.png", "Image/Animation/other_shot/out/other_shot.info.dat");
+	sprites[SPRITE_INFO_WEAPON_STAR]->InitFromFile("Image/Animation/weapon_star/out/image.png", "Image/Animation/weapon_star/out/weapon_star.info.dat");
 }
 SpriteManager::~SpriteManager()
 {

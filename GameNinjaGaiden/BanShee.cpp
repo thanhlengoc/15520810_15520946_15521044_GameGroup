@@ -176,6 +176,25 @@ void BanShee::onCollision(MovableRect * other, float collisionTime, int nx, int 
 			player->isHurtLeft = true;
 		}
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_STAR && isAlive())
+	{
+		weapon_player->setRenderActive(true);
+		if (getDirection() == 1)
+		{
+			weapon_player->setLocation(getMidX() + 15, getY());
+		}
+		else
+		{
+			weapon_player->setLocation(getMidX() + 10, getY());
+		}
+		weapon_player->startAnimationWeapon();
+		restoreLocation();
+		weapon_throw->setRenderActive(false);
+		setRenderActive(false);
+		setAlive(false);
+
+		ScoreBar::getInstance()->increaseScore(300);
+	}
 	if (other->getCollisionType() == COLLISION_TYPE_GROUND)
 	{
 		preventMovementWhenCollision(collisionTime, nx, ny);
@@ -203,6 +222,7 @@ BanShee::BanShee()
 	player = Player::getInstance();
 	weapon_player = WeaponPlayer::getInstance();
 	weapon_throw = WeaponThrow::getInstance();
+	weapon_star = WeaponStar::getInstance();
 	numberThrow = 1;
 	directVx = 1;
 }

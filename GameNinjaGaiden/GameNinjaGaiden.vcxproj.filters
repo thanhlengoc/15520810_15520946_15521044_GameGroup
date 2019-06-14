@@ -61,6 +61,9 @@
     <Filter Include="Header Files\Ultils">
       <UniqueIdentifier>{e92e8177-f996-4fe8-86df-821900ac0ac3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Grid">
+      <UniqueIdentifier>{618e8faa-0197-4f31-8924-da0466c5ab98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -198,11 +201,14 @@
     <ClInclude Include="WeaponShotThree.h">
       <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.h">
-      <Filter>Header Files\Object</Filter>
+    <ClInclude Include="WeaponStar.h">
+      <Filter>Header Files\Player\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.h">
-      <Filter>Header Files\Object</Filter>
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files\Grid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -326,11 +332,14 @@
     <ClCompile Include="WeaponShotThree.cpp">
       <Filter>Header Files\Enemy\Weapon\MachineGun</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.cpp">
-      <Filter>Header Files\Object</Filter>
+    <ClCompile Include="WeaponStar.cpp">
+      <Filter>Header Files\Player\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.cpp">
-      <Filter>Header Files\Object</Filter>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Header Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Header Files\Grid</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

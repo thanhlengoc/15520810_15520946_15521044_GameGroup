@@ -16,7 +16,10 @@ public:
 		isPreviousAttackDown,
 		isSpace1Down,
 		isSpace2Down,
-		isSpace3Down;
+		isSpace3Down,
+		isThrowingPress,
+		isThrowingDown,
+		isPreviousThrowingDown;
 
 	static KEY* instance;
 	static KEY* getInstance();

@@ -149,6 +149,21 @@ void Boss::onCollision(MovableRect* other, float collisionTime, int nx, int ny)
 		setFollowPlayer();
 		setVy(0);
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_STAR)
+	{
+		weapon_player->setRenderActive(true);
+		if (getDirection() == 1)
+		{
+			weapon_player->setLocation(getMidX() + 15, getY() + 15);
+		}
+		else
+		{
+			weapon_player->setLocation(getMidX() + 10, getY() + 15);
+		}
+		weapon_player->startAnimationWeapon();
+
+		ScoreBar::getInstance()->increaseBossHealth(-1);
+	}
 }
 
 void Boss::setFollowPlayer()

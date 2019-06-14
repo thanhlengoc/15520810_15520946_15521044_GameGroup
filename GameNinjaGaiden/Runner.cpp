@@ -138,6 +138,25 @@ void Runner::onCollision(MovableRect * other, float collisionTime, int nx, int n
 	{
 		setAlive(false);
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_STAR && getRenderActive())
+	{
+		weapon_player->setRenderActive(true);
+		if (getDirection() == 1)
+		{
+			weapon_player->setLocation(getMidX() + 15, getY() + 15);
+		}
+		else
+		{
+			weapon_player->setLocation(getMidX() + 10, getY() + 15);
+		}
+		weapon_player->startAnimationWeapon();
+
+		restoreLocation();
+		setVx(0);
+		setAlive(false);
+		setRenderActive(false);
+		ScoreBar::getInstance()->increaseScore(300);
+	}
 	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive()
 		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{

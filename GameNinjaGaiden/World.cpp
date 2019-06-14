@@ -19,6 +19,8 @@
 #include"Boss.h"
 #include"WeaponShotSecond.h"
 #include"WeaponShotThree.h"
+#include"WeaponStar.h"
+#include"Grid.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -34,11 +36,14 @@ void World::Init(const char * tilesheetPath,
 	WeaponThrow* weapon_throw = WeaponThrow::getInstance();
 	WeaponShotSecond* weapon_shot_second = WeaponShotSecond::getInstance();
 	WeaponShotThree* weapon_shot_three = WeaponShotThree::getInstance();
+	WeaponStar* weapon_star = WeaponStar::getInstance();
 
 	/* khởi tạo tilemap */
 	tilemap.Init(tilesheetPath, matrixPath);
 
 	int worldHeight = tilemap.getWorldHeight();
+	string GridPath = "Image/Map/Map/grid.dat";
+	Grid::getInstance()->initGrid(GridPath, worldHeight);
 
 	for (size_t i = 0; i < COLLISION_TYPE_COUNT; i++)
 	{
@@ -100,6 +105,7 @@ void World::Init(const char * tilesheetPath,
 
 		/* đọc thông số của đối tượng */
 		obj->onInitFromFile(fs, worldHeight);
+
 		if (id >= 0)
 		{
 			/* nếu id đối tượng không âm tức đối tượng có sprite ta gán sprite cho nó */
@@ -184,8 +190,6 @@ void World::Init(const char * folderPath)
 
 void World::update(float dt)
 {
-	//Grid::getInstance()->update(allObjects, objectsInCamera);
-
 	KEY* key = KEY::getInstance();
 	key->update();
 	/* chuyển space khi nhấn phím */
@@ -234,6 +238,7 @@ void World::update(float dt)
 		Collision::CheckCollision(WeaponThrow::getInstance(), Player::getInstance());
 		Collision::CheckCollision(WeaponShotSecond::getInstance(), Player::getInstance());
 		Collision::CheckCollision(WeaponShotThree::getInstance(), Player::getInstance());
+		Collision::CheckCollision(WeaponStar::getInstance(), allObjects[i]);
 	}
 	/* xét va chạm cho các loại đối tượng với nhau */
 	for (size_t i = 0; i < collisionTypeCollides.size(); i++)
@@ -254,7 +259,6 @@ void World::update(float dt)
 				Collision::CheckCollision(collection1->at(i1), collection2->at(i2));
 			}
 		}
-
 	}
 
 	WeaponPlayer::getInstance()->update(dt);
@@ -262,6 +266,7 @@ void World::update(float dt)
 	WeaponThrow::getInstance()->update(dt);
 	WeaponShotSecond::getInstance()->update(dt);
 	WeaponShotThree::getInstance()->update(dt);
+	WeaponStar::getInstance()->update(dt);
 	Player::getInstance()->update(dt);
 	Camera::getInstance()->update();
 }
@@ -308,6 +313,7 @@ void World::render()
 	WeaponThrow::getInstance()->render(Camera::getInstance());
 	WeaponShotSecond::getInstance()->render(Camera::getInstance());
 	WeaponShotThree::getInstance()->render(Camera::getInstance());
+	WeaponStar::getInstance()->render(Camera::getInstance());
 }
 
 World::World()

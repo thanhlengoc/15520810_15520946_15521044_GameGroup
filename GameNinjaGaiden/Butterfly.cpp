@@ -54,8 +54,6 @@ void Butterfly::onUpdate(float dt)
 				setAnimation(BUTTERFLY_BonusRed);
 			else if (1149 < getMidX() && getMidX() < 1164)
 				setAnimation(BUTTERFLY_SpiritualStrengthRed);
-			else if (1183 < getMidX() && getMidX() < 1198)
-				setAnimation(BUTTERFLY_TheArtoftheFireWheel);
 			else if (1325 < getMidX() && getMidX() < 1340)
 				setAnimation(BUTTERFLY_SpiritualStrengthRed);
 			else if (1656 < getMidX() && getMidX() < 1671)
@@ -98,6 +96,8 @@ void Butterfly::onUpdate(float dt)
 				break;
 			case BUTTERFLY_ThrowingStar:
 				ScoreBar::getInstance()->setWeapon(MISC_SPRITE_ID_THROWING_STAR);
+				player->setStarNormal(true);
+				player->setStarWindmill(false);
 				break;
 			default:
 				break;

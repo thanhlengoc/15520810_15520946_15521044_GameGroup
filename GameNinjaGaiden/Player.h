@@ -5,7 +5,7 @@
 #include"DelayTime.h"
 #include"World.h"
 #include"ChangeSpace.h"
-#include"WeaponShot.h"
+#include"WeaponStar.h"
 
 enum PLAYER_ACTION
 {
@@ -28,6 +28,7 @@ class Player :
 	public PhysicsObject
 {
 	static Player* instance;
+	WeaponStar* weaponStar;
 	KEY* key;
 	bool isOnAttack;
 	bool decreaseHeal;
@@ -35,6 +36,9 @@ class Player :
 	bool restartTime;
 	bool isFreezeTime;
 	bool isStartFreezeTime;
+	bool isOnThrowing;
+	bool isStarNormal;
+	bool isStarWindmill;
 
 	DelayTime deadDelay;
 	DelayTime hurtDelay;
@@ -53,6 +57,12 @@ public:
 
 	void setFreezeTime(bool isFreezeTime);
 	bool getFreezeTime();
+
+	void setStarNormal(bool isStarNormal);
+	bool getStarNormal();
+
+	void setStarWindmill(bool isStarWindmill);
+	bool getStarWindmill();
 
 	void setIsOnAttack(bool isOnAttack);
 	bool isAttack();

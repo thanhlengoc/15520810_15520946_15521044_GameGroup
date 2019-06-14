@@ -3,6 +3,7 @@
 #include"Player.h"
 #include"WeaponPlayer.h"
 #include"WeaponShotSecond.h"
+#include"WeaponShot.h"
 
 enum GUNNER_ACTION {
 	GUNNER_WAIT,

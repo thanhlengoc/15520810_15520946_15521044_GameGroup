@@ -192,6 +192,13 @@ void Player::onUpdate(float dt)
 	{
 		setIsOnAttack(true);
 	}
+	if (key->isThrowingPress)
+	{
+		if (getStarNormal() || getStarWindmill())
+			isOnThrowing = true;
+		else
+			isOnThrowing = false;
+	}
 
 	if (getIsOnLadder())
 	{
@@ -232,6 +239,7 @@ void Player::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+	/*
 	if (getIsOnCliff())
 	{
 		setHeight(GLOBALS_D("player_height"));
@@ -256,6 +264,7 @@ void Player::onUpdate(float dt)
 		PhysicsObject::onUpdate(dt);
 		return;
 	}
+	*/
 	if (getIsOnGround())
 	{
 		setHeight(GLOBALS_D("player_height"));
@@ -334,6 +343,49 @@ void Player::onUpdate(float dt)
 	{
 		setVx(0);
 
+	}
+	if (isOnThrowing )
+	{
+		if (ScoreBar::getInstance()->getHeartCount()<=0)
+		{
+			action = PLAYER_ACTION_DEFENCE;
+			setInterval(80);
+			if (getIsLastFrameAnimationDone())
+			{
+				action = PLAYER_ACTION_STAND;
+				isOnThrowing = false;
+			}
+		}
+		else if (!weaponStar->getRenderActive())
+		{
+			ScoreBar::getInstance()->increaseHeartCount(-5);
+			action = PLAYER_ACTION_DEFENCE;
+			setInterval(80);
+			weaponStar->setLocation(getMidX()+10, getMidY() + 10);
+			weaponStar->setVx(getDirection() * 80);
+			weaponStar->setDx(getDirection() * 5);
+			if (getStarNormal())
+			{
+				weaponStar->setAnimation(WEAPON_STAR);
+			}
+			else
+			{
+				weaponStar->setAnimation(WEAPON_WINDMILL_STAR);
+			}
+			
+			weaponStar->setRenderActive(true);
+			weaponStar->onUpdate(dt);
+		}
+		else
+		{
+			action = PLAYER_ACTION_DEFENCE;
+			setInterval(80);
+			if (getIsLastFrameAnimationDone())
+			{
+				action = PLAYER_ACTION_STAND;
+				isOnThrowing = false;
+			}
+		}
 	}
 
 	setAnimation(action);
@@ -420,6 +472,26 @@ bool Player::getFreezeTime()
 	return isFreezeTime;
 }
 
+void Player::setStarNormal(bool isStarNormal)
+{
+	this->isStarNormal = isStarNormal;
+}
+
+bool Player::getStarNormal()
+{
+	return isStarNormal;
+}
+
+void Player::setStarWindmill(bool isStarWindmill)
+{
+	this->isStarWindmill = isStarWindmill;
+}
+
+bool Player::getStarWindmill()
+{
+	return isStarWindmill;
+}
+
 void Player::setIsOnAttack(bool isOnAttack)
 {
 	this->isOnAttack = isOnAttack;
@@ -454,6 +526,8 @@ Player::Player()
 	setFreezeTime(false);
 	isStartFreezeTime = false;
 	freezeTimeDelay.init(6000);
+	weaponStar = WeaponStar::getInstance();
+	isOnThrowing = false;
 }
 
 

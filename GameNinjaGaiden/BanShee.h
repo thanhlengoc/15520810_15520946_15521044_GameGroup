@@ -3,6 +3,7 @@
 #include"Player.h"
 #include"WeaponPlayer.h"
 #include"WeaponThrow.h"
+#include"WeaponStar.h"
 
 enum BANSHEE_ACTION {
 	BANSHEE_WAIT,
@@ -20,6 +21,8 @@ public:
 	Player* player;
 	WeaponPlayer* weapon_player;
 	WeaponThrow* weapon_throw;
+	WeaponStar* weapon_star;
+
 	void onUpdate(float dt) override;
 	void onCollision(MovableRect* other, float collisionTime, int nx, int ny) override;
 	void setFollowPlayer();

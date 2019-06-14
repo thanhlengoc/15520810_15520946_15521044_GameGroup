@@ -40,8 +40,6 @@ void Sparrow::onUpdate(float dt)
 				setAnimation(SPARROW_BonusRed);
 			else if (3808 < getMidX() && getMidX() < 3824)
 				setAnimation(SPARROW_SpiritualStrengthBlue);
-			else if (3984 < getMidX() && getMidX() < 4000)
-				setAnimation(SPARROW_TheArtoftheFireWheel);
 			else if (4133 < getMidX() && getMidX() < 4149)
 				setAnimation(SPARROW_BonusBlue);
 			else if (4399 < getMidX() && getMidX() < 4415)
@@ -83,6 +81,8 @@ void Sparrow::onUpdate(float dt)
 				break;
 			case SPARROW_WindmillThrowingStar:
 				ScoreBar::getInstance()->setWeapon(MISC_SPRITE_ID_WINDMILL_THROWING_STAR);
+				player->setStarNormal(false);
+				player->setStarWindmill(true);
 				break;
 			case SPARROW_TheArtoftheFireWheel:
 				ScoreBar::getInstance()->setWeapon(MISC_SPRITE_ID_FIRE_WHEEL);
@@ -91,9 +91,7 @@ void Sparrow::onUpdate(float dt)
 				break;
 			}
 		}
-
 	}
-
 	PhysicsObject::onUpdate(dt);
 }
 

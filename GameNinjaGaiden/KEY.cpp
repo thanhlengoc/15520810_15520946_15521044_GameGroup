@@ -31,11 +31,16 @@ void KEY::update()
 	isSpace1Down = GetAsyncKeyState(getKeyChar('q'));
 	isSpace2Down = GetAsyncKeyState(getKeyChar('w'));
 	isSpace3Down = GetAsyncKeyState(getKeyChar('e'));
+
+	isPreviousThrowingDown = isThrowingDown;
+	isThrowingDown = GetAsyncKeyState(getKeyChar('c'));
+	isThrowingPress = (isThrowingDown == true && isPreviousThrowingDown == false);
 }
 
 KEY::KEY()
 {
 	isPreviousAttackDown = false;
+	isPreviousThrowingDown = false;
 }
 
 

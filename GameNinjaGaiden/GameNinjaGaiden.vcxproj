@@ -128,8 +128,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.h" />
-    <ClInclude Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BanShee.h" />
     <ClInclude Include="BaseObject.h" />
@@ -137,6 +135,7 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Butterfly.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="ChangeSpace.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionsObjectCollection.h" />
@@ -152,6 +151,7 @@
     <ClInclude Include="GameTexture.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="GameUtils.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Gunner.h" />
     <ClInclude Include="KEY.h" />
     <ClInclude Include="List.h" />
@@ -171,14 +171,13 @@
     <ClInclude Include="WeaponPlayer.h" />
     <ClInclude Include="WeaponShotSecond.h" />
     <ClInclude Include="WeaponShotThree.h" />
+    <ClInclude Include="WeaponStar.h" />
     <ClInclude Include="WeaponThrow.h" />
     <ClInclude Include="WindowGame.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="SwordMan.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Cell.cpp" />
-    <ClCompile Include="..\..\..\..\Downloads\source-tham-khao\example\Game Ninja Gaiden\Grid.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BanShee.cpp" />
     <ClCompile Include="BaseObject.cpp" />
@@ -186,6 +185,7 @@
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Butterfly.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CollisionsObjectCollection.cpp" />
     <ClCompile Include="DelayTime.cpp" />
@@ -197,6 +197,7 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GameUtils.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Gunner.cpp" />
     <ClCompile Include="KEY.cpp" />
     <ClCompile Include="MachineGun.cpp" />
@@ -214,6 +215,7 @@
     <ClCompile Include="WeaponPlayer.cpp" />
     <ClCompile Include="WeaponShotSecond.cpp" />
     <ClCompile Include="WeaponShotThree.cpp" />
+    <ClCompile Include="WeaponStar.cpp" />
     <ClCompile Include="WeaponThrow.cpp" />
     <ClCompile Include="WindowGame.cpp" />
     <ClCompile Include="WinMain.cpp" />

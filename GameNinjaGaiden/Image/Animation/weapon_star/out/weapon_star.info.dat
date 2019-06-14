@@ -1,0 +1,27 @@
+Sprite weapon_star
+R	G	B
+255	0	128	128
+Animation Count
+2
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+0			9			8				7				0			0
+8			9			8				7				0			0
+
+
+Name
+Animation
+Frame Count
+2
+
+FrameX		FrameY		FrameWidth		FrameHeight		AnchorX		AnchorY
+16			0			16				16				0			0
+32			0			16				16				0			0
+
+

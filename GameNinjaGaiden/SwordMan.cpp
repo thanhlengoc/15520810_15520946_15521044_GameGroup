@@ -224,6 +224,23 @@ void SwordMan::onCollision(MovableRect * other, float collisionTime, int nx, int
 	{
 		preventMovementWhenCollision(collisionTime, nx, ny);
 	}
+	if (other->getCollisionType() == COLLISION_TYPE_STAR && isAlive())
+	{
+		weapon_player->setRenderActive(true);
+		if (getDirection() == 1)
+		{
+			weapon_player->setLocation(getMidX() + 15, getY());
+		}
+		else
+		{
+			weapon_player->setLocation(getMidX() + 10, getY());
+		}
+		weapon_player->startAnimationWeapon();
+		restoreLocation();
+		setRenderActive(false);
+		setAlive(false);
+		ScoreBar::getInstance()->increaseScore(100);
+	}
 	if (other->getCollisionType() == COLLISION_TYPE_PLAYER && getRenderActive() && isAlive()
 		&& !player->isDead && !player->isHurtLeft && !player->isHurtRight)
 	{
