@@ -21,6 +21,7 @@
 #include"WeaponShotThree.h"
 #include"WeaponStar.h"
 #include"Grid.h"
+#include"Sound.h"
 
 void World::Init(const char * tilesheetPath, 
 	const char * matrixPath, 
@@ -28,6 +29,11 @@ void World::Init(const char * tilesheetPath,
 	const char* collisionTypeCollidePath,
 	const char* spacePath)
 {
+	Sound::getInstance()->stop("stage3-2");
+	Sound::getInstance()->stop("stage3-3");
+	Sound::getInstance()->loadSound("resource/sound/stage3-1.wav", "stage3-1");
+	Sound::getInstance()->play("stage3-1", true, 0);
+
 	Player* player = Player::getInstance();
 	player->set(40, 70, 17, 32);
 

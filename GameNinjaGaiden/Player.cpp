@@ -1,5 +1,6 @@
 ﻿#include "Player.h"
 #include"ScoreBar.h"
+#include"Sound.h"
 
 Player * Player::instance = 0;
 Player * Player::getInstance()
@@ -191,6 +192,8 @@ void Player::onUpdate(float dt)
 	if (key->isAttackPress && !getIsOnLadder())
 	{
 		setIsOnAttack(true);
+		Sound::getInstance()->loadSound("resource/sound/attack.wav", "attack");
+		Sound::getInstance()->play("attack", false, 1);
 	}
 	if (key->isThrowingPress)
 	{

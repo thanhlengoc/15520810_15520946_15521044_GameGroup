@@ -162,6 +162,7 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Runner.h" />
     <ClInclude Include="ScoreBar.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Spaces.h" />
     <ClInclude Include="Sparrow.h" />
     <ClInclude Include="Sprite.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="Runner.cpp" />
     <ClCompile Include="ScoreBar.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sparrow.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />

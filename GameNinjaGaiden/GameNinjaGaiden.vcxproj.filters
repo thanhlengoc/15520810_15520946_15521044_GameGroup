@@ -210,6 +210,9 @@
     <ClInclude Include="Grid.h">
       <Filter>Header Files\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files\Ultils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -340,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Header Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Header Files\Ultils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
